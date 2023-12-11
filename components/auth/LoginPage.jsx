@@ -1,9 +1,19 @@
 "use client";
 
+import { useContextProvider } from "@/context/MainContextProvider";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
+import toast from "react-hot-toast";
+import Loader from "../shared/Loader";
 
 const LoginPage = () => {
+  const [loader, setLoader] = useState(false);
+  const [pageText, setPageText] = useState("");
+  const router = useRouter();
+  const { loaderStatus, setLoaderStatus } = useContextProvider();
+
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -16,8 +26,41 @@ const LoginPage = () => {
     });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!form.username || !form.password) {
+      return toast.error("Fill all fields requiered!");
+    } else {
+      setLoader(true);
+      const result = await signIn("credentials", {
+        ...form,
+        redirect: false,
+      });
+      if (result.error) {
+        setLoader(false);
+        return toast.error(result.error);
+      } else {
+        setLoaderStatus(true);
+        setPageText("Redirecting to home page...");
+        toast.success("Welcome");
+        router.replace("/");
+        setLoaderStatus(false);
+      }
+    }
+  };
+
   return (
-    <form className="flex flex-col items-center justify-center h-screen">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center justify-center h-screen"
+    >
+      {loaderStatus && (
+        <div className="backdrop-blur-xl w-full flex items-center justify-center gap-3 flex-col absolute inset-0">
+          <Loader color="#fff" />
+          <p className="font-bold">{pageText}</p>
+        </div>
+      )}
       <div className="w-[250px] sm:w-[400px]">
         <h1 className="text-center text-3xl font-black mb-10">
           Login to account
@@ -38,7 +81,7 @@ const LoginPage = () => {
             <label className="font-semibold">Password</label>
             <input
               name="password"
-              type="text"
+              type="password"
               value={form.password}
               onChange={changeHandler}
               placeholder="Password"
@@ -47,9 +90,12 @@ const LoginPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-black text-white rounded-lg w-full py-2 font-bold"
+            disabled={loader && true}
+            className={`${
+              loader ? "bg-gray-100" : "bg-black"
+            } text-white rounded-lg w-full py-2 font-bold flex justify-center`}
           >
-            Submit
+            {loader ? <Loader h={25} w={25} /> : "Submit"}
           </button>
           <div className="flex items-center justify-center gap-4 text-sm font-bold">
             <p>Dont have account?</p>

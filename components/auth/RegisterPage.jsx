@@ -43,6 +43,7 @@ const RegisterPage = () => {
         setPageText("Redirecting to login page...");
         toast.success(result.msg);
         router.push("/login");
+        setLoaderStatus(false);
       }
     }
   };
