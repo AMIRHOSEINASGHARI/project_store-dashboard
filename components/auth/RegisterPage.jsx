@@ -1,7 +1,9 @@
 "use client";
 
+import { createUser } from "@/utils/api";
 import Link from "next/link";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const RegisterPage = () => {
   const [form, setForm] = useState({
@@ -16,8 +18,28 @@ const RegisterPage = () => {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!form.username || !form.displayName || !form.password) {
+      return toast.error("Fill all fields requiered!");
+    } else {
+      const result = await createUser(form);
+      if (!result.success) {
+        return toast.error(result.msg);
+      } else {
+        toast.success(result.msg);
+        router.push("/login");
+      }
+    }
+  };
+
   return (
-    <form className="flex flex-col items-center justify-center h-screen">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center justify-center h-screen"
+    >
       <div className="w-[250px] sm:w-[400px]">
         <h1 className="text-center text-3xl font-black mb-10">
           Create account
@@ -49,7 +71,7 @@ const RegisterPage = () => {
             <label className="font-semibold">Password</label>
             <input
               name="password"
-              type="text"
+              type="password"
               value={form.password}
               onChange={changeHandler}
               placeholder="Password"
