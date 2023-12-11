@@ -3,10 +3,17 @@
 import { useContextProvider } from "@/context/MainContextProvider";
 import { createUser } from "@/utils/api";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import Loader from "../shared/Loader";
 
 const RegisterPage = () => {
+  const [loader, setLoader] = useState(false);
+  const [pageText, setPageText] = useState("");
+  const router = useRouter();
+  const { loaderStatus, setLoaderStatus } = useContextProvider();
+
   const [form, setForm] = useState({
     username: "",
     displayName: "",
@@ -26,10 +33,14 @@ const RegisterPage = () => {
     if (!form.username || !form.displayName || !form.password) {
       return toast.error("Fill all fields requiered!");
     } else {
+      setLoader(true);
       const result = await createUser(form);
+      setLoader(false);
       if (!result.success) {
         return toast.error(result.msg);
       } else {
+        setLoaderStatus(true);
+        setPageText("Redirecting to login page...");
         toast.success(result.msg);
         router.push("/login");
       }
@@ -41,6 +52,12 @@ const RegisterPage = () => {
       onSubmit={handleSubmit}
       className="flex flex-col items-center justify-center h-screen"
     >
+      {loaderStatus && (
+        <div className="backdrop-blur-xl w-full flex items-center justify-center gap-3 flex-col absolute inset-0">
+          <Loader color="#fff" />
+          <p className="font-bold">{pageText}</p>
+        </div>
+      )}
       <div className="w-[250px] sm:w-[400px]">
         <h1 className="text-center text-3xl font-black mb-10">
           Create account
@@ -81,9 +98,12 @@ const RegisterPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-black text-white rounded-lg w-full py-2 font-bold"
+            disabled={loader && true}
+            className={`${
+              loader ? "bg-gray-100" : "bg-black"
+            } text-white rounded-lg w-full py-2 font-bold flex justify-center`}
           >
-            Submit
+            {loader ? <Loader h={25} w={25} /> : "Submit"}
           </button>
           <div className="flex items-center justify-center gap-4 text-sm font-bold">
             <p>Already have account?</p>
