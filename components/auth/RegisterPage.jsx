@@ -1,5 +1,6 @@
 "use client";
 
+import { useContextProvider } from "@/context/MainContextProvider";
 import { createUser } from "@/utils/api";
 import Link from "next/link";
 import { useState } from "react";

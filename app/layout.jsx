@@ -1,5 +1,6 @@
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
+import MainContextProvider from "@/context/MainContextProvider";
 
 export const metadata = {
   title: "Store Panel",
@@ -8,12 +9,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <div>
-          <Toaster position="top-center" />
-        </div>
-        <main>{children}</main>
-      </body>
+      <MainContextProvider>
+        <body>
+          <div>
+            <Toaster position="top-center" />
+          </div>
+          <main>{children}</main>
+        </body>
+      </MainContextProvider>
     </html>
   );
 }
