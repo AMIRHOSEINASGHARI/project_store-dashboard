@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "bcryptjs": "^2.4.3",
     "mongoose": "^7.4.1",
     "next": "14.0.4",

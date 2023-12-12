@@ -1,31 +1,39 @@
 "use client";
 
+import { useContextProvider } from "@/context/MainContextProvider";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GoPerson } from "react-icons/go";
 import { HiOutlineLogout } from "react-icons/hi";
+import SidebarMenu from "./SidebarMenu";
 
 const Navbar = () => {
   const session = useSession();
   const pathname = usePathname();
+  const { showMenu, setShowMenu } = useContextProvider();
 
   if (pathname.includes("/login") || pathname.includes("/register"))
     return null;
 
   return (
     <header className="shadow w-full fixed top-0 bg-white flex items-center justify-between p-4 xl:px-6">
-      <Link href="/">
-        <Image
-          src="/logo-secondary.png"
-          width={50}
-          height={50}
-          alt="logo"
-          priority
-          className="w-[35px]"
-        />
-      </Link>
+      <div className="flex items-center gap-3">
+        <div className="md:hidden">
+          <SidebarMenu />
+        </div>
+        <Link href="/">
+          <Image
+            src="/logo-secondary.png"
+            width={50}
+            height={50}
+            alt="logo"
+            priority
+            className="w-[35px]"
+          />
+        </Link>
+      </div>
       <div className="flex items-center gap-2">
         <button
           onClick={() => signOut()}

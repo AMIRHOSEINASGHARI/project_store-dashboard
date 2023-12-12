@@ -6,8 +6,11 @@ const ContextProvider = createContext();
 
 const MainContextProvider = ({ children }) => {
   const [loaderStatus, setLoaderStatus] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   return (
-    <ContextProvider.Provider value={{ loaderStatus, setLoaderStatus }}>
+    <ContextProvider.Provider
+      value={{ loaderStatus, setLoaderStatus, showMenu, setShowMenu }}
+    >
       {children}
     </ContextProvider.Provider>
   );
