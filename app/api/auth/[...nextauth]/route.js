@@ -19,7 +19,7 @@ export const authOptions = {
         } else {
           const user = {
             email: username,
-            displayName: isUser.displayName,
+            name: isUser.displayName,
             image: isUser.avatar,
           };
           return user;

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import Loader from "../shared/Loader";
+import Image from "next/image";
 
 const LoginPage = () => {
   const [loader, setLoader] = useState(false);
@@ -62,9 +63,15 @@ const LoginPage = () => {
         </div>
       )}
       <div className="w-[250px] sm:w-[400px]">
-        <h1 className="text-center text-3xl font-black mb-10">
-          Login to account
-        </h1>
+        <div className="flex items-center justify-center mb-10">
+          <Image
+            src="/logo-blue.png"
+            width={200}
+            height={200}
+            alt="logo"
+            priority
+          />
+        </div>
         <div className="space-y-5">
           <div className="flex flex-col gap-1">
             <label className="font-semibold">Username</label>
