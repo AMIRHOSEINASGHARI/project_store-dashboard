@@ -17,7 +17,7 @@ const Navbar = () => {
     return null;
 
   return (
-    <header className="shadow w-full z-10 fixed top-0 bg-white flex items-center justify-between p-4 xl:px-6">
+    <header className="shadow w-full z-20 fixed top-0 bg-white flex items-center justify-between p-4 xl:px-6">
       <div className="flex items-center gap-3">
         <div className="md:hidden">
           <SidebarMenu />

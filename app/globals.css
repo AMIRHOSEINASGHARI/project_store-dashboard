@@ -5,3 +5,11 @@
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.distanceCollapse {
+  @apply pt-[89px] pl-[115px] lg:pl-[130px] bg-gray-50 min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
+}
+
+.distanceNotCollapse {
+  @apply pt-[89px] pl-[250px] lg:pl-[270px] bg-gray-50 min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
+}
