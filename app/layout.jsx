@@ -3,6 +3,7 @@ import "./globals.css";
 import MainContextProvider from "@/context/MainContextProvider";
 import SessionContextProvider from "@/context/SessionContextProvider";
 import Navbar from "@/components/shared/Navbar";
+import Sidebar from "@/components/shared/Sidebar";
 
 export const metadata = {
   title: "Store Panel",
@@ -18,7 +19,10 @@ export default function RootLayout({ children }) {
               <Toaster position="top-center" />
             </div>
             <Navbar />
-            <main>{children}</main>
+            <div>
+              <Sidebar />
+              <main>{children}</main>
+            </div>
           </body>
         </MainContextProvider>
       </SessionContextProvider>

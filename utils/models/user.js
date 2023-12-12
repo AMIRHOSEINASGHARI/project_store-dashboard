@@ -5,6 +5,7 @@ const userSchema = new Schema({
   displayName: String,
   password: String,
   avatar: { type: String, default: "" },
+  roll: { type: String, default: "USER" },
   createdAt: {
     type: Date,
     default: () => Date.now(),
