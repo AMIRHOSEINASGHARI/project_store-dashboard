@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import { BsCurrencyDollar } from "react-icons/bs";
+import { FaHourglassEnd } from "react-icons/fa6";
+import { GoNote } from "react-icons/go";
 import { MdOutlineModeComment, MdOutlineShoppingBag } from "react-icons/md";
 import { PiUsersThree } from "react-icons/pi";
 
@@ -37,18 +39,34 @@ const reviews = [
     iconClass: "text-orange-500",
     link: "/comments",
   },
+  {
+    title: "Orders",
+    icon: <FaHourglassEnd />,
+    count: 250,
+    countClass: "text-purple-500",
+    iconClass: "text-purple-500",
+    link: "/orders",
+  },
+  {
+    title: "Blogs",
+    icon: <GoNote />,
+    count: 9621,
+    countClass: "text-indigo-500",
+    iconClass: "text-indigo-500",
+    link: "/blog",
+  },
 ];
 
 const ReviewsCmp = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+    <div className="flex flex-wrap gap-5">
       {reviews.map((el, i) => {
         const { title, icon, count, countClass, iconClass, link } = el;
         return (
           <Link
             href={link}
             key={i}
-            className="flex items-center justify-between shadow hover:shadow-md shadow-gray-200 bg-white rounded-xl py-3 px-5 group transition-all duration-150"
+            className="flex flex-1 min-w-[250px] items-center justify-between shadow hover:shadow-md shadow-gray-200 bg-white rounded-xl py-3 px-5 group transition-all duration-150"
           >
             <div>
               <h1 className="font-light">{title}</h1>
