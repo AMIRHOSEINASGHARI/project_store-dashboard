@@ -38,3 +38,7 @@ progress::-webkit-progress-value {
 .distanceNotCollapse {
   @apply pt-[89px] pl-[250px] lg:pl-[270px] bg-gray-50 min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
 }
+
+.heading {
+  @apply font-bold text-[25px];
+}

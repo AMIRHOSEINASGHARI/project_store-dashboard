@@ -6,9 +6,10 @@ import { GoNote } from "react-icons/go";
 import { MdOutlineModeComment, MdOutlineShoppingBag } from "react-icons/md";
 import { PiUsersThree } from "react-icons/pi";
 
+//TODO: make this dynamic by fetching data
 const reviews = [
   {
-    title: "Total Sales",
+    title: "Total Revenues",
     icon: <BsCurrencyDollar />,
     count: 576000,
     countClass: "text-green-500",
