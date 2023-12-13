@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+.sidebarScroll::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebarScroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

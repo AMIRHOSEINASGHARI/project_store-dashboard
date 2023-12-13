@@ -2,17 +2,18 @@
 
 import React from "react";
 import { useContextProvider } from "@/context/MainContextProvider";
+import ReviewsCmp from "./ReviewsCmp";
 
-const HomePage = () => {
+const DashboardPage = () => {
   const { collapseMenu } = useContextProvider();
 
   return (
     <div
       className={`${collapseMenu ? "distanceCollapse" : "distanceNotCollapse"}`}
     >
-      Home
+      <ReviewsCmp />
     </div>
   );
 };
 
-export default HomePage;
+export default DashboardPage;

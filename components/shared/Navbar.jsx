@@ -41,7 +41,7 @@ const Navbar = () => {
           <HiOutlineLogout className="w-[25px] h-[25px] text-gray-500" />
         </button>
         {session?.data?.user?.image ? (
-          <Link href="/me">
+          <Link href="/account">
             <Image
               src={session?.data?.user?.image}
               width={50}
@@ -53,7 +53,7 @@ const Navbar = () => {
           </Link>
         ) : (
           <Link
-            href="/me"
+            href="/account"
             className="p-2 hover:bg-gray-50 rounded-full transition-all duration-150"
           >
             <GoPerson className="w-[25px] h-[25px] text-gray-500" />

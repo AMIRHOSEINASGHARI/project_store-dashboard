@@ -36,8 +36,7 @@ const SidebarMenu = () => {
                   item.id === "1"
                     ? "bg-blue-500 font-semibold text-white hover:bg-blue-600"
                     : "hover:bg-gray-100"
-                }
-                ${item.id === "6" && "text-blue-500 hover:bg-blue-50"}`}
+                }`}
               >
                 <Link
                   href={item.link}
