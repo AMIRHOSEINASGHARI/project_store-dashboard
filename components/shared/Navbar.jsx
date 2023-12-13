@@ -50,8 +50,7 @@ const Navbar = () => {
               {shorterText(session?.data?.user?.name, 10)}
             </p>
             <Image
-              // src={session?.data?.user?.image}
-              src="/me.jpg"
+              src={session?.data?.user?.image}
               width={50}
               height={50}
               priority
@@ -67,7 +66,14 @@ const Navbar = () => {
             <p className="uppercase font-light tracking-wider text-xs sm:text-base">
               {shorterText(session?.data?.user?.name, 10)}
             </p>
-            <GoPerson className="w-[25px] h-[25px] text-blue-500" />
+            <Image
+              src="/person.jpg"
+              width={50}
+              height={50}
+              priority
+              alt="user"
+              className="rounded-full w-[25px] h-[25px]"
+            />
           </Link>
         )}
       </div>
