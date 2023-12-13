@@ -47,6 +47,7 @@ const ReviewsCmp = () => {
         return (
           <Link
             href={link}
+            key={i}
             className="flex items-center justify-between shadow hover:shadow-md shadow-gray-200 bg-white rounded-xl py-3 px-5 group transition-all duration-150"
           >
             <div>

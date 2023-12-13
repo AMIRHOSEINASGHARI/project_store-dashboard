@@ -4,6 +4,7 @@ import MainContextProvider from "@/context/MainContextProvider";
 import SessionContextProvider from "@/context/SessionContextProvider";
 import Navbar from "@/components/shared/Navbar";
 import Sidebar from "@/components/shared/Sidebar";
+import ProgressLoadPage from "@/components/shared/ProgressLoadPage";
 
 export const metadata = {
   title: "Store Panel",
@@ -17,6 +18,9 @@ export default function RootLayout({ children }) {
           <body>
             <div>
               <Toaster position="top-center" />
+            </div>
+            <div>
+              <ProgressLoadPage />
             </div>
             <Navbar />
             <div>
