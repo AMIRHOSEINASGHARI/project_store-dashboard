@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { GoPerson } from "react-icons/go";
 import { HiOutlineLogout } from "react-icons/hi";
 import SidebarMenu from "./SidebarMenu";
+import { shorterText } from "@/utils/functions";
 
 const Navbar = () => {
   const session = useSession();
@@ -41,22 +42,32 @@ const Navbar = () => {
           <HiOutlineLogout className="w-[25px] h-[25px] text-gray-500" />
         </button>
         {session?.data?.user?.image ? (
-          <Link href="/account">
+          <Link
+            href="/account"
+            className="flex items-center gap-3 py-2 px-4 rounded-full bg-gray-100 hover:bg-gray-200"
+          >
+            <p className="uppercase font-light tracking-wider text-xs sm:text-base">
+              {shorterText(session?.data?.user?.name, 10)}
+            </p>
             <Image
-              src={session?.data?.user?.image}
+              // src={session?.data?.user?.image}
+              src="/me.jpg"
               width={50}
               height={50}
               priority
               alt="user"
-              className="rounded-full w-[42px] h-[42px]"
+              className="rounded-full w-[25px] h-[25px]"
             />
           </Link>
         ) : (
           <Link
             href="/account"
-            className="p-2 hover:bg-gray-50 rounded-full transition-all duration-150"
+            className="flex items-center gap-3 py-2 px-4 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-150"
           >
-            <GoPerson className="w-[25px] h-[25px] text-gray-500" />
+            <p className="uppercase font-light tracking-wider text-xs sm:text-base">
+              {shorterText(session?.data?.user?.name, 10)}
+            </p>
+            <GoPerson className="w-[25px] h-[25px] text-blue-500" />
           </Link>
         )}
       </div>

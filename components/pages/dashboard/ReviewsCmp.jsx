@@ -40,7 +40,7 @@ const reviews = [
     link: "/comments",
   },
   {
-    title: "Orders",
+    title: "New Orders",
     icon: <FaHourglassEnd />,
     count: 250,
     countClass: "text-purple-500",
