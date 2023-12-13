@@ -18,9 +18,9 @@ const OrdersChart = () => {
   };
 
   return (
-    <div className="min-w-[300px] flex flex-col flex-1">
+    <div className="w-full shadow rounded-xl p-4 bg-white flex flex-col flex-1">
       <h1 className="heading mb-3">New Orders</h1>
-      <div className="bg-white rounded-xl p-6 shadow">
+      <div className="w-full h-full flex items-center justify-center">
         <ReactApexChart
           height={400}
           options={options}
