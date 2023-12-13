@@ -1,3 +1,5 @@
+"use client";
+
 import { shorterText } from "@/utils/functions";
 import Image from "next/image";
 import React from "react";
@@ -5,6 +7,9 @@ import { GrUserAdmin } from "react-icons/gr";
 
 const Administrators = ({ users, currentUserRoll }) => {
   if (!users || users.length === 0) return "Loading...";
+
+  //TODO: give access to users
+  const giveAccess = () => {};
 
   return (
     <div>
@@ -34,7 +39,10 @@ const Administrators = ({ users, currentUserRoll }) => {
                 {item?.roll}
               </p>
               {currentUserRoll === "ADMIN" && (
-                <button className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300">
+                <button
+                  onClick={giveAccess}
+                  className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300"
+                >
                   <GrUserAdmin />
                 </button>
               )}

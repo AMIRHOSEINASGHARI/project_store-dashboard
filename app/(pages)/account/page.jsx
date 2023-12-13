@@ -27,6 +27,8 @@ const Account = async () => {
 
   if (!session) redirect("/login");
 
+  //TODO: protecting page from 'USER'
+
   return (
     <AccountPage
       currentUser={JSON.parse(JSON.stringify(currentUser))}

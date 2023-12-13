@@ -1,9 +1,7 @@
 "use client";
 
 import { useContextProvider } from "@/context/MainContextProvider";
-import Image from "next/image";
 import React from "react";
-import { BiEditAlt } from "react-icons/bi";
 import CurrentUser from "./CurrentUser";
 import Administrators from "./Administrators";
 
