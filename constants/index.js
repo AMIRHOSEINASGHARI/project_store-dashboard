@@ -86,3 +86,17 @@ export const categories = [
     icon: <MdOutlineWatch />,
   },
 ];
+
+export const defaultColors = [
+  "#64748b",
+  "#000000",
+  "#737373",
+  "#ffffff",
+  "#dc2626",
+  "#f97316",
+  "#facc15",
+  "#22c55e",
+  "#3b82f6",
+  "#a855f7",
+  "#ec4899",
+];

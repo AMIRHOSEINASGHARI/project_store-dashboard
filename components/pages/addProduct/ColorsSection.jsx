@@ -1,3 +1,4 @@
+import { defaultColors } from "@/constants";
 import React, { useEffect, useState } from "react";
 import { CirclePicker } from "react-color";
 import toast from "react-hot-toast";
@@ -32,19 +33,7 @@ const ColorsSection = ({ form, setForm }) => {
       <CirclePicker
         width="100%"
         circleSize={50}
-        colors={[
-          "#64748b",
-          "#000000",
-          "#737373",
-          "#ffffff",
-          "#dc2626",
-          "#f97316",
-          "#facc15",
-          "#22c55e",
-          "#3b82f6",
-          "#a855f7",
-          "#ec4899",
-        ]}
+        colors={defaultColors}
         onChange={changeHandler}
       />
       {selectedColors.length !== 0 && (

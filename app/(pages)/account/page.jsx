@@ -1,6 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AccountPage from "@/components/pages/account/AccountPage";
 import Administrators from "@/components/pages/account/Administrators";
+import NotAllowed from "@/components/shared/NotAllowed";
 import StoreDashboardUser from "@/utils/models/user";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -27,7 +28,7 @@ const Account = async () => {
 
   if (!session) redirect("/login");
 
-  //TODO: protecting page from 'USER'
+  if (currentUser?.roll === "USER") return <NotAllowed />;
 
   return (
     <AccountPage

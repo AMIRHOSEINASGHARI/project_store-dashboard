@@ -30,7 +30,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
                         <div className="flex items-center">
                           <div className="text-sm">
                             <RadioGroup.Label
-                              as="p"
+                              as="div"
                               className={`font-medium flex items-center gap-4 ${
                                 checked ? "text-white" : "text-gray-900"
                               }`}
