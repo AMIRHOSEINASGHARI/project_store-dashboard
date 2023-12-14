@@ -109,7 +109,7 @@ const AddProductPage = () => {
           setSelectedCategory={setSelectedCategory}
         />
       </div>
-      <ColorsSection />
+      <ColorsSection form={form} setForm={setForm} />
       <KeywordsSection />
     </form>
   );
