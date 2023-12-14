@@ -46,7 +46,7 @@ const AddProductPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-8 pb-20`}
     >
-      <ImageSection form={form} setForm={setForm} type="create" />
+      <ImageSection form={form} setForm={setForm} type="createProduct" />
       <div className="space-y-5">
         <div className="flex flex-col gap-1">
           <label className="font-semibold">Title</label>
@@ -110,7 +110,11 @@ const AddProductPage = () => {
         />
       </div>
       <ColorsSection form={form} setForm={setForm} />
-      <KeywordsSection form={form} setForm={setForm} />
+      <KeywordsSection
+        form={form}
+        setForm={setForm}
+        placeholder="Type a keyword for your product"
+      />
       <button
         type="button"
         className="bg-black text-white font-black text-xl w-full text-center py-4"

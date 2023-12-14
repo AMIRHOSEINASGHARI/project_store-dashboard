@@ -21,6 +21,7 @@ const ImageSection = ({ form, setForm, type }) => {
       image: image,
     });
   };
+
   return (
     <div>
       <div className="relative w-full flex items-center flex-col text-gray-500 text-sm">
@@ -37,7 +38,7 @@ const ImageSection = ({ form, setForm, type }) => {
         </label>
         <input
           type="file"
-          required={type === "create"}
+          required={type === "createProduct" || type === "createBlog"}
           accept="image/*"
           className="absolute inset-0 opacity-0 cursor-pointer z-30"
           onChange={handleChangeImage}

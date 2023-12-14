@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import { MdAdd } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 
-const KeywordsSection = ({ form, setForm }) => {
+const KeywordsSection = ({ form, setForm, placeholder }) => {
   const [keywords, setKeyWords] = useState([]);
   const [value, setValue] = useState("");
 
@@ -55,7 +55,7 @@ const KeywordsSection = ({ form, setForm }) => {
           type="text"
           value={value}
           onChange={changeHandler}
-          placeholder="Type a keyword for your product"
+          placeholder={placeholder}
           className="placeholder:text-xs rounded-lg border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4 w-full"
         />
       </div>
