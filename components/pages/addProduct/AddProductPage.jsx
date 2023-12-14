@@ -37,14 +37,14 @@ const AddProductPage = () => {
     });
   };
 
+  //TODO: create a product api
   const submitHandler = (e) => {};
 
   return (
-    <form
-      onSubmit={submitHandler}
+    <div
       className={`${
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-8`}
+      } space-y-8 pb-20`}
     >
       <ImageSection form={form} setForm={setForm} type="create" />
       <div className="space-y-5">
@@ -110,8 +110,8 @@ const AddProductPage = () => {
         />
       </div>
       <ColorsSection form={form} setForm={setForm} />
-      <KeywordsSection />
-    </form>
+      <KeywordsSection form={form} setForm={setForm} />
+    </div>
   );
 };
 
