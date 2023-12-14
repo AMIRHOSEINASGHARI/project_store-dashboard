@@ -6,6 +6,10 @@ import { MdOutlineManageAccounts, MdOutlineShoppingBag } from "react-icons/md";
 import { RxDashboard } from "react-icons/rx";
 import { MdOutlineModeComment } from "react-icons/md";
 import { FaHourglassEnd } from "react-icons/fa6";
+import { HiOutlineDeviceMobile } from "react-icons/hi";
+import { LuLaptop } from "react-icons/lu";
+import { PiTelevisionSimpleBold } from "react-icons/pi";
+import { MdOutlineWatch } from "react-icons/md";
 
 export const menuList = [
   {
@@ -61,5 +65,24 @@ export const menuList = [
     icon: <MdOutlineManageAccounts />,
     link: "/account",
     id: "9",
+  },
+];
+
+export const categories = [
+  {
+    name: "Phone",
+    icon: <HiOutlineDeviceMobile />,
+  },
+  {
+    name: "Laptop",
+    icon: <LuLaptop />,
+  },
+  {
+    name: "TV",
+    icon: <PiTelevisionSimpleBold />,
+  },
+  {
+    name: "Watch",
+    icon: <MdOutlineWatch />,
   },
 ];

@@ -1,13 +1,16 @@
 "use client";
 
 import { useContextProvider } from "@/context/MainContextProvider";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ImageSection from "./ImageSection";
 import ColorsSection from "./ColorsSection";
 import KeywordsSection from "./KeywordsSection";
+import { categories } from "@/constants";
+import CategoryFilter from "./CategoryFilter";
 
 const AddProductPage = () => {
   const { collapseMenu } = useContextProvider();
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [form, setForm] = useState({
     image: "",
     title: "",
@@ -19,6 +22,13 @@ const AddProductPage = () => {
     colors: [],
     keywords: [],
   });
+
+  useEffect(() => {
+    setForm({
+      ...form,
+      category: selectedCategory.name,
+    });
+  }, [selectedCategory]);
 
   const changeHandler = (e) => {
     setForm({
@@ -93,8 +103,11 @@ const AddProductPage = () => {
               className="placeholder:text-xs w-full rounded-lg border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
             />
           </div>
-          {/* //TODO: category */}
         </div>
+        <CategoryFilter
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </div>
       <ColorsSection />
       <KeywordsSection />
