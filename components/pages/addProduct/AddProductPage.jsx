@@ -111,6 +111,12 @@ const AddProductPage = () => {
       </div>
       <ColorsSection form={form} setForm={setForm} />
       <KeywordsSection form={form} setForm={setForm} />
+      <button
+        type="button"
+        className="bg-black text-white font-black text-xl w-full text-center py-4"
+      >
+        Share Product
+      </button>
     </div>
   );
 };

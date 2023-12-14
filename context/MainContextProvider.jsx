@@ -8,6 +8,7 @@ const MainContextProvider = ({ children }) => {
   const [loaderStatus, setLoaderStatus] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [collapseMenu, setCollapseMenu] = useState(false);
+  const [progressValue, setProgressValue] = useState(10);
 
   return (
     <ContextProvider.Provider
@@ -18,6 +19,8 @@ const MainContextProvider = ({ children }) => {
         setShowMenu,
         collapseMenu,
         setCollapseMenu,
+        progressValue,
+        setProgressValue,
       }}
     >
       {children}

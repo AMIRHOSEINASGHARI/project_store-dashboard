@@ -1,10 +1,11 @@
 "use client";
 
+import { useContextProvider } from "@/context/MainContextProvider";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 const ProgressLoadPage = () => {
-  const [progressValue, setProgressValue] = useState(10);
+  const { progressValue, setProgressValue } = useContextProvider();
   const pathname = usePathname();
 
   useEffect(() => {

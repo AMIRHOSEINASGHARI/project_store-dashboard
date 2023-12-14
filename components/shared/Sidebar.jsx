@@ -9,7 +9,8 @@ import { useContextProvider } from "@/context/MainContextProvider";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const { collapseMenu, setCollapseMenu } = useContextProvider();
+  const { collapseMenu, setCollapseMenu, setProgressValue } =
+    useContextProvider();
 
   if (pathname.includes("/login") || pathname.includes("/register"))
     return null;
@@ -24,6 +25,7 @@ const Sidebar = () => {
               <Link
                 key={id}
                 href={link}
+                onClick={() => setProgressValue(10)}
                 className={`rounded-lg transition-all duration-150 ${
                   collapseMenu
                     ? "p-3 px-4 block"
