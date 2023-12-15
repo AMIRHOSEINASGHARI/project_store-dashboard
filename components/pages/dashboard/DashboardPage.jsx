@@ -16,9 +16,9 @@ const DashboardPage = () => {
       } space-y-8`}
     >
       <ReviewsCmp />
-      <div className="flex flex-wrap gap-5">
-        <OrdersChart />
+      <div className="flex flex-col xl:flex-row gap-5">
         <TotoalRevenue />
+        <OrdersChart />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@ const ImageSection = ({ form, setForm, type }) => {
           type="file"
           required={type === "createProduct" || type === "createBlog"}
           accept="image/*"
-          className="absolute inset-0 opacity-0 cursor-pointer z-30"
+          className="absolute inset-0 opacity-0 cursor-pointer z-10"
           onChange={handleChangeImage}
         />
         {form?.image && (

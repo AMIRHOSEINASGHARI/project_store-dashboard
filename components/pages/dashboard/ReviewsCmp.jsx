@@ -54,7 +54,7 @@ const reviews = [
     count: 9621,
     countClass: "text-indigo-500",
     iconClass: "text-indigo-500",
-    link: "/blog",
+    link: "/add-blog",
   },
 ];
 

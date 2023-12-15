@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 
@@ -59,10 +61,42 @@ const TotoalRevenue = () => {
         },
       },
       {
-        breakpoint: 800,
+        breakpoint: 500,
+        options: {
+          chart: {
+            width: 300,
+          },
+        },
+      },
+      {
+        breakpoint: 600,
         options: {
           chart: {
             width: 400,
+          },
+        },
+      },
+      {
+        breakpoint: 768,
+        options: {
+          chart: {
+            width: 500,
+          },
+        },
+      },
+      {
+        breakpoint: 900,
+        options: {
+          chart: {
+            width: 400,
+          },
+        },
+      },
+      {
+        breakpoint: 1000,
+        options: {
+          chart: {
+            width: 500,
           },
         },
       },
@@ -75,10 +109,34 @@ const TotoalRevenue = () => {
         },
       },
       {
-        breakpoint: 2000,
+        breakpoint: 1280,
+        options: {
+          chart: {
+            width: 800,
+          },
+        },
+      },
+      {
+        breakpoint: 1500,
+        options: {
+          chart: {
+            width: 600,
+          },
+        },
+      },
+      {
+        breakpoint: 1500,
         options: {
           chart: {
             width: 700,
+          },
+        },
+      },
+      {
+        breakpoint: 2000,
+        options: {
+          chart: {
+            width: 800,
           },
         },
       },
