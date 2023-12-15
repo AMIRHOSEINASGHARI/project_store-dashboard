@@ -23,14 +23,14 @@ const ImageSection = ({ form, setForm, type }) => {
   };
 
   return (
-    <div>
+    <div className="w-full rounded-3xl overflow-hidden">
       <div className="relative w-full flex items-center flex-col text-gray-500 text-sm">
-        <label className="w-full border-2 border-dashed min-h-[200px] lg:min-h-[300px] flex flex-col items-center justify-center p-3 text-center">
+        <label className="w-full border-2 border-dashed rounded-3xl min-h-[200px] lg:min-h-[300px] flex flex-col items-center justify-center p-3 text-center">
           {!form?.image && (
             <>
-              <AiOutlineFolderAdd className="text-4xl text-gray-700" />
+              <AiOutlineFolderAdd className="text-4xl text-blue-500" />
               <span>Drag and Drop or tap here to upload a Photo</span>
-              <span className="text-purple-600 font-semibold bg-purple-50 py-1 px-3">
+              <span className="text-white rounded-full font-semibold bg-blue-500 py-2 px-5 mt-2">
                 Images less than 10MB
               </span>
             </>

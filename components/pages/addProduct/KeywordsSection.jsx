@@ -43,10 +43,10 @@ const KeywordsSection = ({ form, setForm, placeholder }) => {
   return (
     <form className="flex flex-col gap-1" onSubmit={submitHandler}>
       <label className="font-semibold">Keywords</label>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-2 rounded-full overflow-hidden">
         <button
           type="submit"
-          className="rounded-lg bg-gray-200 border-gray-400 border-1 py-3 px-4 flex items-center gap-2 w-fit"
+          className="bg-gray-200 border-gray-400 border-1 py-3 px-4 flex items-center gap-2 w-fit"
         >
           <MdAdd />
           Add
@@ -56,7 +56,7 @@ const KeywordsSection = ({ form, setForm, placeholder }) => {
           value={value}
           onChange={changeHandler}
           placeholder={placeholder}
-          className="placeholder:text-xs rounded-lg border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4 w-full"
+          className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4 w-full"
         />
       </div>
       {keywords.length !== 0 && (

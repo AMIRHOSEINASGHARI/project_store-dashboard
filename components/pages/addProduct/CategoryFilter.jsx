@@ -6,7 +6,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
   return (
     <div>
       <h1 className="font-semibold">Category</h1>
-      <div className="w-full my-5">
+      <div className="w-full my-2">
         <div className="w-full">
           <RadioGroup value={selectedCategory} onChange={setSelectedCategory}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -21,7 +21,7 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
                         : ""
                     }
                   ${checked ? "bg-sky-900/75 text-white" : "bg-white"}
-                    relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
+                    relative flex cursor-pointer rounded-full px-5 py-4 shadow-md focus:outline-none`
                   }
                 >
                   {({ active, checked }) => (
