@@ -1,26 +1,16 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import AccountPage from "@/components/pages/account/AccountPage";
-import Administrators from "@/components/pages/account/Administrators";
 import NotAllowed from "@/components/shared/NotAllowed";
-import StoreDashboardUser from "@/utils/models/user";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
 
 const Account = async () => {
   const session = await getServerSession(authOptions);
+  //TODO: create a api for fetching loggedIn user data and checking what roll do the user is playing and showing NotAllowed cmp and passing it as a prop to AccontPage cmp
+  const roll = "ADMIN"; //* HARD CODED
 
-  const currentUser = await StoreDashboardUser.findOne({
-    username: session?.user?.email,
-  }).select(["username", "displayName", "avatar", "roll"]);
-
-  const users = await StoreDashboardUser.find().select([
-    "username",
-    "displayName",
-    "avatar",
-    "roll",
-    "createdAt",
-  ]);
+  //TODO: create a api for fetching administrators and admins data
+  const users = []; //* HARD CODED
 
   const filterdUsers = users?.filter(
     (user) => user.username !== session?.user?.email
@@ -28,13 +18,14 @@ const Account = async () => {
 
   if (!session) redirect("/login");
 
-  if (currentUser?.roll === "USER") return <NotAllowed />;
+  if (roll === "USER") return <NotAllowed />;
 
   return (
-    <AccountPage
-      currentUser={JSON.parse(JSON.stringify(currentUser))}
-      users={JSON.parse(JSON.stringify(filterdUsers))}
-    />
+    // <AccountPage
+    //   currentUser={currentUser}
+    //   users={filterdUsers}
+    // />
+    "AccountPage CMP"
   );
 };
 
