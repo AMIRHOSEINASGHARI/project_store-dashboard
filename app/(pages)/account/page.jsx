@@ -7,8 +7,6 @@ import React from "react";
 const Account = async () => {
   const session = await getServerSession(authOptions);
   //TODO: create a api for fetching loggedIn user data and checking what roll do the user is playing and showing NotAllowed cmp and passing it as a prop to AccontPage cmp
-  const roll = "ADMIN"; //* HARD CODED
-
   //TODO: create a api for fetching administrators and admins data
   const users = []; //* HARD CODED
 
@@ -18,7 +16,7 @@ const Account = async () => {
 
   if (!session) redirect("/login");
 
-  if (roll === "USER") return <NotAllowed />;
+  if (session.user.roll === "USER") return <NotAllowed />;
 
   return (
     // <AccountPage

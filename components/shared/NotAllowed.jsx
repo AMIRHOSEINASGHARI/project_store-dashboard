@@ -10,7 +10,7 @@ const NotAllowed = () => {
     <div
       className={`${
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-8 flex flex-col items-center`}
+      } space-y-8 flex flex-col items-center justify-center`}
     >
       <Image
         src="/not-allowed.png"

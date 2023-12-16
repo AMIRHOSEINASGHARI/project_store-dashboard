@@ -16,7 +16,6 @@ const Navbar = () => {
 
   if (pathname.includes("/login") || pathname.includes("/register"))
     return null;
-  console.log(session);
 
   return (
     <header className="shadow w-full z-20 fixed top-0 bg-white flex items-center justify-between p-4 xl:px-6">
