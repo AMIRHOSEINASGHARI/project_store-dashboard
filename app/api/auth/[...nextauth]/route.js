@@ -4,7 +4,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
-  session: { strategy: "jwt" },
+  session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
   providers: [
     CredentialsProvider({
       async authorize(credentials, req) {
@@ -21,12 +21,44 @@ export const authOptions = {
             email: username,
             name: isUser.displayName,
             image: isUser.avatar,
+            roll: isUser.roll,
           };
           return user;
         }
       },
     }),
   ],
+  callbacks: {
+    async jwt({ token }) {
+      await connectDB();
+      const isUser = await StoreDashboardUser.findOne({
+        username: token.email,
+      });
+      if (isUser) {
+        token.username = isUser.username;
+        token.roll = isUser.roll;
+        token.picture = isUser.avatar;
+        delete token.email;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      try {
+        const newSession = {
+          ...session,
+          user: {
+            name: token.name,
+            username: token.username,
+            image: token.picture,
+            roll: token.roll,
+          },
+        };
+        return newSession;
+      } catch (error) {
+        return session;
+      }
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
