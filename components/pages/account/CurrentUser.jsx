@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { BiEditAlt } from "react-icons/bi";
 import Loader from "@/components/shared/Loader";
+import EditProfile from "./EditProfile";
 
 const CurrentUser = ({ session: { data, status } }) => {
   if (status === "loading") {
@@ -19,20 +20,7 @@ const CurrentUser = ({ session: { data, status } }) => {
       className={`w-full bg-white rounded-xl p-5 flex gap-5 flex-col items-center`}
     >
       <div className="relative w-fit">
-        <Image
-          src={
-            data?.user?.image ||
-            (data?.user?.roll === "ADMIN" ? "/person.jpg" : "/man.png")
-          }
-          width={250}
-          height={250}
-          alt={data?.user?.name}
-          priority
-          className="rounded-full"
-        />
-        <button className="absolute top-3 right-4 border bg-white text-gray-600 rounded-full p-3 text-2xl">
-          <BiEditAlt />
-        </button>
+        <EditProfile {...data} />
       </div>
       <div className="space-y-2 w-full flex flex-col items-center">
         <div className="flex flex-col items-center w-full">
