@@ -13,3 +13,13 @@ export const fetchAdmins = async () => {
   const data = await res.json();
   return data;
 };
+
+export const giveAccessToUser = async (username, actionType) => {
+  const res = await fetch("/api/user/administrators", {
+    method: "post",
+    body: JSON.stringify({ username, actionType }),
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};

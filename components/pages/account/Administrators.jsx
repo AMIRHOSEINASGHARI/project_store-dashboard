@@ -4,24 +4,20 @@ import Loader from "@/components/shared/Loader";
 import { shorterText } from "@/utils/functions";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { GrUserAdmin } from "react-icons/gr";
+import AccessList from "./AccessList";
 
 const Administrators = ({ session }) => {
   const [data, setData] = useState(null);
 
+  const fetchAdmins = async () => {
+    const request = await fetch("/api/user/administrators");
+    const response = await request.json();
+    setData(response);
+  };
+
   useEffect(() => {
-    const fetchAdmins = async () => {
-      const request = await fetch("/api/user/administrators");
-      const response = await request.json();
-      setData(response);
-    };
     fetchAdmins();
   }, []);
-
-  console.log(data);
-
-  //TODO: give access to users
-  const giveAccess = () => {};
 
   if (data === null)
     return (
@@ -64,12 +60,11 @@ const Administrators = ({ session }) => {
                 {item?.roll}
               </p>
               {session?.data?.user?.roll === "ADMIN" && (
-                <button
-                  onClick={giveAccess}
-                  className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300"
-                >
-                  <GrUserAdmin />
-                </button>
+                <AccessList
+                  {...item}
+                  session={session}
+                  reFreshData={fetchAdmins}
+                />
               )}
             </div>
           </div>
