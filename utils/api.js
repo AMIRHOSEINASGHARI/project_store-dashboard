@@ -7,3 +7,9 @@ export const createUser = async (userData) => {
   const data = await res.json();
   return data;
 };
+
+export const fetchAdmins = async () => {
+  const res = await fetch("/api/user/administrators");
+  const data = await res.json();
+  return data;
+};

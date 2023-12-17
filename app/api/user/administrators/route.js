@@ -1,8 +1,8 @@
 import connectDB from "@/utils/connectDB";
-import { getServerSession } from "next-auth";
 import { NextResponse } from "next/server";
-import { authOptions } from "../../auth/[...nextauth]/route";
 import StoreDashboardUser from "@/utils/models/user";
+import { authOptions } from "@/utils/auth";
+import { getServerSession } from "next-auth";
 
 export async function GET() {
   try {
@@ -44,8 +44,12 @@ export async function GET() {
       "createdAt",
     ]);
 
+    const filteredUsers = users.filter(
+      (user) => user.username !== session.user.username
+    );
+
     return NextResponse.json(
-      { msg: "Fetch Succeed", success: true, users },
+      { msg: "Fetch Succeed", success: true, users: filteredUsers },
       { status: 200 }
     );
   } catch (error) {

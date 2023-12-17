@@ -1,44 +1,69 @@
 "use client";
 
+import Loader from "@/components/shared/Loader";
 import { shorterText } from "@/utils/functions";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GrUserAdmin } from "react-icons/gr";
 
-const Administrators = ({ users, currentUserRoll }) => {
-  if (!users || users.length === 0) return "Loading...";
+const Administrators = ({ session }) => {
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    const fetchAdmins = async () => {
+      const request = await fetch("/api/user/administrators");
+      const response = await request.json();
+      setData(response);
+    };
+    fetchAdmins();
+  }, []);
+
+  console.log(data);
 
   //TODO: give access to users
   const giveAccess = () => {};
+
+  if (data === null)
+    return (
+      <div className="w-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+
+  if (data?.success === false) {
+    return <h1 className="font-black text-2xl text-center">{data?.msg}</h1>;
+  }
 
   return (
     <div>
       <h1 className="heading mb-5">Administrators</h1>
       <div className="grid grid-gols-1 lg:grid-cols-2 gap-5">
-        {users?.map((item) => (
+        {data?.users?.map((item) => (
           <div
             key={item._id}
             className="bg-white rounded-xl p-5 flex items-center justify-between"
           >
             <div className="flex gap-3 items-center">
               <Image
-                src={item?.avatar || "/person.jpg"}
+                src={
+                  item?.avatar ||
+                  (item.roll === "ADMIN" ? "/person.jpg" : "/man.png")
+                }
                 width={50}
                 height={50}
                 alt={item?.displayName}
                 priority
-                className="rounded-full"
+                className="rounded-full w-[30px] md:w-[50px]"
               />
-              <div className="text-sm font-light">
-                <p className="uppercase">{shorterText(item.displayName, 10)}</p>
+              <div className="text-[10px] sm:text-[16px] font-light min-w-[50px] overflow-x-auto">
                 <p>{shorterText(item.username, 10)}</p>
               </div>
             </div>
-            <div className="flex items-center gap-4">
-              <p className="bg-gray-100 rounded-xl py-1 px-3 text-xs font-bold text-gray-500 border border-gray-300">
+            <div className="flex items-center gap-2">
+              <p className="bg-gray-100 rounded-xl py-1 px-3 text-[10px] font-bold text-gray-500 border border-gray-300">
                 {item?.roll}
               </p>
-              {currentUserRoll === "ADMIN" && (
+              {session?.data?.user?.roll === "ADMIN" && (
                 <button
                   onClick={giveAccess}
                   className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300"

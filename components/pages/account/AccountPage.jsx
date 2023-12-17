@@ -4,9 +4,11 @@ import { useContextProvider } from "@/context/MainContextProvider";
 import React from "react";
 import CurrentUser from "./CurrentUser";
 import Administrators from "./Administrators";
+import { useSession } from "next-auth/react";
 
-const AccountPage = ({ currentUser, users }) => {
+const AccountPage = () => {
   const { collapseMenu } = useContextProvider();
+  const session = useSession();
 
   return (
     <div
@@ -14,8 +16,8 @@ const AccountPage = ({ currentUser, users }) => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-4`}
     >
-      <CurrentUser currentUser={currentUser} />
-      <Administrators users={users} currentUserRoll={currentUser.roll} />
+      <CurrentUser session={session} />
+      <Administrators session={session} />
     </div>
   );
 };

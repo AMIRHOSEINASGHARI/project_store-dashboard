@@ -1,6 +1,6 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import AddProductPage from "@/components/pages/addProduct/AddProductPage";
 import NotAllowed from "@/components/shared/NotAllowed";
+import { authOptions } from "@/utils/auth";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import React from "react";
