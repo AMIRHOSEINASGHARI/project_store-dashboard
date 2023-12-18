@@ -53,7 +53,7 @@ const AddProductPage = () => {
           value={form.title}
           onChange={changeHandler}
           placeholder="Title"
-          className="placeholder:text-xs rounded-full border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+          className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
         />
       </div>
       <div className="flex flex-col lg:flex-row w-full gap-5">
@@ -63,7 +63,7 @@ const AddProductPage = () => {
             value={form.description}
             onChange={changeHandler}
             placeholder="Description"
-            className="placeholder:text-xs h-full rounded-3xl border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+            className="placeholder:text-xs h-full rounded-3xl bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
 
@@ -78,7 +78,7 @@ const AddProductPage = () => {
               value={form.price}
               onChange={changeHandler}
               placeholder="Price"
-              className="placeholder:text-xs w-full rounded-full border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+              className="placeholder:text-xs w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
             />
           </div>
           <div className="flex flex-col gap-1 flex-1 min-w-[200px]">
@@ -88,7 +88,7 @@ const AddProductPage = () => {
               value={form.stock}
               onChange={changeHandler}
               placeholder="Stocks"
-              className="placeholder:text-xs w-full rounded-full border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+              className="placeholder:text-xs w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
             />
           </div>
           <div className="flex flex-col gap-1 flex-1 min-w-[200px]">
@@ -98,7 +98,7 @@ const AddProductPage = () => {
               value={form.discount}
               onChange={changeHandler}
               placeholder="Discount"
-              className="placeholder:text-xs w-full rounded-full border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+              className="placeholder:text-xs w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
             />
           </div>
         </div>

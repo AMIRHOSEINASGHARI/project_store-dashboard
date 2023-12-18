@@ -20,8 +20,8 @@ const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
                         ? "ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300"
                         : ""
                     }
-                  ${checked ? "bg-sky-900/75 text-white" : "bg-white"}
-                    relative flex cursor-pointer rounded-full px-5 py-4 shadow-md focus:outline-none`
+                  ${checked ? "bg-sky-900/75 text-white" : "bg-gray-100"}
+                    relative flex cursor-pointer rounded-full px-5 py-4 focus:outline-none`
                   }
                 >
                   {({ active, checked }) => (

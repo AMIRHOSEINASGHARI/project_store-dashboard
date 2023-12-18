@@ -33,7 +33,7 @@ const AddBlogPage = () => {
     <div
       className={`${
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-8 pb-20`}
+      } space-y-5 pb-20`}
     >
       <div className="flex flex-col gap-1">
         <input
@@ -42,7 +42,7 @@ const AddBlogPage = () => {
           value={form.title}
           onChange={changeHandler}
           placeholder="Title"
-          className="placeholder:text-xs rounded-full border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+          className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
         />
       </div>
       <div className="flex flex-col lg:flex-row w-full gap-5">
@@ -52,7 +52,7 @@ const AddBlogPage = () => {
             value={form.description}
             onChange={changeHandler}
             placeholder="Description"
-            className="placeholder:text-xs h-full rounded-3xl border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4"
+            className="placeholder:text-xs h-full rounded-3xl bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
 

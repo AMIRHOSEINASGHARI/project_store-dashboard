@@ -44,5 +44,5 @@ progress::-webkit-progress-value {
 }
 
 .cardShadow {
-  @apply shadow-[0_5px_15px_#e5e7eb];
+  @apply shadow-[0_5px_15px_#e2e8f0];
 }

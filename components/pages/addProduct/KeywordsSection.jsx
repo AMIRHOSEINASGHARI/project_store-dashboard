@@ -56,7 +56,7 @@ const KeywordsSection = ({ form, setForm, placeholder }) => {
           value={value}
           onChange={changeHandler}
           placeholder={placeholder}
-          className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-3 px-4 w-full"
+          className="placeholder:text-xs rounded-r-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4 w-full"
         />
       </div>
       {keywords.length !== 0 && (
