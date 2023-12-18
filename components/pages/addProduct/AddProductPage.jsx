@@ -43,7 +43,6 @@ const AddProductPage = () => {
     });
   };
 
-  //TODO: create a product api
   const submitHandler = async () => {
     if (
       !form.image ||
@@ -51,7 +50,6 @@ const AddProductPage = () => {
       !form.description ||
       !form.price ||
       !form.stock ||
-      !form.discount ||
       !form.category ||
       !form.colors.length ||
       !form.keywords.length
