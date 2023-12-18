@@ -155,7 +155,7 @@ const EditProfile = (props) => {
                   </div>
                   <button
                     type="button"
-                    className="bg-blue-100 border-2 border-blue-200 hover:bg-blue-200 text-blue-500 transition duration-150 rounded-xl w-full font-bold text-md py-2 flex items-center justify-center"
+                    className="bg-blue-100 border-2 border-blue-200 hover:bg-blue-200 text-blue-500 transition duration-150 rounded-full w-full font-bold text-md py-3 flex items-center justify-center"
                     onClick={saveData}
                   >
                     {loading ? <Loader w={30} h={26} /> : "Save"}

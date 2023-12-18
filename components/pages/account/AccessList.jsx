@@ -73,7 +73,7 @@ const AccessList = (props) => {
               >
                 <Dialog.Panel className="w-full max-w-md transform rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <Dialog.Title
-                    as="h3"
+                    as="div"
                     className="w-full flex items-center justify-between"
                   >
                     <div className="flex items-center gap-3">

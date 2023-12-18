@@ -7,8 +7,11 @@ import React from "react";
 import { FaHashtag } from "react-icons/fa6";
 import { MdFavoriteBorder, MdOutlineModeComment } from "react-icons/md";
 import { FaHourglassEnd } from "react-icons/fa6";
+import ProductCardActions from "./ProductCardActions";
+import { CgTrashEmpty } from "react-icons/cg";
 
 const ProductCard = ({
+  _id,
   category,
   comments,
   discount,
@@ -19,6 +22,9 @@ const ProductCard = ({
   title,
   orders,
 }) => {
+  //TODO: api for delete project
+  const deleteProduct = () => {};
+
   return (
     <div className="p-5 border hover:shadow-xl hover:shadow-slate-300 transition-all duration-100 flex flex-col justify-between gap-6">
       <div>
@@ -61,22 +67,35 @@ const ProductCard = ({
           {shorterText(title, 50)}
         </Link>
       </div>
-      <div className="w-full flex items-center justify-between gap-1">
-        <div className="flex flex-col items-center">
-          <FaHashtag />
-          <p className="break-all text-xs mt-1">{stock}</p>
+      <div>
+        <div className="w-full flex items-center justify-between gap-1 mb-3">
+          <div className="flex flex-col items-center">
+            <FaHashtag />
+            <p className="break-all text-xs mt-1">{stock}</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <FaHourglassEnd />
+            <p className="break-all text-xs mt-1">{orders.length}</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <MdOutlineModeComment />
+            <p className="break-all text-xs mt-1">{comments.length}</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <MdFavoriteBorder />
+            <p className="break-all text-xs mt-1">{likes.length}</p>
+          </div>
         </div>
-        <div className="flex flex-col items-center">
-          <FaHourglassEnd />
-          <p className="break-all text-xs mt-1">{orders.length}</p>
-        </div>
-        <div className="flex flex-col items-center">
-          <MdOutlineModeComment />
-          <p className="break-all text-xs mt-1">{comments.length}</p>
-        </div>
-        <div className="flex flex-col items-center">
-          <MdFavoriteBorder />
-          <p className="break-all text-xs mt-1">{likes.length}</p>
+        <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={deleteProduct}
+            className="bg-gray-100 text-gray-600 hover:text-red-500 transition-all duration-150 rounded-xl py-3 px-6 flex items-center gap-2"
+          >
+            <CgTrashEmpty className="text-[20px]" />
+            <p className="text-xs">Delete</p>
+          </button>
+          <ProductCardActions projectId={_id} title={title} image={image} />
         </div>
       </div>
     </div>
