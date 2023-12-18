@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 import toast from "react-hot-toast";
 import { AiOutlineFolderAdd } from "react-icons/ai";
-import { FiTrash } from "react-icons/fi";
 
 const ImageSection = ({ form, setForm, type }) => {
   const handleChangeImage = async (e) => {
@@ -52,16 +51,6 @@ const ImageSection = ({ form, setForm, type }) => {
           />
         )}
       </div>
-      {form?.image && (
-        <div className="flex items-center justify-center w-full">
-          <div
-            onClick={() => setForm({ ...form, image: "" })}
-            className=" p-4 w-fit rounded-full bg-gray-100 cursor-pointer hover:bg-gray-200 transition duration-100 ease-in-out"
-          >
-            <FiTrash />
-          </div>
-        </div>
-      )}
     </div>
   );
 };

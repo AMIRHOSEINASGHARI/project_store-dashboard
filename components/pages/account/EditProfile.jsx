@@ -2,29 +2,27 @@
 
 import React, { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { GrUserAdmin } from "react-icons/gr";
 import Image from "next/image";
 import Loader from "@/components/shared/Loader";
 import toast from "react-hot-toast";
 import { BiEditAlt } from "react-icons/bi";
 import ImageSection from "../addProduct/ImageSection";
-import { AiOutlineClose } from "react-icons/ai";
+import { uploadImage } from "@/utils/functions";
+import { updateUserInfo } from "@/utils/api";
+import { signOut, useSession } from "next-auth/react";
 
 const EditProfile = (props) => {
+  const { update } = useSession();
   let [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [passSection, setPassSection] = useState(false);
   const [form, setForm] = useState({
     displayName: props?.user?.name || "",
     username: props?.user?.username || "",
     image: "",
-    password: "",
-    currentPassword: "",
   });
 
   function closeModal() {
     setIsOpen(false);
-    setPassSection(false);
     setForm({
       displayName: props?.user?.name || "",
       username: props?.user?.username || "",
@@ -45,6 +43,52 @@ const EditProfile = (props) => {
     });
   };
 
+  const saveData = async () => {
+    if (!form.username || !form.displayName) {
+      toast.error("Username and display name cannot be empty");
+      return;
+    }
+
+    setLoading(true);
+    if (form.image) {
+      const uploadResult = await uploadImage(form.image);
+      const result = await updateUserInfo({
+        displayName: form.displayName,
+        username: form.username,
+        image: uploadResult.imageUrl,
+      });
+      setLoading(false);
+      if (result.success) {
+        toast.success(result.msg);
+        update({
+          name: result.newSession.name,
+          username: result.newSession.username,
+          image: result.newSession.image,
+        });
+        // signOut();
+      } else {
+        toast.error(result.msg);
+      }
+    } else {
+      const result = await updateUserInfo({
+        displayName: form.displayName,
+        username: form.username,
+      });
+      setLoading(false);
+      if (result.success) {
+        toast.success(result.msg);
+        update({
+          name: result.newSession.name,
+          username: result.newSession.username,
+          image: result.newSession.image,
+        });
+        // signOut();
+      } else {
+        toast.error(result.msg);
+      }
+    }
+  };
+
   return (
     <>
       <div onClick={openModal} className="cursor-pointer">
@@ -57,7 +101,7 @@ const EditProfile = (props) => {
           height={250}
           alt={props.user.name}
           priority
-          className="rounded-full"
+          className="rounded-full w-[250px] h-[250px] object-cover"
         />
         <button className="absolute top-3 right-4 border bg-white text-gray-600 rounded-full p-3 text-2xl">
           <BiEditAlt />
@@ -120,50 +164,12 @@ const EditProfile = (props) => {
                       className="placeholder:text-sm w-full rounded-full border border-gray-200 bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
                     />
                   </div>
-                  {!passSection && (
-                    <button
-                      type="button"
-                      onClick={() => setPassSection(true)}
-                      className="font-bold text-sm rounded-lg hover:bg-gray-200 transition duration-75 py-1 px-4"
-                    >
-                      Change password?
-                    </button>
-                  )}
-
-                  {passSection && (
-                    <>
-                      <div className="flex items-center gap-4">
-                        <input
-                          name="password"
-                          type="password"
-                          value={form.password}
-                          onChange={changeHandler}
-                          placeholder="Password"
-                          className="placeholder:text-sm w-full rounded-full border border-gray-200 bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setPassSection(false)}
-                          className="font-bold text-[20px] rounded-full text-gray-500 bg-gray-200 hover:bg-gray-200 transition duration-75 p-[15px]"
-                        >
-                          <AiOutlineClose />
-                        </button>
-                      </div>
-                      <input
-                        name="currentPassword"
-                        type="password"
-                        value={form.currentPassword}
-                        onChange={changeHandler}
-                        placeholder="Current Password"
-                        className="placeholder:text-sm w-full rounded-full border border-gray-200 bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
-                      />
-                    </>
-                  )}
                   <button
                     type="button"
                     className="bg-blue-100 border-2 border-blue-200 hover:bg-blue-200 text-blue-500 transition duration-150 rounded-xl w-full font-bold text-md py-2 flex items-center justify-center"
+                    onClick={saveData}
                   >
-                    Save
+                    {loading ? <Loader w={30} h={26} /> : "Save"}
                   </button>
                 </Dialog.Panel>
               </Transition.Child>

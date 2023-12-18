@@ -59,7 +59,7 @@ const Navbar = () => {
               height={50}
               priority
               alt="user"
-              className="rounded-full w-[25px] h-[25px]"
+              className="rounded-full w-[25px] h-[25px] object-cover"
             />
           </Link>
         ) : (

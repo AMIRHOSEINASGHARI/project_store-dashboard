@@ -23,3 +23,13 @@ export const giveAccessToUser = async (username, actionType) => {
   const data = await res.json();
   return data;
 };
+
+export const updateUserInfo = async (form) => {
+  const res = await fetch("/api/user/update", {
+    method: "post",
+    body: JSON.stringify(form),
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};
