@@ -9,10 +9,9 @@ import { BiEditAlt } from "react-icons/bi";
 import ImageSection from "../addProduct/ImageSection";
 import { uploadImage } from "@/utils/functions";
 import { updateUserInfo } from "@/utils/api";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 
 const EditProfile = (props) => {
-  const { update } = useSession();
   let [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -60,12 +59,7 @@ const EditProfile = (props) => {
       setLoading(false);
       if (result.success) {
         toast.success(result.msg);
-        update({
-          name: result.newSession.name,
-          username: result.newSession.username,
-          image: result.newSession.image,
-        });
-        // signOut();
+        signOut();
       } else {
         toast.error(result.msg);
       }
@@ -77,12 +71,7 @@ const EditProfile = (props) => {
       setLoading(false);
       if (result.success) {
         toast.success(result.msg);
-        update({
-          name: result.newSession.name,
-          username: result.newSession.username,
-          image: result.newSession.image,
-        });
-        // signOut();
+        signOut();
       } else {
         toast.error(result.msg);
       }

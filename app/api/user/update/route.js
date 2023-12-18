@@ -44,11 +44,6 @@ export async function POST(req) {
       {
         msg: "Info updated🖐",
         success: true,
-        newSession: {
-          name: updatedUser.displayName,
-          username: updatedUser.username,
-          image: updatedUser.avatar,
-        },
       },
       { status: 200 }
     );
