@@ -72,7 +72,11 @@ const Navbar = () => {
               {shorterText(session?.data?.user?.name, 10)}
             </p>
             <Image
-              src="/person.jpg"
+              src={
+                session?.data?.user?.roll === "USER"
+                  ? "/man.png"
+                  : "/person.jpg"
+              }
               width={50}
               height={50}
               priority

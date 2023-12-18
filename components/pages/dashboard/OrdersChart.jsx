@@ -55,7 +55,7 @@ const OrdersChart = () => {
   };
 
   return (
-    <div className="flex flex-col shadow rounded-xl p-4 bg-white">
+    <div className="flex flex-col cardShadow rounded-xl p-4 bg-white">
       <h1 className="heading mb-3">New Orders</h1>
       <div className="h-full">
         <div className="w-full h-full flex items-center justify-center">

@@ -17,7 +17,7 @@ const CurrentUser = ({ session: { data, status } }) => {
 
   return (
     <div
-      className={`w-full bg-white rounded-xl p-5 flex gap-5 flex-col items-center`}
+      className={`w-full cardShadow bg-white rounded-xl p-5 flex gap-5 flex-col items-center`}
     >
       <div className="relative w-fit">
         <EditProfile {...data} />

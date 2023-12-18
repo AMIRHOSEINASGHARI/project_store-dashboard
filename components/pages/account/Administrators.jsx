@@ -33,11 +33,11 @@ const Administrators = ({ session }) => {
   return (
     <div>
       <h1 className="heading mb-5">Administrators</h1>
-      <div className="grid grid-gols-1 lg:grid-cols-2 gap-5">
+      <div className="flex flex-wrap w-full gap-5">
         {data?.users?.map((item) => (
           <div
             key={item._id}
-            className="bg-white rounded-xl p-5 flex items-center justify-between"
+            className="bg-gray-100 rounded-xl p-5 min-w-[300px] w-full flex-1 flex items-center justify-between"
           >
             <div className="flex gap-3 items-center">
               <Image
@@ -51,8 +51,8 @@ const Administrators = ({ session }) => {
                 priority
                 className="rounded-full w-[30px] md:w-[50px]"
               />
-              <div className="text-[10px] sm:text-[16px] font-light min-w-[50px] overflow-x-auto">
-                <p>{shorterText(item.username, 10)}</p>
+              <div className="text-[16px] font-light break-all">
+                <p>{item.username}</p>
               </div>
             </div>
             <div className="flex items-center gap-2">

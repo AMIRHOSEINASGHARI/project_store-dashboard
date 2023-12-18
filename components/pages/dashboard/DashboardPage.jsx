@@ -13,7 +13,7 @@ const DashboardPage = () => {
     <div
       className={`${
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-8`}
+      } space-y-8 mb-20`}
     >
       <ReviewsCmp />
       <div className="flex flex-col xl:flex-row gap-5">

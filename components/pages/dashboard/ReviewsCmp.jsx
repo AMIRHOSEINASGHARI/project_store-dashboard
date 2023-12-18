@@ -67,7 +67,7 @@ const ReviewsCmp = () => {
           <Link
             href={link}
             key={i}
-            className="flex flex-1 min-w-[250px] items-center justify-between shadow hover:shadow-md shadow-gray-200 bg-white rounded-xl py-3 px-5 group transition-all duration-150"
+            className="flex flex-1 min-w-[250px] items-center justify-between cardShadow hover:shadow-inner bg-white rounded-xl py-3 px-5 group transition-all duration-150"
           >
             <div>
               <h1 className="font-light">{title}</h1>

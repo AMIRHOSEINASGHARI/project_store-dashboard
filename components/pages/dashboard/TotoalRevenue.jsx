@@ -162,7 +162,7 @@ const TotoalRevenue = () => {
   ];
 
   return (
-    <div className="w-full shadow rounded-xl p-4 bg-white flex flex-col flex-1">
+    <div className="w-full cardShadow rounded-xl p-4 bg-white flex flex-col flex-1">
       <h1 className="heading mb-3">Totoal Revenue</h1>
       <div className="w-full h-full flex items-center justify-center">
         <ReactApexChart

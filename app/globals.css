@@ -32,13 +32,17 @@ progress::-webkit-progress-value {
 }
 
 .distanceCollapse {
-  @apply pt-[89px] pl-[115px] lg:pl-[130px] bg-gray-100 min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
+  @apply pt-[89px] pl-[115px] lg:pl-[130px] min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
 }
 
 .distanceNotCollapse {
-  @apply pt-[89px] pl-[250px] lg:pl-[270px] bg-gray-100 min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
+  @apply pt-[89px] pl-[250px] lg:pl-[270px] min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
 }
 
 .heading {
   @apply font-bold text-[25px];
+}
+
+.cardShadow {
+  @apply shadow-[0_5px_15px_#e5e7eb];
 }
