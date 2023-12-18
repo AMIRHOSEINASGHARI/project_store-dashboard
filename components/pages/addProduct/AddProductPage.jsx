@@ -10,12 +10,11 @@ import CategoryFilter from "./CategoryFilter";
 import toast from "react-hot-toast";
 import { uploadImage } from "@/utils/functions";
 import { createProduct } from "@/utils/api";
-import { useRouter } from "next/navigation";
+import Loader from "@/components/shared/Loader";
 
 const AddProductPage = () => {
   const { collapseMenu } = useContextProvider();
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [form, setForm] = useState({
     image: "",
@@ -67,7 +66,17 @@ const AddProductPage = () => {
     setLoading(false);
     if (result.success) {
       toast.success(result.msg);
-      router.push("/products");
+      setForm({
+        image: "",
+        title: "",
+        description: "",
+        price: "",
+        stock: "",
+        discount: "",
+        category: "",
+        colors: [],
+        keywords: [],
+      });
     } else {
       toast.error(result.msg);
     }
@@ -148,10 +157,13 @@ const AddProductPage = () => {
       />
       <button
         type="button"
-        className="bg-black text-white font-black text-xl w-full text-center py-4 rounded-full"
+        disabled={loading}
+        className={`${
+          loading ? "bg-gray-200 text-black" : "bg-black text-white"
+        } flex justify-center font-black text-xl w-full text-center py-4 rounded-full`}
         onClick={submitHandler}
       >
-        Share Product
+        {loading ? <Loader h={25} w={25} /> : "Share Product"}
       </button>
     </div>
   );

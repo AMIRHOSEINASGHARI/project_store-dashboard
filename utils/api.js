@@ -43,3 +43,9 @@ export const createProduct = async (form) => {
   const data = await res.json();
   return data;
 };
+
+export const fetchProducts = async () => {
+  const res = await fetch("/api/product/all");
+  const data = await res.json();
+  return data;
+};
