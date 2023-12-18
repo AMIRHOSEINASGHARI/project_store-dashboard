@@ -46,3 +46,14 @@ export const uploadImage = async (path) => {
     };
   }
 };
+
+export const reducePrice = (discount, price) => {
+  const discountValue = (price * discount) / 100;
+  const finalValue = price - discountValue;
+  return finalValue;
+};
+
+export const createSlug = (title) => {
+  const slug = title.split(" ").join("-");
+  return slug;
+};
