@@ -33,3 +33,13 @@ export const updateUserInfo = async (form) => {
   const data = await res.json();
   return data;
 };
+
+export const createProduct = async (form) => {
+  const res = await fetch("/api/product/create", {
+    method: "post",
+    body: JSON.stringify(form),
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};

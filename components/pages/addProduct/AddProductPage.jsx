@@ -7,9 +7,15 @@ import ColorsSection from "./ColorsSection";
 import KeywordsSection from "./KeywordsSection";
 import { categories } from "@/constants";
 import CategoryFilter from "./CategoryFilter";
+import toast from "react-hot-toast";
+import { uploadImage } from "@/utils/functions";
+import { createProduct } from "@/utils/api";
+import { useRouter } from "next/navigation";
 
 const AddProductPage = () => {
   const { collapseMenu } = useContextProvider();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [form, setForm] = useState({
     image: "",
@@ -38,7 +44,36 @@ const AddProductPage = () => {
   };
 
   //TODO: create a product api
-  const submitHandler = (e) => {};
+  const submitHandler = async () => {
+    if (
+      !form.image ||
+      !form.title ||
+      !form.description ||
+      !form.price ||
+      !form.stock ||
+      !form.discount ||
+      !form.category ||
+      !form.colors.length ||
+      !form.keywords.length
+    ) {
+      toast.error("Fill all fields");
+      return;
+    }
+
+    setLoading(true);
+    const uploadResult = await uploadImage(form.image);
+    const result = await createProduct({
+      ...form,
+      image: uploadResult.imageUrl,
+    });
+    setLoading(false);
+    if (result.success) {
+      toast.success(result.msg);
+      router.push("/products");
+    } else {
+      toast.error(result.msg);
+    }
+  };
 
   return (
     <div
@@ -116,6 +151,7 @@ const AddProductPage = () => {
       <button
         type="button"
         className="bg-black text-white font-black text-xl w-full text-center py-4 rounded-full"
+        onClick={submitHandler}
       >
         Share Product
       </button>
