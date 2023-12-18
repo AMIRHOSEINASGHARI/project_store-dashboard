@@ -9,19 +9,15 @@ import { MdFavoriteBorder, MdOutlineModeComment } from "react-icons/md";
 import { FaHourglassEnd } from "react-icons/fa6";
 
 const ProductCard = ({
-  _id,
   category,
-  colors,
   comments,
-  createdAt,
-  description,
   discount,
   image,
-  keywords,
   likes,
   price,
   stock,
   title,
+  orders,
 }) => {
   return (
     <div className="p-5 border hover:shadow-xl hover:shadow-slate-300 transition-all duration-100 flex flex-col justify-between gap-6">
@@ -64,9 +60,8 @@ const ProductCard = ({
           <p className="break-all text-xs mt-1">{stock}</p>
         </div>
         <div className="flex flex-col items-center">
-          {/* //TODO: make this dynamic */}
           <FaHourglassEnd />
-          <p className="break-all text-xs mt-1">250</p>
+          <p className="break-all text-xs mt-1">{orders.length}</p>
         </div>
         <div className="flex flex-col items-center">
           <MdOutlineModeComment />
