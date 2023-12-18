@@ -24,9 +24,16 @@ const ProductCard = ({
       <div>
         <Link
           href={`/products/${createSlug(title)}`}
-          className="w-full flex justify-center bg-gray-100 p-3"
+          className="w-full h-[180px] overflow-hidden flex justify-center items-center bg-gray-100 p-3"
         >
-          <Image src={image} width={170} height={170} alt={title} priority />
+          <Image
+            src={image}
+            width={170}
+            height={170}
+            alt={title}
+            priority
+            className="object-contain"
+          />
         </Link>
         <div className="flex justify-between items-center my-1">
           {discount ? (
