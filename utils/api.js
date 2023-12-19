@@ -59,3 +59,13 @@ export const deleteProduct = async (_id) => {
   const data = await res.json();
   return data;
 };
+
+export const addStockAndDiscount = async (form) => {
+  const res = await fetch("/api/product", {
+    method: "PATCH",
+    body: JSON.stringify(form),
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};

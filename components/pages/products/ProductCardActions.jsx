@@ -1,13 +1,22 @@
 "use client";
 
 import Loader from "@/components/shared/Loader";
+import { addStockAndDiscount } from "@/utils/api";
 import { shorterText } from "@/utils/functions";
 import { Dialog, Transition } from "@headlessui/react";
 import Image from "next/image";
 import { Fragment, useState } from "react";
+import toast from "react-hot-toast";
 import { TbSettings } from "react-icons/tb";
 
-const ProductCardActions = ({ projectId, title, image }) => {
+const ProductCardActions = ({
+  projectId,
+  title,
+  image,
+  getProducts,
+  stock,
+  discount,
+}) => {
   let [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -17,6 +26,11 @@ const ProductCardActions = ({ projectId, title, image }) => {
 
   function closeModal() {
     setIsOpen(false);
+    setLoading(false);
+    setForm({
+      stock: "",
+      discount: "",
+    });
   }
   function openModal() {
     setIsOpen(true);
@@ -29,8 +43,33 @@ const ProductCardActions = ({ projectId, title, image }) => {
     });
   };
 
-  //TODO: api for saving stocks and discount
-  const saveData = () => {};
+  const saveData = async (_id) => {
+    if (form.discount === "" && form.stock === "")
+      return toast.error("Fill at least one of the fields");
+    if (form.stock === 0) return toast.error("Invalid value");
+    if (form.discount < 0)
+      return toast.error("Fields cannot be negative value");
+    if (+form.stock[0] === 0) return toast.error("Wrong value");
+    if (form.stock.includes(".")) return toast.error("Wrong value");
+    if (!Number.isInteger(Number(form.stock)))
+      return toast.error("Wrong value");
+    if (Number(stock) + Number(form.stock) < 0)
+      return toast.error("Wrong value");
+
+    setLoading(true);
+    const result = await addStockAndDiscount({
+      ...form,
+      _id,
+    });
+    setLoading(false);
+    if (result.success) {
+      toast.success(result.msg);
+      getProducts();
+      closeModal();
+    } else {
+      toast.error(result.msg);
+    }
+  };
 
   return (
     <>
@@ -88,22 +127,33 @@ const ProductCardActions = ({ projectId, title, image }) => {
                   </Dialog.Title>
                   <div className="mb-3 mt-10 space-y-6">
                     <div className="space-y-1">
-                      <label className="font-bold px-4">Add more stocks</label>
-                      <input
-                        name="stock"
-                        type="number"
-                        value={form.stock}
-                        onChange={changeHandler}
-                        className="placeholder:text-sm w-full rounded-full border border-gray-200 bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
-                      />
+                      <div>
+                        <label className="font-bold px-4">
+                          Current Stocks: {stock}
+                        </label>
+                        <input
+                          name="stock"
+                          type="number"
+                          min={-stock}
+                          value={form.stock}
+                          onChange={changeHandler}
+                          placeholder="Add or reduce"
+                          className="placeholder:text-sm w-full rounded-full border border-gray-200 bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+                        />
+                      </div>
                     </div>
                     <div className="space-y-1">
-                      <label className="font-bold px-4">Add Discount (%)</label>
+                      <label className="font-bold px-4">
+                        Current Discount: {discount}%
+                      </label>
                       <input
                         name="discount"
                         type="number"
+                        min={0}
+                        max={100}
                         value={form.discount}
                         onChange={changeHandler}
+                        placeholder="Set new discount"
                         className="placeholder:text-sm w-full rounded-full border border-gray-200 bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
                       />
                     </div>
@@ -111,7 +161,8 @@ const ProductCardActions = ({ projectId, title, image }) => {
                   <button
                     type="button"
                     className="bg-blue-100 border-2 border-blue-200 hover:bg-blue-200 text-blue-500 transition duration-150 rounded-full w-full font-bold text-md py-3 flex items-center justify-center"
-                    onClick={saveData}
+                    onClick={() => saveData(projectId)}
+                    disabled={loading}
                   >
                     {loading ? <Loader w={30} h={26} /> : "Submit"}
                   </button>

@@ -84,7 +84,11 @@ const ProductCard = ({
       </div>
       <div>
         <div className="w-full flex items-center justify-between gap-1 mb-3">
-          <div className="flex flex-col items-center">
+          <div
+            className={`flex flex-col items-center ${
+              stock <= 10 && "text-red-500"
+            }`}
+          >
             <FaHashtag />
             <p className="break-all text-xs mt-1">{stock}</p>
           </div>
@@ -116,7 +120,14 @@ const ProductCard = ({
               </>
             )}
           </button>
-          <ProductCardActions projectId={_id} title={title} image={image} />
+          <ProductCardActions
+            projectId={_id}
+            title={title}
+            image={image}
+            stock={stock}
+            discount={discount}
+            getProducts={getProducts}
+          />
         </div>
       </div>
     </div>

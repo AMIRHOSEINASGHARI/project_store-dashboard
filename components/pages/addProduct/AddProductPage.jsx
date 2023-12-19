@@ -11,9 +11,11 @@ import toast from "react-hot-toast";
 import { uploadImage } from "@/utils/functions";
 import { createProduct } from "@/utils/api";
 import Loader from "@/components/shared/Loader";
+import { useRouter } from "next/navigation";
 
 const AddProductPage = () => {
   const { collapseMenu } = useContextProvider();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [form, setForm] = useState({
@@ -66,17 +68,7 @@ const AddProductPage = () => {
     setLoading(false);
     if (result.success) {
       toast.success(result.msg);
-      setForm({
-        image: "",
-        title: "",
-        description: "",
-        price: "",
-        stock: "",
-        discount: "",
-        category: "",
-        colors: [],
-        keywords: [],
-      });
+      router.push("/products");
     } else {
       toast.error(result.msg);
     }
