@@ -42,7 +42,11 @@ const ProductsPage = () => {
       >
         {data?.success &&
           data?.products.map((product) => (
-            <ProductCard key={product?._id} {...product} />
+            <ProductCard
+              key={product?._id}
+              {...product}
+              getProducts={getProducts}
+            />
           ))}
       </div>
     </div>
