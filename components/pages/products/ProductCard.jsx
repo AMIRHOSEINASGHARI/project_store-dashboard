@@ -41,8 +41,19 @@ const ProductCard = ({
   };
 
   return (
-    <div className="p-5 border hover:shadow-xl hover:shadow-slate-300 transition-all duration-100 flex flex-col justify-between gap-6">
-      <div>
+    <div
+      className={`p-5 border hover:shadow-xl hover:shadow-slate-300 transition-all duration-100 flex flex-col justify-between gap-6 ${
+        stock === 0 && "text-gray-300"
+      }`}
+    >
+      <div className="relative">
+        {stock === 0 && (
+          <div className="absolute w-full font-black text-2xl">
+            <p className="bg-black text-white w-full text-center">
+              Unavailable
+            </p>
+          </div>
+        )}
         <Link
           href={`/products/${createSlug(title)}`}
           className="w-full h-[180px] overflow-hidden flex justify-center items-center bg-gray-100 p-3"
