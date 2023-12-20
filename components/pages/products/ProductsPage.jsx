@@ -18,6 +18,7 @@ const ProductsPage = () => {
   const [pageNumber, setPageNumber] = useState(2);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     try {
       fetchProducts(1).then((res) => {
         setError({
@@ -35,6 +36,9 @@ const ProductsPage = () => {
   }, []);
 
   useEffect(() => {
+    if (inView && data?.length === 0) {
+      setPageNumber(1);
+    }
     if (inView) {
       fetchProducts(pageNumber).then((res) => {
         setData([...data, ...res?.products]);
