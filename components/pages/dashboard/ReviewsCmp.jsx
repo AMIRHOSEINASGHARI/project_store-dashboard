@@ -5,6 +5,7 @@ import { FaHourglassEnd } from "react-icons/fa6";
 import { GoNote } from "react-icons/go";
 import { MdOutlineModeComment, MdOutlineShoppingBag } from "react-icons/md";
 import { PiUsersThree } from "react-icons/pi";
+import { motion } from "framer-motion";
 
 //TODO: make this dynamic by fetching data
 const reviews = [
@@ -59,28 +60,48 @@ const reviews = [
 ];
 
 const ReviewsCmp = () => {
+  const variants = {
+    hidden: { opacity: 0, translateY: 50 },
+    visible: { opacity: 1, translateY: 0 },
+  };
+
   return (
     <div className="flex flex-wrap gap-5">
       {reviews.map((el, i) => {
         const { title, icon, count, countClass, iconClass, link } = el;
         return (
-          <Link
-            href={link}
-            key={i}
-            className="flex flex-1 min-w-[250px] items-center justify-between cardShadow hover:shadow-inner bg-white rounded-xl py-3 px-5 group transition-all duration-150"
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate="visible"
+            transition={{
+              delay: 0.1 * i,
+              ease: "easeInOut",
+              duration: 0.25,
+            }}
+            viewport={{
+              amount: 0,
+            }}
+            className="flex flex-1 min-w-[250px] cardShadow hover:shadow-inner bg-white rounded-xl py-3 px-5 group transition-all duration-150"
           >
-            <div>
-              <h1 className="font-light">{title}</h1>
-              <span className={`font-black text-[30px] ${countClass}`}>
-                {count.toLocaleString()}
-              </span>
-            </div>
-            <div
-              className={`${iconClass} text-[50px] transform group-hover:rotate-12 transition-all duration-150`}
+            <Link
+              href={link}
+              key={i}
+              className="flex flex-1 min-w-[250px] items-center justify-between"
             >
-              {icon}
-            </div>
-          </Link>
+              <div>
+                <h1 className="font-light">{title}</h1>
+                <span className={`font-black text-[30px] ${countClass}`}>
+                  {count.toLocaleString()}
+                </span>
+              </div>
+              <div
+                className={`${iconClass} text-[50px] transform group-hover:rotate-12 transition-all duration-150`}
+              >
+                {icon}
+              </div>
+            </Link>
+          </motion.div>
         );
       })}
     </div>
