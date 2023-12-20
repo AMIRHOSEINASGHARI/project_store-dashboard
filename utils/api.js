@@ -44,8 +44,8 @@ export const createProduct = async (form) => {
   return data;
 };
 
-export const fetchProducts = async () => {
-  const res = await fetch("/api/product/all");
+export const fetchProducts = async (page) => {
+  const res = await fetch(`/api/product/all?page=${page}&limit=8`);
   const data = await res.json();
   return data;
 };

@@ -59,7 +59,7 @@ const EditProfile = (props) => {
       setLoading(false);
       if (result.success) {
         toast.success(result.msg);
-        signOut();
+        // signOut();
       } else {
         toast.error(result.msg);
       }

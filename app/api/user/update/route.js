@@ -32,12 +32,12 @@ export async function POST(req) {
   try {
     const userInfo = await StoreDashboardUser.findOne({ username });
 
-    const updatedUser = await StoreDashboardUser.findOneAndUpdate(
+    await StoreDashboardUser.findOneAndUpdate(
       { username },
       {
         username: form.username,
         displayName: form.displayName,
-        avatar: form.image || userInfo.avatar,
+        avatar: form.image ? form.image : userInfo.avatar,
       }
     );
     return NextResponse.json(
