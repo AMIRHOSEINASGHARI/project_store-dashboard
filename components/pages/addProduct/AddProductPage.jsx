@@ -17,7 +17,6 @@ const AddProductPage = () => {
   const { collapseMenu } = useContextProvider();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [form, setForm] = useState({
     image: "",
     title: "",
@@ -26,17 +25,11 @@ const AddProductPage = () => {
     stock: "",
     discount: "",
     category: "",
+    brand: "",
     colors: [],
     keywords: [],
   });
-
-  useEffect(() => {
-    setForm({
-      ...form,
-      category: selectedCategory.name,
-    });
-  }, [selectedCategory]);
-
+  console.log(form);
   const changeHandler = (e) => {
     setForm({
       ...form,
@@ -80,15 +73,28 @@ const AddProductPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-20`}
     >
-      <div className="flex flex-col gap-1">
-        <input
-          name="title"
-          type="text"
-          value={form.title}
-          onChange={changeHandler}
-          placeholder="Title"
-          className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
-        />
+      <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-5">
+        <div className="flex flex-col gap-1 w-full">
+          <input
+            name="title"
+            type="text"
+            value={form.title}
+            onChange={changeHandler}
+            placeholder="Title"
+            className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+          />
+        </div>
+        <div className="flex flex-col gap-1 w-full">
+          <input
+            name="brand"
+            type="text"
+            value={form.brand}
+            onChange={changeHandler}
+            placeholder="Brand"
+            className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+          />
+        </div>
+        <CategoryFilter form={form} setForm={setForm} />
       </div>
       <div className="flex flex-col lg:flex-row w-full gap-5">
         <div className="flex flex-col gap-1 w-full">
@@ -100,7 +106,6 @@ const AddProductPage = () => {
             className="placeholder:text-xs h-full rounded-3xl bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
-
         <ImageSection form={form} setForm={setForm} type="createProduct" />
       </div>
       <div className="space-y-5">
@@ -136,10 +141,6 @@ const AddProductPage = () => {
             />
           </div>
         </div>
-        <CategoryFilter
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-        />
       </div>
       <ColorsSection form={form} setForm={setForm} />
       <KeywordsSection

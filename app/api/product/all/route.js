@@ -26,7 +26,7 @@ export async function GET(req) {
   }
 
   try {
-    const products = await StoreDashboardProduct.find();
+    const products = await StoreDashboardProduct.find().sort({ createdAt: -1 });
     const { searchParams } = new URL(req.url);
     const pageNumber = searchParams.get("page");
     const limit = searchParams.get("limit");

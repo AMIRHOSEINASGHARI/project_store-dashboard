@@ -44,6 +44,7 @@ export async function POST(req) {
       stock: form.stock,
       discount: form.discount || 0,
       category: form.category,
+      brand: form.brand,
       colors: form.colors,
       keywords: form.keywords,
     });

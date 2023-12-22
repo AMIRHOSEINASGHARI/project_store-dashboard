@@ -1,59 +1,56 @@
-import { RadioGroup } from "@headlessui/react";
-import { FaCheckCircle } from "react-icons/fa";
-import { categories } from "@/constants";
+"use client";
 
-const CategoryFilter = ({ selectedCategory, setSelectedCategory }) => {
+import { categories } from "@/constants";
+import { Listbox, Transition } from "@headlessui/react";
+import { Fragment, useState } from "react";
+import { BiChevronDown } from "react-icons/bi";
+
+const CategoryFilter = ({ setForm, form }) => {
+  const [selected, setSelected] = useState(form.category);
+
+  const changeHandler = (e) => {
+    setSelected(e.name);
+    setForm({
+      ...form,
+      category: e.name,
+    });
+  };
   return (
-    <div>
-      <h1 className="font-semibold">Category</h1>
-      <div className="w-full my-2">
-        <div className="w-full">
-          <RadioGroup value={selectedCategory} onChange={setSelectedCategory}>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {categories.map((item) => (
-                <RadioGroup.Option
-                  key={item.name}
-                  value={item}
-                  className={({ active, checked }) =>
-                    `${
-                      active
-                        ? "ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300"
-                        : ""
-                    }
-                  ${checked ? "bg-sky-900/75 text-white" : "bg-gray-100"}
-                    relative flex cursor-pointer rounded-full px-5 py-4 focus:outline-none`
-                  }
+    <div className="w-full text-left">
+      <Listbox value={selected} onChange={changeHandler}>
+        <div className="relative">
+          <Listbox.Button className="relative cursor-pointer w-full rounded-full bg-gray-100 p-4 text-left">
+            <span className="block truncate text-xs capitalize">
+              {selected || "Select a Category"}
+            </span>
+            <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
+              <BiChevronDown className="h-5 w-5 text-gray-400" />
+            </span>
+          </Listbox.Button>
+          <Transition
+            as={Fragment}
+            leave="transition ease-in duration-100"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Listbox.Options className="absolute z-50 mt-1 h-[300px] w-full overflow-auto bg-white shadow-2xl shadow-gray-300">
+              <Listbox.Option value="" className="py-2 px-4 text-gray-400">
+                Select a Category
+              </Listbox.Option>
+              {categories.map((filter, index) => (
+                <Listbox.Option
+                  key={index}
+                  value={filter}
+                  className="py-2 px-4 hover:bg-gray-100 transition duration-100 ease-in-out cursor-pointer flex items-center gap-4"
                 >
-                  {({ active, checked }) => (
-                    <>
-                      <div className="flex w-full items-center justify-between">
-                        <div className="flex items-center">
-                          <div className="text-sm">
-                            <RadioGroup.Label
-                              as="div"
-                              className={`font-medium flex items-center gap-4 ${
-                                checked ? "text-white" : "text-gray-900"
-                              }`}
-                            >
-                              <div className="text-xl">{item.icon}</div>
-                              {item.name}
-                            </RadioGroup.Label>
-                          </div>
-                        </div>
-                        {checked && (
-                          <div className="shrink-0 text-white">
-                            <FaCheckCircle className="h-6 w-6" />
-                          </div>
-                        )}
-                      </div>
-                    </>
-                  )}
-                </RadioGroup.Option>
+                  <div>{filter.icon}</div>
+                  <p>{filter.name}</p>
+                </Listbox.Option>
               ))}
-            </div>
-          </RadioGroup>
+            </Listbox.Options>
+          </Transition>
         </div>
-      </div>
+      </Listbox>
     </div>
   );
 };
