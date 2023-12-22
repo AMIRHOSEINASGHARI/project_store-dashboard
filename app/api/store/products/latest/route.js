@@ -1,4 +1,5 @@
 import connectDB from "@/utils/connectDB";
+import { StoreDashboardProduct } from "@/utils/models/product";
 import { NextResponse } from "next/server";
 
 export async function GET() {
