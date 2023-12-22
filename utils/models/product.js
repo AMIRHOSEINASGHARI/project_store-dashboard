@@ -11,6 +11,7 @@ const productSchema = new Schema({
   colors: { type: [String], required: true },
   keywords: { type: [String], required: true },
   orders: [{ type: Schema.Types.ObjectId, ref: "OnlineShopUser", default: [] }],
+  brand: { type: [String], required: true },
   likes: [
     { type: Schema.Types.ObjectId, ref: "StoreDashboardUser", default: [] },
   ],
