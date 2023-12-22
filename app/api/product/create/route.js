@@ -39,23 +39,22 @@ export async function POST(req) {
     await StoreDashboardProduct.create({
       image: form.image,
       title: form.title,
-      description: form.description,
-      price: form.price,
-      stock: form.stock,
-      discount: form.discount || 0,
+      price: Number(form.price),
+      stock: Number(form.stock),
       category: form.category,
       brand: form.brand,
+      description: form.description,
+      discount: Number(form.discount),
       colors: form.colors,
       keywords: form.keywords,
     });
-
     return NextResponse.json(
       { msg: "Product Created🖐", success: true },
       { status: 200 }
     );
   } catch (error) {
     return NextResponse.json(
-      { msg: "Server Error", success: false },
+      { msg: "Server Error2", success: false },
       { status: 500 }
     );
   }

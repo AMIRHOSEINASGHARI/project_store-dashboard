@@ -20,9 +20,11 @@ const CategoryFilter = ({ setForm, form }) => {
       <Listbox value={selected} onChange={changeHandler}>
         <div className="relative">
           <Listbox.Button className="relative cursor-pointer w-full rounded-full bg-gray-100 p-4 text-left">
-            <span className="block truncate text-xs capitalize">
-              {selected || "Select a Category"}
-            </span>
+            <div className="block truncate text-xs capitalize">
+              {selected || (
+                <span className="text-red-600">Select a Category *</span>
+              )}
+            </div>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <BiChevronDown className="h-5 w-5 text-gray-400" />
             </span>

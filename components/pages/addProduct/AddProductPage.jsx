@@ -18,18 +18,18 @@ const AddProductPage = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    image: "",
     title: "",
-    description: "",
+    brand: "",
+    category: "",
+    image: "",
     price: "",
     stock: "",
+    description: "",
     discount: "",
-    category: "",
-    brand: "",
     colors: [],
     keywords: [],
   });
-  console.log(form);
+
   const changeHandler = (e) => {
     setForm({
       ...form,
@@ -41,14 +41,12 @@ const AddProductPage = () => {
     if (
       !form.image ||
       !form.title ||
-      !form.description ||
       !form.price ||
       !form.stock ||
       !form.category ||
-      !form.colors.length ||
-      !form.keywords.length
+      !form.brand
     ) {
-      toast.error("Fill all fields");
+      toast.error("Fields with * sign is requiered");
       return;
     }
 
@@ -73,6 +71,10 @@ const AddProductPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-20`}
     >
+      <div className="text-sm font-bold rounded-lg py-1 px-3 bg-red-100">
+        <span className="text-red-600">Image</span> and{" "}
+        <span className="text-red-600">Fileds with (*) sign is required!</span>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-5">
         <div className="flex flex-col gap-1 w-full">
           <input
@@ -80,8 +82,8 @@ const AddProductPage = () => {
             type="text"
             value={form.title}
             onChange={changeHandler}
-            placeholder="Title"
-            className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+            placeholder="Title *"
+            className="placeholder:text-xs placeholder:text-red-600 rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
         <div className="flex flex-col gap-1 w-full">
@@ -90,8 +92,8 @@ const AddProductPage = () => {
             type="text"
             value={form.brand}
             onChange={changeHandler}
-            placeholder="Brand"
-            className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+            placeholder="Brand *"
+            className="placeholder:text-xs placeholder:text-red-600 rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
         <CategoryFilter form={form} setForm={setForm} />
@@ -116,8 +118,8 @@ const AddProductPage = () => {
               type="number"
               value={form.price}
               onChange={changeHandler}
-              placeholder="Price"
-              className="placeholder:text-xs w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+              placeholder="Price *"
+              className="placeholder:text-xs placeholder:text-red-600 w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
             />
           </div>
           <div className="flex flex-col gap-1 flex-1 min-w-[200px]">
@@ -126,8 +128,8 @@ const AddProductPage = () => {
               type="number"
               value={form.stock}
               onChange={changeHandler}
-              placeholder="Stocks"
-              className="placeholder:text-xs w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
+              placeholder="Stocks *"
+              className="placeholder:text-xs placeholder:text-red-600 w-full rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
             />
           </div>
           <div className="flex flex-col gap-1 flex-1 min-w-[200px]">
