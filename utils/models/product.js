@@ -10,13 +10,11 @@ const productSchema = new Schema({
   category: { type: String, required: true },
   colors: { type: [String], default: [] },
   keywords: { type: [String], default: [] },
-  orders: [{ type: Schema.Types.ObjectId, ref: "OnlineShopUser", default: [] }],
+  orders: [{ type: Schema.Types.ObjectId, ref: "StoreShopOrder", default: [] }],
   brand: { type: String, required: true },
-  likes: [
-    { type: Schema.Types.ObjectId, ref: "StoreDashboardUser", default: [] },
-  ],
+  likes: [{ type: Schema.Types.ObjectId, ref: "StoreShopLike", default: [] }],
   comments: [
-    { type: Schema.Types.ObjectId, ref: "StoreDashboardComment", default: [] },
+    { type: Schema.Types.ObjectId, ref: "StoreShopComment", default: [] },
   ],
   createdAt: {
     type: Date,
