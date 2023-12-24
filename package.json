@@ -12,6 +12,7 @@
     "@cloudinary/react": "^1.11.2",
     "@cloudinary/url-gen": "^1.14.0",
     "@headlessui/react": "^1.7.17",
+    "antd": "^5.12.5",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^10.16.16",
     "moment": "^2.29.4",
