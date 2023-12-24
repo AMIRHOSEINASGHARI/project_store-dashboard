@@ -1,6 +1,7 @@
 import connectDB from "@/utils/connectDB";
 import { StoreShopComment } from "@/utils/models/comment";
 import { StoreDashboardProduct } from "@/utils/models/product";
+import { StoreShopUser } from "@/utils/models/storeUser";
 import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
@@ -15,12 +16,17 @@ export async function GET(req, { params }) {
   }
 
   const productId = params.productId;
+  console.log(productId);
 
   try {
     const product = await StoreDashboardProduct.findById(productId).populate({
       path: "comments",
       model: StoreShopComment,
-      populate: { path: "senderId" },
+      populate: {
+        path: "senderId",
+        model: StoreShopUser,
+        select: ["_id", "displayName"],
+      },
     });
 
     return NextResponse.json(

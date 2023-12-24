@@ -5,6 +5,11 @@ const commentSchema = new Schema({
   description: { type: String, required: true },
   productId: { type: Schema.Types.ObjectId, ref: "StoreDashboardProduct" },
   senderId: { type: Schema.Types.ObjectId, ref: "StoreShopUser" },
+  createdAt: {
+    type: Date,
+    default: () => Date.now(),
+    immutabale: true,
+  },
 });
 
 export const StoreShopComment =
