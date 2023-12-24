@@ -29,7 +29,7 @@ const ColorsSection = ({ form, setForm }) => {
 
   return (
     <div className="space-y-3">
-      <label className="font-semibold">Colors</label>
+      <label className="font-semibold text-red-600">Colors *</label>
       <CirclePicker
         width="100%"
         circleSize={50}

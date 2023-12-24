@@ -44,7 +44,8 @@ const AddProductPage = () => {
       !form.price ||
       !form.stock ||
       !form.category ||
-      !form.brand
+      !form.brand ||
+      !form.colors.length
     ) {
       toast.error("Fields with * sign is requiered");
       return;
