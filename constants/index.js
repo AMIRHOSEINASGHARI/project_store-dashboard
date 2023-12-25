@@ -175,3 +175,41 @@ export const defaultColors = [
   "#a855f7",
   "#ec4899",
 ];
+
+export const commentPageColumns = [
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Username",
+    dataIndex: "username",
+    key: "username",
+  },
+  {
+    title: "Product",
+    dataIndex: "product",
+    key: "product",
+  },
+  {
+    title: "Title",
+    dataIndex: "title",
+    key: "title",
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+  {
+    title: "Details",
+    dataIndex: "details",
+    key: "details",
+  },
+  {
+    title: "Answer",
+    dataIndex: "answer",
+    key: "answer",
+  },
+];

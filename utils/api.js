@@ -69,3 +69,9 @@ export const addStockAndDiscount = async (form) => {
   const data = await res.json();
   return data;
 };
+
+export const fetchComments = async () => {
+  const res = await fetch("/api/comments");
+  const data = await res.json();
+  return data;
+};

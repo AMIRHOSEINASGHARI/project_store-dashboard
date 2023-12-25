@@ -65,7 +65,7 @@ export async function GET() {
     );
   } catch (error) {
     return NextResponse.json(
-      { msg: "Access Blocked!", success: false },
+      { msg: "Server Error", success: false },
       { status: 400 }
     );
   }
