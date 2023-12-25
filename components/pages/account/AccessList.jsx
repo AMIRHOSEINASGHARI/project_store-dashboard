@@ -12,7 +12,6 @@ import { Tooltip } from "antd";
 
 const AccessList = (props) => {
   const session = useSession();
-  console.log(session);
   let [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 

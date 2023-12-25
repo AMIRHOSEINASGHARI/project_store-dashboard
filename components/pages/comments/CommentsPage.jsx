@@ -19,7 +19,6 @@ const CommentsPage = () => {
   const { collapseMenu } = useContextProvider();
   const [comments, setComments] = useState(null);
   const [dataSource, setDataSource] = useState([]);
-  console.log(comments);
 
   const fetchData = async () => {
     const data = await fetchComments();
@@ -39,7 +38,7 @@ const CommentsPage = () => {
             </Link>
           ),
           date: moment(comment.createdAt).fromNow(),
-          details: <CommentDetail />,
+          details: <CommentDetail {...comment} />,
           product: (
             <Link href={`/products/${comment.productId._id}`}>
               <Image
