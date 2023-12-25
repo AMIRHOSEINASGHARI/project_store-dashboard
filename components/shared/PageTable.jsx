@@ -2,6 +2,7 @@
 
 import { Button, Table } from "antd";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const PageTable = ({
   dataSource,
@@ -34,7 +35,22 @@ const PageTable = ({
   const hasSelected = selectedRowKeys.length > 0;
 
   return (
-    <div>
+    <motion.div
+      variants={{
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 },
+      }}
+      initial="hidden"
+      animate="visible"
+      transition={{
+        delay: 0.25,
+        ease: "easeInOut",
+        duration: 0.25,
+      }}
+      viewport={{
+        amount: 0,
+      }}
+    >
       {btnTitle && (
         <div style={{ marginBottom: 16 }}>
           <Button
@@ -65,7 +81,7 @@ const PageTable = ({
             : false
         }
       />
-    </div>
+    </motion.div>
   );
 };
 
