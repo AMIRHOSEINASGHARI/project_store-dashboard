@@ -3,7 +3,15 @@
 import { Button, Table } from "antd";
 import { useState } from "react";
 
-const PageTable = ({ dataSource, columns, title, btnTitle, clickHandler }) => {
+const PageTable = ({
+  dataSource,
+  columns,
+  title,
+  btnTitle,
+  clickHandler,
+  pagination,
+  selecttion,
+}) => {
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -27,29 +35,35 @@ const PageTable = ({ dataSource, columns, title, btnTitle, clickHandler }) => {
 
   return (
     <div>
-      <div style={{ marginBottom: 16 }}>
-        <Button
-          type="default"
-          onClick={action}
-          disabled={!hasSelected}
-          loading={loading}
-        >
-          {btnTitle}
-        </Button>
-        <span style={{ marginLeft: 8 }}>
-          {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
-        </span>
-      </div>
+      {btnTitle && (
+        <div style={{ marginBottom: 16 }}>
+          <Button
+            type="default"
+            onClick={action}
+            disabled={!hasSelected}
+            loading={loading}
+          >
+            {btnTitle}
+          </Button>
+          <span style={{ marginLeft: 8 }}>
+            {hasSelected ? `Selected ${selectedRowKeys.length} items` : ""}
+          </span>
+        </div>
+      )}
       <Table
         dataSource={dataSource}
         columns={columns}
-        pagination={{ position: ["bottomLeft"] }}
+        pagination={pagination ? { position: ["bottomLeft"] } : false}
         scroll={{ x: true }}
         title={title}
-        rowSelection={{
-          type: "checkbox",
-          ...rowSelection,
-        }}
+        rowSelection={
+          selecttion
+            ? {
+                type: "checkbox",
+                ...rowSelection,
+              }
+            : false
+        }
       />
     </div>
   );

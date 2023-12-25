@@ -44,8 +44,8 @@ const CommentsPage = () => {
             <Link href={`/products/${comment.productId._id}`}>
               <Image
                 src={comment.productId.image}
-                width={30}
-                height={30}
+                width={50}
+                height={50}
                 alt={shorterText(comment.productId.title, 10)}
                 priority
               />
@@ -110,6 +110,8 @@ const CommentsPage = () => {
         columns={commentPageColumns}
         dataSource={dataSource}
         btnTitle={"Delete"}
+        selecttion={true}
+        pagination={true}
       />
     </div>
   );

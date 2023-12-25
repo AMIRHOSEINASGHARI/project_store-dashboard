@@ -5,14 +5,45 @@ import { shorterText } from "@/utils/functions";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import AccessList from "./AccessList";
+import PageTable from "@/components/shared/PageTable";
+import { administratorsColumns } from "@/constants";
+import moment from "moment";
 
 const Administrators = ({ session }) => {
   const [data, setData] = useState(null);
+  const [dataSource, setDataSource] = useState([]);
 
   const fetchAdmins = async () => {
     const request = await fetch("/api/user/administrators");
     const response = await request.json();
     setData(response);
+    if (response.success) {
+      setDataSource(
+        response.users.map((user) => ({
+          key: user._id,
+          avatar: (
+            <Image
+              src={
+                user.avatar ||
+                (user.roll === "ADMIN" ? "/person.jpg" : "/man.png")
+              }
+              width={50}
+              height={50}
+              alt={user?.displayName}
+              priority
+              className="rounded-full w-[30px] md:w-[40px]"
+            />
+          ),
+          name: user.displayName,
+          username: user.username,
+          joinedAt: moment(user.createdAt).fromNow(),
+          roll: user.roll,
+          access: (
+            <AccessList {...user} session={session} reFreshData={fetchAdmins} />
+          ),
+        }))
+      );
+    }
   };
 
   useEffect(() => {
@@ -33,42 +64,8 @@ const Administrators = ({ session }) => {
   return (
     <div>
       <h1 className="heading mb-5">Administrators</h1>
-      <div className="flex flex-wrap w-full gap-5">
-        {data?.users?.map((item) => (
-          <div
-            key={item._id}
-            className="bg-gray-100 rounded-xl p-5 min-w-[300px] w-full flex-1 flex items-center justify-between"
-          >
-            <div className="flex gap-3 items-center">
-              <Image
-                src={
-                  item?.avatar ||
-                  (item.roll === "ADMIN" ? "/person.jpg" : "/man.png")
-                }
-                width={50}
-                height={50}
-                alt={item?.displayName}
-                priority
-                className="rounded-full w-[30px] md:w-[50px]"
-              />
-              <div className="text-[16px] font-light break-all">
-                <p>{item.username}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <p className="bg-gray-100 rounded-xl py-1 px-3 text-[10px] font-bold text-gray-500 border border-gray-300">
-                {item?.roll}
-              </p>
-              {session?.data?.user?.roll === "ADMIN" && (
-                <AccessList
-                  {...item}
-                  session={session}
-                  reFreshData={fetchAdmins}
-                />
-              )}
-            </div>
-          </div>
-        ))}
+      <div>
+        <PageTable columns={administratorsColumns} dataSource={dataSource} />
       </div>
     </div>
   );

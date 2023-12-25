@@ -14,7 +14,7 @@ const AccountPage = () => {
     <div
       className={`${
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-10`}
+      } space-y-10 pb-20`}
     >
       <CurrentUser session={session} />
       <Administrators session={session} />

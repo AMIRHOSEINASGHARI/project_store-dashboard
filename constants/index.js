@@ -213,3 +213,36 @@ export const commentPageColumns = [
     key: "answer",
   },
 ];
+
+export const administratorsColumns = [
+  {
+    title: "Avatar",
+    dataIndex: "avatar",
+    key: "avatar",
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+  },
+  {
+    title: "Username",
+    dataIndex: "username",
+    key: "username",
+  },
+  {
+    title: "Joined at",
+    dataIndex: "joinedAt",
+    key: "joinedAt",
+  },
+  {
+    title: "Roll",
+    dataIndex: "roll",
+    key: "roll",
+  },
+  {
+    title: "Access",
+    dataIndex: "access",
+    key: "access",
+  },
+];

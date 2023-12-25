@@ -7,8 +7,12 @@ import Image from "next/image";
 import Loader from "@/components/shared/Loader";
 import toast from "react-hot-toast";
 import { giveAccessToUser } from "@/utils/api";
+import { useSession } from "next-auth/react";
+import { Tooltip } from "antd";
 
 const AccessList = (props) => {
+  const session = useSession();
+  console.log(session);
   let [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -21,7 +25,7 @@ const AccessList = (props) => {
   }
 
   const giveAccess = async (username, actionType) => {
-    if (props.session?.data?.user?.roll !== "ADMIN") return;
+    if (session?.data?.user?.roll !== "ADMIN") return;
 
     setLoading(true);
 
@@ -39,12 +43,15 @@ const AccessList = (props) => {
 
   return (
     <>
-      <button
-        className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300"
-        onClick={openModal}
-      >
-        <GrUserAdmin />
-      </button>
+      <Tooltip title="Handle administrators accessibility">
+        <button
+          className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300"
+          disabled={session?.data?.user?.roll !== "ADMIN"}
+          onClick={openModal}
+        >
+          <GrUserAdmin />
+        </button>
+      </Tooltip>
 
       <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-50" onClose={closeModal}>
