@@ -1,9 +1,12 @@
 "use client";
 
-import { Drawer, Image } from "antd";
+import Loader from "@/components/shared/Loader";
+import { answerToComment } from "@/utils/api";
+import { Drawer, Image, Tooltip } from "antd";
 import moment from "moment";
 import Link from "next/link";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { PiEyeBold } from "react-icons/pi";
 
 const CommentDetail = ({
@@ -14,29 +17,42 @@ const CommentDetail = ({
   senderId,
   title,
   _id,
+  fetchData,
 }) => {
   const [inputValue, setInputValue] = useState(answer);
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const showDrawer = () => {
     setOpen(true);
-  };
-  const onChange = (e) => {
-    setPlacement(e.target.value);
   };
   const onClose = () => {
     setOpen(false);
   };
 
   // TODO: handle submit
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+
+    setLoading(true);
+    const result = await answerToComment(inputValue, _id);
+    setLoading(false);
+    if (!result.success) {
+      toast.error(result.msg);
+    } else {
+      toast.success(result.msg);
+      fetchData();
+      setOpen(false);
+    }
   };
 
   return (
     <div>
-      <button onClick={() => showDrawer()}>
-        <PiEyeBold className="text-[20px]" />
-      </button>
+      <Tooltip title="Click to answer this comment">
+        <button onClick={() => showDrawer()}>
+          <PiEyeBold className="text-[30px]" />
+        </button>
+      </Tooltip>
       <Drawer
         title="Complete details of comment"
         placement={"right"}
@@ -98,14 +114,14 @@ const CommentDetail = ({
             />
             <button
               type="submit"
-              disabled={inputValue.length === 0 && true}
+              disabled={loading}
               className={`${
-                inputValue
+                !loading
                   ? "bg-blue-500 text-white"
                   : "bg-gray-100 text-gray-400"
               } rounded-lg py-2 px-4`}
             >
-              Submit
+              {loading ? <Loader w={21} h={21} /> : "Submit"}
             </button>
           </div>
         </form>

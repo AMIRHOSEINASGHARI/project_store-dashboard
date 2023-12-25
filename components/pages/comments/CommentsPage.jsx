@@ -14,6 +14,8 @@ import { commentPageColumns } from "@/constants";
 import { Tooltip } from "antd";
 import Link from "next/link";
 import CommentDetail from "./CommentDetail";
+import { AiTwotoneFrown, AiTwotoneSmile } from "react-icons/ai";
+import { HiOutlineEmojiHappy, HiOutlineEmojiSad } from "react-icons/hi";
 
 const CommentsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -23,9 +25,16 @@ const CommentsPage = () => {
   const fetchData = async () => {
     const data = await fetchComments();
     setComments(await data);
-    if (data.success === true) {
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (comments?.success === true) {
       setDataSource(
-        data.comments.map((comment) => ({
+        comments.comments.map((comment) => ({
           key: comment._id,
           name: (
             <Link href={`/users/${comment.senderId._id}`}>
@@ -38,7 +47,7 @@ const CommentsPage = () => {
             </Link>
           ),
           date: moment(comment.createdAt).fromNow(),
-          details: <CommentDetail {...comment} />,
+          details: <CommentDetail {...comment} fetchData={fetchData} />,
           product: (
             <Link href={`/products/${comment.productId._id}`}>
               <Image
@@ -53,28 +62,19 @@ const CommentsPage = () => {
           title: shorterText(comment.title, 10),
           answer: comment.answer ? (
             <div className="flex items-center gap-2">
-              <CiCircleCheck className="text-green-500 text-[20px]" />
-              <Tooltip title="Edit your answer">
-                <button>
-                  <CiEdit className="text-[20px]" />
-                </button>
+              <Tooltip title="Has Answer">
+                <HiOutlineEmojiHappy className="text-green-500 text-[30px]" />
               </Tooltip>
             </div>
           ) : (
-            <Tooltip title="Answer the comment">
-              <button>
-                <RiQuestionAnswerLine className="text-[20px]" />
-              </button>
+            <Tooltip title="No Answer">
+              <HiOutlineEmojiSad className="text-[30px] text-red-500" />
             </Tooltip>
           ),
         }))
       );
     }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  }, [comments]);
 
   if (comments === null)
     return (

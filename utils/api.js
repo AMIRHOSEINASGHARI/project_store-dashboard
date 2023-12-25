@@ -75,3 +75,13 @@ export const fetchComments = async () => {
   const data = await res.json();
   return data;
 };
+
+export const answerToComment = async (answer, commentId) => {
+  const res = await fetch(`/api/comments/${commentId}`, {
+    method: "PATCH",
+    body: JSON.stringify(answer),
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};

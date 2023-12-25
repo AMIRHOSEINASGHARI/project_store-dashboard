@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import React from "react";
 
 const Comments = async () => {
+  // TODO : fetch comments in this cmp
   const session = await getServerSession(authOptions);
 
   if (!session) redirect("/login");
