@@ -27,36 +27,11 @@ export async function GET(req) {
 
   try {
     const products = await StoreDashboardProduct.find().sort({ createdAt: -1 });
-    const { searchParams } = new URL(req.url);
-    const pageNumber = searchParams.get("page");
-    const limit = searchParams.get("limit");
-    const productsLength = products.length;
-    const remainingProducts = productsLength - (pageNumber - 1) * limit;
 
-    if (remainingProducts > limit) {
-      const returnedProucts = products.slice(
-        (pageNumber - 1) * limit,
-        pageNumber * limit
-      );
-      return NextResponse.json(
-        { msg: "Fetch Succeed!", success: true, products: returnedProucts },
-        { status: 200 }
-      );
-    } else {
-      const returnedProucts = products.slice(
-        (pageNumber - 1) * limit,
-        productsLength
-      );
-      return NextResponse.json(
-        {
-          msg: "Fetch Succeed!",
-          success: true,
-          products: returnedProucts,
-          isEnd: true,
-        },
-        { status: 200 }
-      );
-    }
+    return NextResponse.json(
+      { msg: "Fetch Succedd", success: true, products },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { msg: "Server Error!", success: false },

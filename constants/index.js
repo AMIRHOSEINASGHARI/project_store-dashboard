@@ -246,3 +246,72 @@ export const administratorsColumns = [
     key: "access",
   },
 ];
+
+export const productsColumns = [
+  {
+    title: "Image",
+    dataIndex: "image",
+    key: "image",
+  },
+  {
+    title: "Title",
+    dataIndex: "title",
+    key: "title",
+  },
+  {
+    title: "Category",
+    dataIndex: "category",
+    key: "category",
+    filters: categories.map((item) => ({
+      text: item.name,
+      value: item.name,
+    })),
+    onFilter: (value, record) => record.category.indexOf(value) === 0,
+  },
+  {
+    title: "Brand",
+    dataIndex: "brand",
+    key: "brand",
+  },
+  {
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
+    sorter: (a, b) => a.price - b.price,
+  },
+  {
+    title: "Discount",
+    dataIndex: "discount",
+    key: "discount",
+    sorter: (a, b) => a.discount - b.discount,
+  },
+  {
+    title: "Stock",
+    dataIndex: "stock",
+    key: "stock",
+    sorter: (a, b) => a.discount - b.discount,
+  },
+  {
+    title: "Comments",
+    dataIndex: "comments",
+    key: "comments",
+    sorter: (a, b) => a.discount - b.discount,
+  },
+  {
+    title: "Likes",
+    dataIndex: "likes",
+    key: "likes",
+    sorter: (a, b) => a.discount - b.discount,
+  },
+  {
+    title: "Orders",
+    dataIndex: "orders",
+    key: "orders",
+    sorter: (a, b) => a.discount - b.discount,
+  },
+  {
+    title: "Date",
+    dataIndex: "date",
+    key: "date",
+  },
+];

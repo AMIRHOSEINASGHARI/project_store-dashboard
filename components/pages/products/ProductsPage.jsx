@@ -4,52 +4,78 @@ import Loader from "@/components/shared/Loader";
 import { useContextProvider } from "@/context/MainContextProvider";
 import { fetchProducts } from "@/utils/api";
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import { useInView } from "react-intersection-observer";
+import { Image, Tooltip } from "antd";
+import { shorterText } from "@/utils/functions";
+import Link from "next/link";
+import PageTable from "@/components/shared/PageTable";
+import { productsColumns } from "@/constants";
+import moment from "moment";
 
 const ProductsPage = () => {
   const { collapseMenu } = useContextProvider();
-  const { ref, inView } = useInView();
-  const [data, setData] = useState(null);
-  const [error, setError] = useState({
-    success: true,
-    msg: "",
-  });
-  const [pageNumber, setPageNumber] = useState(2);
+  const [products, setProducts] = useState(null);
+  const [dataSource, setDataSource] = useState([]);
+
+  const fetchData = async () => {
+    const data = await fetchProducts();
+    setProducts(await data);
+  };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    try {
-      fetchProducts(1).then((res) => {
-        setError({
-          success: res.success,
-          msg: res.msg,
-        });
-        setData(res.products);
-      });
-    } catch (error) {
-      setError({
-        success: res.success,
-        msg: res.msg,
-      });
-    }
+    fetchData();
   }, []);
 
   useEffect(() => {
-    if (inView && data?.length === 0) {
-      setPageNumber(1);
+    if (products?.success === true) {
+      setDataSource(
+        products.products.map((product) => ({
+          key: product?._id,
+          image: (
+            <Tooltip title={product?.title}>
+              <Image width={40} src={product?.image} />
+            </Tooltip>
+          ),
+          title: (
+            <Link href={`/products/${product?._id}`}>
+              {shorterText(product?.title, 20)}
+            </Link>
+          ),
+          category: product?.category,
+          brand: product?.brand,
+          price: product?.price,
+          discount: product?.discount,
+          stock: product?.stock,
+          comments: product?.comments.length,
+          likes: product?.likes.length,
+          orders: product?.orders.length,
+          date: moment(product?.createdAt).fromNow(),
+        }))
+      );
     }
-    if (inView) {
-      fetchProducts(pageNumber).then((res) => {
-        setData([...data, ...res?.products]);
-        if (!res.isEnd) {
-          setPageNumber((prevPage) => prevPage + 1);
-        } else {
-          setPageNumber("end");
-        }
-      });
-    }
-  }, [inView]);
+  }, [products]);
+
+  if (products === null)
+    return (
+      <div
+        className={`${
+          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
+        } space-y-5 pb-20 w-full flex justify-center`}
+      >
+        <Loader />
+      </div>
+    );
+
+  if (products.success === false) {
+    return (
+      <h1
+        className={`${
+          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
+        } space-y-5 pb-20`}
+      >
+        {products.msg}
+      </h1>
+    );
+  }
 
   return (
     <div
@@ -57,31 +83,13 @@ const ProductsPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-20`}
     >
-      {data === null && (
-        <div className="w-full flex items-center justify-center">
-          <Loader />
-        </div>
-      )}
-
-      {!error?.success && (
-        <p className="w-full flex items-center justify-center">{error?.msg}</p>
-      )}
-
-      <div
-        className={`w-full grid grid-cols-1 ${
-          collapseMenu && "md:grid-cols-2"
-        } lg:grid-cols-3 xl:grid-cols-4 min-h-[90vh]`}
-      >
-        {data?.length !== 0 &&
-          data?.map((product) => (
-            <ProductCard key={product?._id} {...product} />
-          ))}
-      </div>
-      {pageNumber !== "end" && (
-        <div className="w-full flex items-center justify-center" ref={ref}>
-          <Loader />
-        </div>
-      )}
+      <PageTable
+        columns={productsColumns}
+        dataSource={dataSource}
+        btnTitle={"Delete"}
+        selecttion={true}
+        pagination={true}
+      />
     </div>
   );
 };
