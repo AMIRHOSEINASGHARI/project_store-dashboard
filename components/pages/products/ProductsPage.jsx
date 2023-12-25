@@ -4,12 +4,14 @@ import Loader from "@/components/shared/Loader";
 import { useContextProvider } from "@/context/MainContextProvider";
 import { fetchProducts } from "@/utils/api";
 import React, { useEffect, useState } from "react";
-import { Image, Tooltip } from "antd";
+import { Flex, Image, Tooltip } from "antd";
 import { shorterText } from "@/utils/functions";
 import Link from "next/link";
 import PageTable from "@/components/shared/PageTable";
 import { productsColumns } from "@/constants";
 import moment from "moment";
+import ProductDetails from "./ProductDetails";
+import DeleteProduct from "./DeleteProduct";
 
 const ProductsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -49,6 +51,12 @@ const ProductsPage = () => {
           likes: product?.likes.length,
           orders: product?.orders.length,
           date: moment(product?.createdAt).fromNow(),
+          actions: (
+            <Flex gap={5}>
+              <ProductDetails {...product} />
+              <DeleteProduct fetchData={fetchData} productId={product?._id} />
+            </Flex>
+          ),
         }))
       );
     }

@@ -6,15 +6,12 @@ import { fetchComments } from "@/utils/api";
 import { shorterText } from "@/utils/functions";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { RiQuestionAnswerLine } from "react-icons/ri";
-import { CiCircleCheck, CiEdit } from "react-icons/ci";
 import moment from "moment";
 import PageTable from "@/components/shared/PageTable";
 import { commentPageColumns } from "@/constants";
 import { Tooltip } from "antd";
 import Link from "next/link";
 import CommentDetail from "./CommentDetail";
-import { AiTwotoneFrown, AiTwotoneSmile } from "react-icons/ai";
 import { HiOutlineEmojiHappy, HiOutlineEmojiSad } from "react-icons/hi";
 
 const CommentsPage = () => {

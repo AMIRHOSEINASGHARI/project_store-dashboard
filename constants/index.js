@@ -289,29 +289,34 @@ export const productsColumns = [
     title: "Stock",
     dataIndex: "stock",
     key: "stock",
-    sorter: (a, b) => a.discount - b.discount,
+    sorter: (a, b) => a.stock - b.stock,
   },
   {
     title: "Comments",
     dataIndex: "comments",
     key: "comments",
-    sorter: (a, b) => a.discount - b.discount,
+    sorter: (a, b) => a.comments - b.comments,
   },
   {
     title: "Likes",
     dataIndex: "likes",
     key: "likes",
-    sorter: (a, b) => a.discount - b.discount,
+    sorter: (a, b) => a.likes - b.likes,
   },
   {
     title: "Orders",
     dataIndex: "orders",
     key: "orders",
-    sorter: (a, b) => a.discount - b.discount,
+    sorter: (a, b) => a.orders - b.orders,
   },
   {
     title: "Date",
     dataIndex: "date",
     key: "date",
+  },
+  {
+    title: "Actions",
+    dataIndex: "actions",
+    key: "actions",
   },
 ];
