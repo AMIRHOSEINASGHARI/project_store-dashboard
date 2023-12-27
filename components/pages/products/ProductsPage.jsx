@@ -4,14 +4,14 @@ import Loader from "@/components/shared/Loader";
 import { useContextProvider } from "@/context/MainContextProvider";
 import { fetchProducts } from "@/utils/api";
 import React, { useEffect, useState } from "react";
-import { Flex, Image, Tooltip } from "antd";
+import { Button, Flex, Image, Tooltip } from "antd";
 import { shorterText } from "@/utils/functions";
 import Link from "next/link";
 import PageTable from "@/components/shared/PageTable";
 import { productsColumns } from "@/constants";
 import moment from "moment";
-import ProductDetails from "./ProductDetails";
 import DeleteProduct from "./DeleteProduct";
+import { CiEdit } from "react-icons/ci";
 
 const ProductsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -52,10 +52,14 @@ const ProductsPage = () => {
           orders: product?.orders.length,
           date: moment(product?.createdAt).fromNow(),
           actions: (
-            <Flex gap={5}>
-              <ProductDetails {...product} />
+            <div className="flex items-center gap-3">
+              <Tooltip title="Edit product">
+                <Link href={`/products/edit/${product?._id}`} target="_blank">
+                  <CiEdit className="text-[25px]" />
+                </Link>
+              </Tooltip>
               <DeleteProduct fetchData={fetchData} productId={product?._id} />
-            </Flex>
+            </div>
           ),
         }))
       );

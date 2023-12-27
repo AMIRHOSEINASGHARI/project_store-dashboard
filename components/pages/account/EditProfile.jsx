@@ -83,12 +83,12 @@ const EditProfile = (props) => {
       <div onClick={openModal} className="cursor-pointer">
         <Image
           src={
-            props.user.image ||
-            (props.user.roll === "ADMIN" ? "/person.jpg" : "/man.png")
+            props?.user?.image ||
+            (props?.user?.roll === "ADMIN" ? "/person.jpg" : "/man.png")
           }
           width={250}
           height={250}
-          alt={props.user.name}
+          alt={props?.user?.name}
           priority
           className="rounded-full w-[200px] h-[200px] object-cover"
         />

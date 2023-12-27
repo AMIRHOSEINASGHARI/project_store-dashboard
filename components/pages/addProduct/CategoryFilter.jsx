@@ -16,7 +16,7 @@ const CategoryFilter = ({ setForm, form }) => {
     });
   };
   return (
-    <div className="w-full text-left">
+    <div className="text-left">
       <Listbox value={selected} onChange={changeHandler}>
         <div className="relative">
           <Listbox.Button className="relative cursor-pointer w-full rounded-full bg-gray-100 p-4 text-left">
