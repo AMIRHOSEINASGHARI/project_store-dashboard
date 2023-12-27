@@ -3,11 +3,16 @@
 import Loader from "@/components/shared/Loader";
 import ProductFormModal from "@/components/shared/ProductFormModal";
 import { useContextProvider } from "@/context/MainContextProvider";
-import { fetchProduct } from "@/utils/api";
+import { editProduct, fetchProduct } from "@/utils/api";
+import { uploadImage } from "@/utils/functions";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const EditProductPage = ({ productId }) => {
   const { collapseMenu } = useContextProvider();
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     title: "",
     brand: "",
@@ -41,7 +46,35 @@ const EditProductPage = ({ productId }) => {
     getProduct();
   }, [productId]);
 
-  const submitHandler = (e) => {};
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    if (form.image.includes("https://res.cloudinary.com")) {
+      setLoading(true);
+      const result = await editProduct(productId, form);
+      setLoading(false);
+      if (result.success) {
+        toast.success(result.msg);
+        router.push("/products");
+      } else {
+        toast.error(result.msg);
+      }
+    } else {
+      setLoading(true);
+      const uploadResult = await uploadImage(form.image);
+      const result = await editProduct(productId, {
+        ...form,
+        image: uploadResult.imageUrl,
+      });
+      setLoading(false);
+      if (result.success) {
+        toast.success(result.msg);
+        router.push("/products");
+      } else {
+        toast.error(result.msg);
+      }
+    }
+  };
 
   if (!form.title) {
     return (
@@ -66,6 +99,8 @@ const EditProductPage = ({ productId }) => {
         })
       }
       submitHandler={submitHandler}
+      type="edit"
+      loading={loading}
     />
   );
 };

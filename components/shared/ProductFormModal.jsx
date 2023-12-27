@@ -112,7 +112,13 @@ const ProductFormModal = ({
         } flex justify-center font-black text-xl w-full text-center py-4 rounded-full`}
         onClick={submitHandler}
       >
-        {loading ? <Loader h={25} w={25} /> : "Share Product"}
+        {loading ? (
+          <Loader h={25} w={25} />
+        ) : type === "create" ? (
+          "Share Product"
+        ) : (
+          "Edit Product"
+        )}
       </button>
     </div>
   );

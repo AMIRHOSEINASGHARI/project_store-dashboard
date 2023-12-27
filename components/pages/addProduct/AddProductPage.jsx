@@ -74,6 +74,7 @@ const AddProductPage = () => {
       changeHandler={changeHandler}
       submitHandler={submitHandler}
       loading={loading}
+      type="create"
     />
   );
 };
