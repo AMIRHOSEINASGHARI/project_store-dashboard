@@ -12,6 +12,7 @@ import { productsColumns } from "@/constants";
 import moment from "moment";
 import DeleteProduct from "./DeleteProduct";
 import { CiEdit } from "react-icons/ci";
+import ProductDetails from "./ProductDetails";
 
 const ProductsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -38,9 +39,9 @@ const ProductsPage = () => {
             </Tooltip>
           ),
           title: (
-            <Link href={`/products/${product?._id}`}>
+            <Tooltip title={product?.title}>
               {shorterText(product?.title, 20)}
-            </Link>
+            </Tooltip>
           ),
           category: product?.category,
           brand: product?.brand,
@@ -53,6 +54,7 @@ const ProductsPage = () => {
           date: moment(product?.createdAt).fromNow(),
           actions: (
             <div className="flex items-center gap-3">
+              <ProductDetails {...product} />
               <Tooltip title="Edit product">
                 <Link href={`/products/edit/${product?._id}`} target="_blank">
                   <CiEdit className="text-[25px]" />
