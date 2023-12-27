@@ -4,7 +4,7 @@ import { MdAdd } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 
 const KeywordsSection = ({ form, setForm, placeholder }) => {
-  const [keywords, setKeyWords] = useState([]);
+  const [keywords, setKeyWords] = useState(form.keywords);
   const [value, setValue] = useState("");
 
   const changeHandler = (e) => {

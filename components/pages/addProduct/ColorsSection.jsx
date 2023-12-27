@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { IoIosClose } from "react-icons/io";
 
 const ColorsSection = ({ form, setForm }) => {
-  const [selectedColors, setSelectedColors] = useState([]);
+  const [selectedColors, setSelectedColors] = useState(form.colors);
 
   const changeHandler = (color, e) => {
     if (selectedColors.find((item) => item === color.hex)) {

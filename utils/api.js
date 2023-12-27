@@ -85,3 +85,9 @@ export const answerToComment = async (answer, commentId) => {
   const data = await res.json();
   return data;
 };
+
+export const fetchProduct = async (productId) => {
+  const res = await fetch(`/api/product/${productId}`);
+  const data = await res.json();
+  return data;
+};
