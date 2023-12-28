@@ -4,9 +4,11 @@ import { useContextProvider } from "@/context/MainContextProvider";
 import React, { useEffect, useState } from "react";
 import ImageSection from "../addProduct/ImageSection";
 import KeywordsSection from "../addProduct/KeywordsSection";
+import BlogFormModal from "@/components/shared/BlogFormModal";
 
 const AddBlogPage = () => {
   const { collapseMenu } = useContextProvider();
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     image: "",
     title: "",
@@ -30,46 +32,13 @@ const AddBlogPage = () => {
   };
 
   return (
-    <div
-      className={`${
-        collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-5 pb-20`}
-    >
-      <div className="flex flex-col gap-1">
-        <input
-          name="title"
-          type="text"
-          value={form.title}
-          onChange={changeHandler}
-          placeholder="Title"
-          className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
-        />
-      </div>
-      <div className="flex flex-col lg:flex-row w-full gap-5">
-        <div className="flex flex-col gap-1 w-full">
-          <textarea
-            name="description"
-            value={form.description}
-            onChange={changeHandler}
-            placeholder="Description"
-            className="placeholder:text-xs h-full rounded-3xl bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
-          />
-        </div>
-
-        <ImageSection form={form} setForm={setForm} type="createProduct" />
-      </div>
-      <KeywordsSection
-        form={form}
-        setForm={setForm}
-        placeholder="Type a keyword for your blog"
-      />
-      <button
-        type="button"
-        className="bg-black text-white font-black text-xl w-full text-center py-4 rounded-full"
-      >
-        Share Blog
-      </button>
-    </div>
+    <BlogFormModal
+      type="create"
+      form={form}
+      setForm={setForm}
+      loading={loading}
+      changeHandler={changeHandler}
+    />
   );
 };
 
