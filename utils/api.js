@@ -120,3 +120,9 @@ export const createBlog = async (form) => {
   const data = await res.json();
   return data;
 };
+
+export const fetchBlogs = async () => {
+  const res = await fetch(`/api/blog/all`);
+  const data = await res.json();
+  return data;
+};

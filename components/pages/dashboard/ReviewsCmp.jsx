@@ -55,7 +55,7 @@ const reviews = [
     count: 9621,
     countClass: "text-indigo-500",
     iconClass: "text-indigo-500",
-    link: "/add-blog",
+    link: "/blogs",
   },
 ];
 
@@ -82,12 +82,12 @@ const ReviewsCmp = () => {
             viewport={{
               amount: 0,
             }}
-            className="flex flex-1 min-w-[250px] cardShadow hover:shadow-inner bg-white rounded-xl py-3 px-5 group transition-all duration-150"
+            className="flex flex-1 min-w-[280px] cardShadow hover:shadow-inner bg-white rounded-xl py-3 px-5 group transition-all duration-150"
           >
             <Link
               href={link}
               key={i}
-              className="flex flex-1 min-w-[250px] items-center justify-between"
+              className="flex flex-1 w-full items-center justify-between"
             >
               <div>
                 <h1 className="font-light">{title}</h1>

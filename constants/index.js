@@ -51,27 +51,33 @@ export const menuList = [
   },
   {
     title: "Create Blog",
-    icon: <GoNote />,
+    icon: <HiOutlinePlus />,
     link: "/add-blog",
     id: "6",
+  },
+  {
+    title: "Blogs",
+    icon: <GoNote />,
+    link: "/blogs",
+    id: "7",
   },
   {
     title: "Earn",
     icon: <BsCurrencyDollar />,
     link: "/earn",
-    id: "7",
+    id: "8",
   },
   {
     title: "Comments",
     icon: <MdOutlineModeComment />,
     link: "/comments",
-    id: "8",
+    id: "9",
   },
   {
     title: "Account",
     icon: <MdOutlineManageAccounts />,
     link: "/account",
-    id: "9",
+    id: "10",
   },
 ];
 
