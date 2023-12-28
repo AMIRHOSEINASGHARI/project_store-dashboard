@@ -110,3 +110,13 @@ export const editProduct = async (productId, form) => {
   const data = await res.json();
   return data;
 };
+
+export const createBlog = async (form) => {
+  const res = await fetch("/api/blog/create", {
+    method: "POST",
+    body: JSON.stringify(form),
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};

@@ -6,7 +6,14 @@ import ImageSection from "../pages/addProduct/ImageSection";
 import KeywordsSection from "../pages/addProduct/KeywordsSection";
 import Loader from "./Loader";
 
-const BlogFormModal = ({ form, setForm, changeHandler, type, loading }) => {
+const BlogFormModal = ({
+  form,
+  setForm,
+  changeHandler,
+  type,
+  loading,
+  submitHandler,
+}) => {
   const { collapseMenu } = useContextProvider();
 
   return (
@@ -22,7 +29,7 @@ const BlogFormModal = ({ form, setForm, changeHandler, type, loading }) => {
             type="text"
             value={form.title}
             onChange={changeHandler}
-            placeholder="Title"
+            placeholder="Title *"
             className="placeholder:text-xs rounded-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
@@ -44,7 +51,7 @@ const BlogFormModal = ({ form, setForm, changeHandler, type, loading }) => {
             name="description"
             value={form.description}
             onChange={changeHandler}
-            placeholder="Description"
+            placeholder="Description *"
             className="placeholder:text-xs h-full rounded-3xl bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4"
           />
         </div>
@@ -57,7 +64,10 @@ const BlogFormModal = ({ form, setForm, changeHandler, type, loading }) => {
       />
       <button
         type="button"
-        className="bg-black text-white font-black text-xl w-full text-center py-4 rounded-full"
+        className={`${
+          loading ? "bg-gray-200 text-black" : "bg-black text-white"
+        } flex justify-center font-black text-xl w-full text-center py-4 rounded-full`}
+        onClick={submitHandler}
       >
         {loading ? (
           <Loader h={25} w={25} />
