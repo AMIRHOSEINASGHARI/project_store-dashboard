@@ -86,6 +86,15 @@ export const answerToComment = async (answer, commentId) => {
   return data;
 };
 
+export const deleteComment = async (commentId) => {
+  const res = await fetch(`/api/comments/${commentId}`, {
+    method: "DELETE",
+    headers: { "Content-type": "application/json" },
+  });
+  const data = await res.json();
+  return data;
+};
+
 export const fetchProduct = async (productId) => {
   const res = await fetch(`/api/product/${productId}`);
   const data = await res.json();

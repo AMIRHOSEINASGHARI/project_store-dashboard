@@ -208,9 +208,14 @@ export const commentPageColumns = [
     key: "details",
   },
   {
-    title: "Answer",
-    dataIndex: "answer",
-    key: "answer",
+    title: "Actions",
+    dataIndex: "actions",
+    key: "actions",
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
   },
 ];
 

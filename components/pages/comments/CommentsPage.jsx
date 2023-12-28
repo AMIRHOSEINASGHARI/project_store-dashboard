@@ -13,6 +13,7 @@ import { Tooltip } from "antd";
 import Link from "next/link";
 import CommentDetail from "./CommentDetail";
 import { HiOutlineEmojiHappy, HiOutlineEmojiSad } from "react-icons/hi";
+import DeleteComment from "./DeleteComment";
 
 const CommentsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -57,16 +58,17 @@ const CommentsPage = () => {
             </Link>
           ),
           title: shorterText(comment.title, 10),
-          answer: comment.answer ? (
-            <div className="flex items-center gap-2">
-              <Tooltip title="Has Answer">
-                <HiOutlineEmojiHappy className="text-green-500 text-[30px]" />
-              </Tooltip>
-            </div>
+          actions: (
+            <DeleteComment commentId={comment?._id} fetchData={fetchData} />
+          ),
+          status: comment.answer ? (
+            <p className="w-fit font-medium bg-green-100 rounded-lg py-1 px-3 border border-green-100 text-green-500 text-[12px]">
+              Answered
+            </p>
           ) : (
-            <Tooltip title="No Answer">
-              <HiOutlineEmojiSad className="text-[30px] text-red-500" />
-            </Tooltip>
+            <p className="w-fit font-medium bg-red-100 rounded-lg py-1 px-3 border border-red-100 text-red-500 text-[12px]">
+              No Answer
+            </p>
           ),
         }))
       );

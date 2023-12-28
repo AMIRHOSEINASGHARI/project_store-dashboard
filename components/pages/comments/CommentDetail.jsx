@@ -50,7 +50,7 @@ const CommentDetail = ({
     <div>
       <Tooltip title="Click to answer this comment">
         <button onClick={() => showDrawer()}>
-          <PiEyeBold className="text-[30px]" />
+          <PiEyeBold className="text-[25px] text-gray-500" />
         </button>
       </Tooltip>
       <Drawer
