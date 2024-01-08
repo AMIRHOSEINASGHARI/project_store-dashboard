@@ -331,3 +331,51 @@ export const productsColumns = [
     key: "actions",
   },
 ];
+
+export const customersColumns = [
+  {
+    title: "Avatar",
+    dataIndex: "avatar",
+    key: "avatar",
+  },
+  {
+    title: "Display Name",
+    dataIndex: "displayName",
+    key: "displayName",
+  },
+  {
+    title: "Username",
+    dataIndex: "username",
+    key: "username",
+  },
+  {
+    title: "Phone",
+    dataIndex: "phone",
+    key: "phone",
+  },
+  {
+    title: "Address",
+    dataIndex: "address",
+    key: "address",
+  },
+  {
+    title: "Orders",
+    dataIndex: "orders",
+    key: "orders",
+  },
+  {
+    title: "Likes",
+    dataIndex: "likes",
+    key: "likes",
+  },
+  {
+    title: "Comments",
+    dataIndex: "comments",
+    key: "comments",
+  },
+  {
+    title: "Joined At",
+    dataIndex: "createdAt",
+    key: "createdAt",
+  },
+];

@@ -126,3 +126,9 @@ export const fetchBlogs = async () => {
   const data = await res.json();
   return data;
 };
+
+export const fetchCustomers = async () => {
+  const res = await fetch(`/api/customers`);
+  const data = await res.json();
+  return data;
+};
