@@ -38,9 +38,9 @@ export const menuList = [
     id: "3",
   },
   {
-    title: "Users",
+    title: "Customers",
     icon: <PiUsersThree />,
-    link: "/users",
+    link: "/customers",
     id: "4",
   },
   {
