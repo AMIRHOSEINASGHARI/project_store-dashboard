@@ -5,9 +5,9 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { HiOutlineLogout } from "react-icons/hi";
 import SidebarMenu from "./SidebarMenu";
 import { shorterText } from "@/utils/functions";
+import { CiLogout } from "react-icons/ci";
 
 const Navbar = () => {
   const session = useSession();
@@ -42,7 +42,7 @@ const Navbar = () => {
           }}
           className="p-2 hover:bg-gray-50 rounded-full transition-all duration-150"
         >
-          <HiOutlineLogout className="w-[25px] h-[25px] text-gray-500" />
+          <CiLogout className="w-[25px] h-[25px] text-gray-500" />
         </button>
         {session?.data?.user?.image ? (
           <Link

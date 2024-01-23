@@ -1,7 +1,7 @@
 "use client";
 
-import { useContextProvider } from "@/context/MainContextProvider";
 import React from "react";
+import { useContextProvider } from "@/context/MainContextProvider";
 import CurrentUser from "./CurrentUser";
 import Administrators from "./Administrators";
 import { useSession } from "next-auth/react";
