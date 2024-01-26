@@ -16,6 +16,7 @@ import { HiOutlinePlus } from "react-icons/hi";
 import { GoNote } from "react-icons/go";
 import { PiLayoutLight, PiUsersThree } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -39,7 +40,7 @@ const Sidebar = () => {
   return (
     <aside className="max-md:hidden fixed z-10 left-0 h-screen bg-white p-4 mt-[73px] shadow-md shadow-gray-300 pb-24">
       <div className="flex flex-col justify-between h-full">
-        <div className="overflow-y-auto sidebarScroll pb-16 flex flex-col gap-[2px]">
+        <div className="overflow-y-auto sidebarScroll pb-2 flex flex-col gap-[2px]">
           <Link
             href="/"
             className={btnClass("/")}
@@ -159,7 +160,10 @@ const Sidebar = () => {
                 ? "py-2 px-4 block"
                 : "flex items-center gap-4 p-2 lg:px-4 lg:pr-14 pr-14"
             }`}
-            onClick={() => setProgressValue(10)}
+            onClick={() => {
+              signOut();
+              setProgressValue(10);
+            }}
           >
             <div className="text-[20px] flex justify-center">
               <CiLogout />
@@ -168,14 +172,15 @@ const Sidebar = () => {
           </button>
         </div>
         <button
-          className={`rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-600 font-bold transition-all duration-150 flex justify-center items-center ${
+          className={`rounded-lg transition-all duration-150 hover:bg-gray-300 bg-gray-200 text-gray-600 font-light ${
             collapseMenu
-              ? "p-3 px-4 block"
-              : "flex items-center gap-4 p-3 lg:px-4 pr-14"
+              ? "py-2 px-4 block"
+              : "flex items-center gap-4 p-2 lg:px-4 lg:pr-14"
           }`}
           onClick={() => setCollapseMenu(!collapseMenu)}
         >
           <BsArrowsCollapseVertical className="text-[25px]" />
+          {!collapseMenu && <p className="text-[13px] font-bold">Collapse</p>}
         </button>
       </div>
     </aside>
