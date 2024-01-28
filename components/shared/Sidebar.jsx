@@ -3,23 +3,12 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BsArrowsCollapseVertical, BsCurrencyDollar } from "react-icons/bs";
 import { useContextProvider } from "@/context/MainContextProvider";
-import { RxDashboard } from "react-icons/rx";
-import { FaHourglassEnd } from "react-icons/fa6";
-import {
-  MdOutlineManageAccounts,
-  MdOutlineModeComment,
-  MdOutlineShoppingBag,
-} from "react-icons/md";
-import { HiOutlinePlus } from "react-icons/hi";
-import { GoNote } from "react-icons/go";
-import { PiLayoutLight, PiUsersThree } from "react-icons/pi";
-import { CiLogout } from "react-icons/ci";
 import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
   const pathname = usePathname();
+
   const { collapseMenu, setCollapseMenu, setProgressValue } =
     useContextProvider();
 
@@ -38,150 +27,137 @@ const Sidebar = () => {
     }`;
 
   return (
-    <aside className="max-md:hidden fixed z-10 left-0 h-screen bg-white p-4 mt-[73px] shadow-md shadow-gray-300 pb-24">
-      <div className="flex flex-col justify-between h-full">
-        <div className="overflow-y-auto sidebarScroll pb-2 flex flex-col gap-[2px]">
-          <Link
-            href="/"
-            className={btnClass("/")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <RxDashboard />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Dashboard</p>}
-          </Link>
-          <Link
-            href="/orders"
-            className={btnClass("/orders")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <FaHourglassEnd />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Orders</p>}
-          </Link>
-          <Link
-            href="/earn"
-            className={btnClass("/earn")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <BsCurrencyDollar />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Earn</p>}
-          </Link>
-          <hr className="my-3" />
-          <Link
-            href="/products"
-            className={btnClass("/products")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <MdOutlineShoppingBag />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Products</p>}
-          </Link>
-          <Link
-            href="/add-product"
-            className={btnClass("/add-product")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <HiOutlinePlus />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Add Product</p>}
-          </Link>
-          <Link
-            href="/comments"
-            className={btnClass("/comments")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <MdOutlineModeComment />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Comments</p>}
-          </Link>
-          <hr className="my-3" />
-          <Link
-            href="/site-layouts"
-            className={btnClass("/site-layouts")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <PiLayoutLight />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Site Layouts</p>}
-          </Link>
-          <Link
-            href="/blogs"
-            className={btnClass("/blogs")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <GoNote />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Blogs</p>}
-          </Link>
-          <Link
-            href="/add-blog"
-            className={btnClass("/add-blog")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <HiOutlinePlus />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Add Blog</p>}
-          </Link>
-          <hr className="my-3" />
-          <Link
-            href="/customers"
-            className={btnClass("/customers")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <PiUsersThree />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Customers</p>}
-          </Link>
-          <Link
-            href="/account"
-            className={btnClass("/account")}
-            onClick={() => setProgressValue(10)}
-          >
-            <div className="text-[20px] flex justify-center">
-              <MdOutlineManageAccounts />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Account</p>}
-          </Link>
-          <button
-            className={`rounded-lg transition-all duration-150 text-red-500 hover:bg-red-100 font-bold w-full ${
-              collapseMenu
-                ? "py-2 px-4 block"
-                : "flex items-center gap-4 p-2 lg:px-4 lg:pr-14 pr-14"
-            }`}
-            onClick={() => {
-              signOut();
-              setProgressValue(10);
-            }}
-          >
-            <div className="text-[20px] flex justify-center">
-              <CiLogout />
-            </div>
-            {!collapseMenu && <p className="text-[13px]">Logout</p>}
-          </button>
-        </div>
-        <button
-          className={`rounded-lg transition-all duration-150 hover:bg-gray-300 bg-gray-200 text-gray-600 font-light ${
-            collapseMenu
-              ? "py-2 px-4 block"
-              : "flex items-center gap-4 p-2 lg:px-4 lg:pr-14"
-          }`}
-          onClick={() => setCollapseMenu(!collapseMenu)}
-        >
-          <BsArrowsCollapseVertical className="text-[25px]" />
-          {!collapseMenu && <p className="text-[13px] font-bold">Collapse</p>}
-        </button>
+    <aside className="max-md:hidden w-[250px] fixed z-10 left-0 h-screen bg-white p-4 mt-[73px] pb-24 overflow-y-auto sidebarScroll">
+      <div>
+        <ul>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link href="/" className="flex items-center gap-[15px] p-[10px]">
+              <img src="/icons/home.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Dashboard</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/orders"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/shopping-cart.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Orders</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/revenue"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/dollar.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Revenue</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/products"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/shopping-basket.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Products</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/add-product"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/layer-plus.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Add Product</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/comments"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/comment.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Comments</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/customers"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/users.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Customers</span>
+            </Link>
+          </li>
+        </ul>
+
+        <div class="w-full h-[1px] my-[13px] bg-gray-100" />
+
+        <ul>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/site-layout"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/rectangles-mixed.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Site Layout</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/blogs"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/blog-text.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Blogs</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/add-blog"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/add-folder.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Add Blog</span>
+            </Link>
+          </li>
+        </ul>
+
+        <div class="w-full h-[1px] my-[13px] bg-gray-100" />
+
+        <ul>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/notifications"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/bell.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Notifications</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <Link
+              href="/account"
+              className="flex items-center gap-[15px] p-[10px]"
+            >
+              <img src="/icons/user.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Account</span>
+            </Link>
+          </li>
+          <li className="rounded-[10px] hover:bg-gray-100 transition duration-75 ease-in-out">
+            <button
+              onClick={() => {
+                signOut();
+                setProgressValue(10);
+              }}
+              className="flex items-center w-full gap-[15px] p-[10px]"
+            >
+              <img src="/icons/power.svg" className="w-[16px]" />
+              <span class="text-[13px] font-semibold">Exit</span>
+            </button>
+          </li>
+        </ul>
       </div>
     </aside>
   );

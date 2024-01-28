@@ -52,7 +52,7 @@ const RegisterPage = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center h-screen bg-white"
     >
       {loaderStatus && (
         <div className="backdrop-blur-xl w-full flex items-center justify-center gap-3 flex-col absolute inset-0">
