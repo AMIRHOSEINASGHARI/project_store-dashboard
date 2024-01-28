@@ -11,9 +11,7 @@ import Image from "next/image";
 
 const RegisterPage = () => {
   const [loader, setLoader] = useState(false);
-  const [pageText, setPageText] = useState("");
   const router = useRouter();
-  const { loaderStatus, setLoaderStatus } = useContextProvider();
 
   const [form, setForm] = useState({
     username: "",
@@ -40,11 +38,8 @@ const RegisterPage = () => {
       if (!result.success) {
         return toast.error(result.msg);
       } else {
-        setLoaderStatus(true);
-        setPageText("Redirecting to login page...");
         toast.success(result.msg);
         router.push("/login");
-        setLoaderStatus(false);
       }
     }
   };
@@ -52,75 +47,86 @@ const RegisterPage = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col items-center justify-center h-screen bg-white"
+      className="flex items-center gap-[150px] bg-white p-[30px]"
     >
-      {loaderStatus && (
-        <div className="backdrop-blur-xl w-full flex items-center justify-center gap-3 flex-col absolute inset-0">
-          <Loader color="#fff" />
-          <p className="font-bold">{pageText}</p>
-        </div>
-      )}
-      <div className="w-[250px] sm:w-[400px]">
-        <div className="flex items-center justify-center mb-10">
-          <Image
-            src="/logo-blue.png"
-            width={200}
-            height={200}
-            alt="logo"
-            priority
-          />
-        </div>
-        <div className="space-y-5">
-          <div className="flex flex-col gap-1">
-            <label className="font-semibold">Username</label>
-            <input
-              name="username"
-              type="text"
-              value={form.username}
-              onChange={changeHandler}
-              placeholder="Username"
-              className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-2 px-4 rounded-lg"
+      <div className="max-xl:hidden bg-gray-100 rounded-3xl h-screen w-1/2 flex items-center justify-center">
+        <Image
+          src="/auth-register.png"
+          width={450}
+          height={450}
+          alt="auth-register"
+          priority
+        />
+      </div>
+      <div className="max-xl:flex max-xl:items-center max-xl:justify-center max-xl:w-full max-xl:h-screen">
+        <div className="sm:w-[400px]">
+          <div className="mb-[30px]">
+            <Image
+              src="/logo1.svg"
+              width={40}
+              height={40}
+              alt="logo"
+              priority
             />
           </div>
-          <div className="flex flex-col gap-1">
-            <label className="font-semibold">Display name</label>
-            <input
-              name="displayName"
-              type="text"
-              value={form.displayName}
-              onChange={changeHandler}
-              placeholder="Display name"
-              className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-2 px-4 rounded-lg"
-            />
-          </div>
-          <div className="flex flex-col gap-1">
-            <label className="font-semibold">Password</label>
-            <input
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={changeHandler}
-              placeholder="Password"
-              className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-2 px-4 rounded-lg"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={loader && true}
-            className={`${
-              loader ? "bg-gray-100" : "bg-black"
-            } text-white rounded-lg w-full py-2 font-bold flex justify-center`}
-          >
-            {loader ? <Loader h={25} w={25} /> : "Submit"}
-          </button>
-          <div className="flex items-center justify-center gap-4 text-sm font-bold">
-            <p>Already have account?</p>
-            <Link
-              href="/login"
-              className="bg-gray-100 border text-center py-1 px-4 rounded-lg"
+          <h1 className="font-medium text-gray-600 text-[30px] mb-[5px]">
+            Adventure starts here 🚀
+          </h1>
+          <p className="text-gray-500 tracking-tight mb-[25px]">
+            Make your app management easy and fun!
+          </p>
+          <div className="space-y-5">
+            <div className="flex flex-col gap-1">
+              <label className="font-normal text-sm">Username</label>
+              <input
+                name="username"
+                type="text"
+                value={form.username}
+                onChange={changeHandler}
+                placeholder="Username"
+                className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-2 px-4 rounded-lg"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="font-normal text-sm">Display name</label>
+              <input
+                name="displayName"
+                type="text"
+                value={form.displayName}
+                onChange={changeHandler}
+                placeholder="Display name"
+                className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-2 px-4 rounded-lg"
+              />
+            </div>
+            <div className="flex flex-col gap-1">
+              <label className="font-normal text-sm">Password</label>
+              <input
+                name="password"
+                type="password"
+                value={form.password}
+                onChange={changeHandler}
+                placeholder="Password"
+                className="placeholder:text-xs border border-gray-200 focus:outline focus:outline-black outline-none py-2 px-4 rounded-lg"
+              />
+            </div>
+            <button
+              type="submit"
+              disabled={loader && true}
+              className={`${
+                loader ? "bg-gray-100" : "bg-violet-600"
+              } text-white rounded-lg w-full py-2 font-bold flex justify-center`}
             >
-              Login
-            </Link>
+              {loader ? <Loader h={25} w={25} /> : "Submit"}
+            </button>
+            <div className="flex items-center justify-center gap-4 text-sm font-bold">
+              <p>Already have account?</p>
+              <Link
+                href="/login"
+                className="bg-gray-100 border text-center py-1 px-4 rounded-lg"
+              >
+                Login
+              </Link>
+            </div>
           </div>
         </div>
       </div>

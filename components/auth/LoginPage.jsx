@@ -76,7 +76,7 @@ const LoginPage = () => {
           <p className="text-gray-500 tracking-tight">
             Please sign-in to your account and start the adventure
           </p>
-          <div className="bg-violet-100 text-violet-600 rounded-lg px-5 py-3 my-[20px] text-sm">
+          <div className="bg-violet-100 text-violet-600 rounded-lg px-5 py-3 mt-[30px] mb-[20px] text-sm">
             Username: <span className="font-bold">my-test</span> / Pass:{" "}
             <span className="font-bold">test</span>
           </div>
