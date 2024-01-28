@@ -15,17 +15,6 @@ const Sidebar = () => {
   if (pathname.includes("/login") || pathname.includes("/register"))
     return null;
 
-  const btnClass = (link) =>
-    `rounded-lg transition-all duration-150 ${
-      collapseMenu
-        ? "py-2 px-4 block"
-        : "flex items-center gap-4 p-2 lg:px-4 lg:pr-14"
-    } ${
-      pathname === link
-        ? "bg-gray-100 text-black hover:bg-gray-200 font-semibold"
-        : "hover:bg-gray-100 text-gray-600 font-light"
-    }`;
-
   return (
     <aside className="max-md:hidden w-[250px] fixed z-10 left-0 h-screen bg-white p-4 mt-[73px] pb-24 overflow-y-auto sidebarScroll">
       <div>
