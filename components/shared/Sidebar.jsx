@@ -20,7 +20,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`max-md:hidden fixed z-10 left-0 h-screen bg-white overflow-y-auto sidebarScroll ${
+      className={`max-md:hidden fixed z-30 left-0 h-screen bg-white overflow-y-auto sidebarScroll ${
         !collapseMenu && "w-[250px]"
       }`}
     >
@@ -29,14 +29,14 @@ const Sidebar = () => {
           !collapseMenu && "w-[250px]"
         }`}
       >
-        <div className="flex items-center gap-[10px]">
+        <Link href="/" className="flex items-center gap-[10px]">
           <Image
             src="/logo1.svg"
             width={35}
             height={35}
             alt="logo"
             priority
-            className="ml-[10px]"
+            className={!collapseMenu ? "ml-[10px]" : "ml-[8px]"}
           />
           {!collapseMenu && (
             <div className="flex items-center italic font-bold">
@@ -44,7 +44,7 @@ const Sidebar = () => {
               <span>Shop</span>
             </div>
           )}
-        </div>
+        </Link>
         {!collapseMenu && (
           <button
             onClick={() => setCollapseMenu(true)}

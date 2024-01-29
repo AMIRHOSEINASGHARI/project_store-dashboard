@@ -6,8 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SidebarMenu from "./SidebarMenu";
-import { shorterText } from "@/utils/functions";
-import { CiLogout } from "react-icons/ci";
+import NavbarSearchBox from "./search/NavbarSearchBox";
 
 const Navbar = () => {
   const session = useSession();
@@ -18,99 +17,98 @@ const Navbar = () => {
     return null;
 
   return (
-    <header className="shadow w-full z-20 fixed top-0 bg-white flex items-center justify-between p-4 xl:px-6">
-      <div className="flex items-center gap-3">
-        <div className="md:hidden">
-          <SidebarMenu />
+    <header
+      className={`backdrop-blur-md bg-gray-100 fixed z-20 left-0 top-0 right-0 pl-4 pr-6 pt-4 ${
+        collapseMenu
+          ? "pl-[115px] lg:pl-[110px] max-md:pl-6"
+          : "pl-[280px] lg:pl-[270px] max-md:pl-6"
+      }`}
+    >
+      <div className="p-4 rounded-xl shadow flex items-center justify-between bg-white">
+        <div className="flex items-center gap-2">
+          <div className="md:hidden">
+            <SidebarMenu />
+          </div>
+          <NavbarSearchBox />
         </div>
-        <Link href="/" onClick={() => setProgressValue(10)}>
-          <Image
-            src="/logo-secondary.png"
-            width={50}
-            height={50}
-            alt="logo"
-            priority
-            className="w-[35px]"
-          />
-        </Link>
-      </div>
-      <div className="flex items-center gap-2">
-        <button
-          onClick={() => {
-            signOut();
-            setProgressValue(10);
-          }}
-          className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
-        >
-          <Image
-            src="/icons/power.svg"
-            width={50}
-            height={50}
-            alt="power"
-            priority
-            className="w-[20px] h-[20px] text-gray-500"
-          />
-        </button>
-        <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150">
-          <Image
-            src="/icons/dark.svg"
-            width={50}
-            height={50}
-            alt="dark-mode"
-            priority
-            className="w-[20px] h-[20px] text-gray-500"
-          />
-        </button>
-        <Link
-          href="/notifications"
-          className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
-        >
-          <Image
-            src="/icons/bell.svg"
-            width={50}
-            height={50}
-            alt="bell"
-            priority
-            className="w-[20px] h-[20px] text-gray-500"
-          />
-        </Link>
-        {session?.data?.user?.image ? (
-          <Link
-            href="/account"
-            onClick={() => setProgressValue(10)}
-            className="relative ml-2"
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              signOut();
+              setProgressValue(10);
+            }}
+            className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
           >
             <Image
-              src={session?.data?.user?.image}
-              width={60}
-              height={60}
+              src="/icons/power.svg"
+              width={50}
+              height={50}
+              alt="power"
               priority
-              alt="user"
-              className="rounded-full w-[35px] h-[35px] object-cover"
+              className="w-[20px] h-[20px] text-gray-500"
             />
-            <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
-          </Link>
-        ) : (
+          </button>
+          <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150">
+            <Image
+              src="/icons/dark.svg"
+              width={50}
+              height={50}
+              alt="dark-mode"
+              priority
+              className="w-[20px] h-[20px] text-gray-500"
+            />
+          </button>
           <Link
-            href="/account"
-            onClick={() => setProgressValue(10)}
-            className="relative ml-2"
+            href="/notifications"
+            className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
           >
             <Image
-              src={
-                session?.data?.user?.roll === "USER"
-                  ? "/man.png"
-                  : "/person.jpg"
-              }
-              width={60}
-              height={60}
+              src="/icons/bell.svg"
+              width={50}
+              height={50}
+              alt="bell"
               priority
-              alt="user"
-              className="rounded-full w-[35px] h-[35px]"
+              className="w-[20px] h-[20px] text-gray-500"
             />
-            <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
           </Link>
-        )}
+          {session?.data?.user?.image ? (
+            <Link
+              href="/account"
+              onClick={() => setProgressValue(10)}
+              className="relative ml-2"
+            >
+              <Image
+                src={session?.data?.user?.image}
+                width={60}
+                height={60}
+                priority
+                alt="user"
+                className="rounded-full w-[35px] h-[35px] object-cover"
+              />
+              <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
+            </Link>
+          ) : (
+            <Link
+              href="/account"
+              onClick={() => setProgressValue(10)}
+              className="relative ml-2"
+            >
+              <Image
+                src={
+                  session?.data?.user?.roll === "USER"
+                    ? "/man.png"
+                    : "/person.jpg"
+                }
+                width={60}
+                height={60}
+                priority
+                alt="user"
+                className="rounded-full w-[35px] h-[35px]"
+              />
+              <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
+            </Link>
+          )}
+        </div>
       </div>
     </header>
   );
