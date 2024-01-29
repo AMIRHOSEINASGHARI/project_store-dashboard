@@ -12,7 +12,7 @@ import { CiLogout } from "react-icons/ci";
 const Navbar = () => {
   const session = useSession();
   const pathname = usePathname();
-  const { setProgressValue } = useContextProvider();
+  const { setProgressValue, collapseMenu } = useContextProvider();
 
   if (pathname.includes("/login") || pathname.includes("/register"))
     return null;
@@ -40,49 +40,75 @@ const Navbar = () => {
             signOut();
             setProgressValue(10);
           }}
-          className="p-2 hover:bg-gray-50 rounded-full transition-all duration-150"
+          className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
         >
-          <CiLogout className="w-[25px] h-[25px] text-gray-500" />
+          <Image
+            src="/icons/power.svg"
+            width={50}
+            height={50}
+            alt="power"
+            priority
+            className="w-[20px] h-[20px] text-gray-500"
+          />
         </button>
+        <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150">
+          <Image
+            src="/icons/dark.svg"
+            width={50}
+            height={50}
+            alt="dark-mode"
+            priority
+            className="w-[20px] h-[20px] text-gray-500"
+          />
+        </button>
+        <Link
+          href="/notifications"
+          className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
+        >
+          <Image
+            src="/icons/bell.svg"
+            width={50}
+            height={50}
+            alt="bell"
+            priority
+            className="w-[20px] h-[20px] text-gray-500"
+          />
+        </Link>
         {session?.data?.user?.image ? (
           <Link
             href="/account"
-            className="flex items-center gap-3 py-2 px-4 rounded-full bg-gray-100 hover:bg-gray-200"
             onClick={() => setProgressValue(10)}
+            className="relative ml-2"
           >
-            <p className="uppercase font-light tracking-wider text-xs sm:text-base">
-              {shorterText(session?.data?.user?.name, 10)}
-            </p>
             <Image
               src={session?.data?.user?.image}
-              width={50}
-              height={50}
+              width={60}
+              height={60}
               priority
               alt="user"
-              className="rounded-full w-[25px] h-[25px] object-cover"
+              className="rounded-full w-[35px] h-[35px] object-cover"
             />
+            <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
           </Link>
         ) : (
           <Link
             href="/account"
-            className="flex items-center gap-3 py-2 px-4 bg-gray-100 hover:bg-gray-200 rounded-full transition-all duration-150"
             onClick={() => setProgressValue(10)}
+            className="relative ml-2"
           >
-            <p className="uppercase font-light tracking-wider text-xs sm:text-base">
-              {shorterText(session?.data?.user?.name, 10)}
-            </p>
             <Image
               src={
                 session?.data?.user?.roll === "USER"
                   ? "/man.png"
                   : "/person.jpg"
               }
-              width={50}
-              height={50}
+              width={60}
+              height={60}
               priority
               alt="user"
-              className="rounded-full w-[25px] h-[25px]"
+              className="rounded-full w-[35px] h-[35px]"
             />
+            <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
           </Link>
         )}
       </div>

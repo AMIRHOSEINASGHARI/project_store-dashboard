@@ -81,6 +81,74 @@ export const menuList = [
   },
 ];
 
+export const menuLinks = [
+  {
+    title: "Dashboard",
+    image: "/icons/home.svg",
+    link: "/",
+  },
+  {
+    title: "Orders",
+    image: "/icons/shopping-cart.svg",
+    link: "/orders",
+  },
+  {
+    title: "Revenue",
+    image: "/icons/dollar.svg",
+    link: "/revenue",
+  },
+  {
+    title: "Products",
+    image: "/icons/shopping-basket.svg",
+    link: "/products",
+  },
+  {
+    title: "Add Product",
+    image: "/icons/layer-plus.svg",
+    link: "/add-product",
+  },
+  {
+    title: "Comments",
+    image: "/icons/comment.svg",
+    link: "/comments",
+  },
+  {
+    title: "Customers",
+    image: "/icons/users.svg",
+    link: "/customers",
+  },
+  {
+    title: "Site Layout",
+    image: "/icons/rectangles-mixed.svg",
+    link: "/site-layout",
+  },
+  {
+    title: "Blogs",
+    image: "/icons/blog-text.svg",
+    link: "/blogs",
+  },
+  {
+    title: "Add Blog",
+    image: "/icons/add-folder.svg",
+    link: "/add-blog",
+  },
+  {
+    title: "Tasks",
+    image: "/icons/task.svg",
+    link: "/tasks",
+  },
+  {
+    title: "Notifications",
+    image: "/icons/bell.svg",
+    link: "/notifications",
+  },
+  {
+    title: "Account",
+    image: "/icons/user.svg",
+    link: "/account",
+  },
+];
+
 export const categories = [
   {
     name: "Phone",

@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
             <div>
               <ProgressLoadPage />
             </div>
-            <Navbar />
+            {/* <Navbar /> */}
             <div>
               <Sidebar />
               <main className="bg-gray-100">{children}</main>
