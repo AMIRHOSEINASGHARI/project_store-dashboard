@@ -45,7 +45,7 @@ const ProductDetails = ({
     <>
       <Tooltip title="See Details">
         <button onClick={() => showDrawer()}>
-          <BiDetail className="text-[25px]" />
+          <img src="/icons/document.svg" className="w-[20px]" />
         </button>
       </Tooltip>
       <Drawer

@@ -67,6 +67,7 @@ const PageTable = ({
         </div>
       )}
       <Table
+        className="cardShadow3 rounded-xl"
         dataSource={dataSource}
         columns={columns}
         pagination={pagination ? { position: ["bottomLeft"] } : false}

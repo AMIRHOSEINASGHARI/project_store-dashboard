@@ -139,9 +139,7 @@ const ProductFormModal = ({
       </section>
       <section className="lg:flex cardShadow3 rounded-2xl py-[32px] px-[24px]">
         <div className="w-full lg:w-[500px] max-lg:mb-10">
-          <h1 className="w-full text-[17px] font-[700]">
-            Branding and Category
-          </h1>
+          <h1 className="w-full text-[17px] font-[700]">Keywords</h1>
         </div>
         <div className="w-full flex flex-col gap-6">
           <KeywordsSection

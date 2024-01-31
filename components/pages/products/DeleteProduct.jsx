@@ -16,7 +16,7 @@ const DeleteProduct = ({ fetchData, productId }) => {
   return (
     <Tooltip title="Delete Product">
       <button>
-        <MdOutlineDelete className="text-[25px] text-red-500" />
+        <img src="/icons/trash.svg" className="w-[20px]" />
       </button>
     </Tooltip>
   );

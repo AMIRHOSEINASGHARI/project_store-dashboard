@@ -338,21 +338,6 @@ export const productsColumns = [
     key: "title",
   },
   {
-    title: "Category",
-    dataIndex: "category",
-    key: "category",
-    filters: categories.map((item) => ({
-      text: item.name,
-      value: item.name,
-    })),
-    onFilter: (value, record) => record.category.indexOf(value) === 0,
-  },
-  {
-    title: "Brand",
-    dataIndex: "brand",
-    key: "brand",
-  },
-  {
     title: "Price",
     dataIndex: "price",
     key: "price",
@@ -371,27 +356,9 @@ export const productsColumns = [
     sorter: (a, b) => a.stock - b.stock,
   },
   {
-    title: "Comments",
-    dataIndex: "comments",
-    key: "comments",
-    sorter: (a, b) => a.comments - b.comments,
-  },
-  {
-    title: "Likes",
-    dataIndex: "likes",
-    key: "likes",
-    sorter: (a, b) => a.likes - b.likes,
-  },
-  {
-    title: "Orders",
-    dataIndex: "orders",
-    key: "orders",
-    sorter: (a, b) => a.orders - b.orders,
-  },
-  {
-    title: "Date",
-    dataIndex: "date",
-    key: "date",
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
   },
   {
     title: "Actions",
