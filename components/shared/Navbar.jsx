@@ -18,13 +18,13 @@ const Navbar = () => {
 
   return (
     <header
-      className={`backdrop-blur-md bg-gray-100 fixed z-20 left-0 top-0 right-0 pl-4 pr-6 pt-4 ${
+      className={`backdrop-blur max-md:border-b bg-white fixed z-20 left-0 top-0 right-0 pl-4 pr-6 pt-4 ${
         collapseMenu
           ? "pl-[115px] lg:pl-[110px] max-md:pl-6"
           : "pl-[280px] lg:pl-[270px] max-md:pl-6"
       }`}
     >
-      <div className="p-4 rounded-xl shadow flex items-center justify-between bg-white">
+      <div className="py-2 flex items-center justify-between bg-white">
         <div className="flex items-center gap-2">
           <div className="md:hidden">
             <SidebarMenu />

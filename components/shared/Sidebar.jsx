@@ -20,13 +20,13 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`max-md:hidden fixed z-30 left-0 h-screen bg-white overflow-y-auto sidebarScroll ${
+      className={`border-r border-gray-100 max-md:hidden fixed z-30 left-0 h-screen bg-white overflow-y-auto sidebarScroll ${
         !collapseMenu && "w-[250px]"
       }`}
     >
       <div
         className={`flex items-center justify-between fixed bg-white p-4 top-0 ${
-          !collapseMenu && "w-[250px]"
+          !collapseMenu && "w-[249px]"
         }`}
       >
         <Link href="/" className="flex items-center gap-[10px]">

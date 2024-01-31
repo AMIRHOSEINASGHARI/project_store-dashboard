@@ -5,8 +5,9 @@
 @import "~@flaticon/flaticon-uicons/css/all/all";
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f3f4f6;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
+  background-color: white;
 }
 
 .sidebarScroll::-webkit-scrollbar {
