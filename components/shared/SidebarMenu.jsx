@@ -13,7 +13,7 @@ const SidebarMenu = () => {
     <div>
       <Menu as="div" className="relative inline-block text-left">
         <div>
-          <Menu.Button className="p-2 hover:bg-gray-50 rounded-full transition-all duration-150">
+          <Menu.Button className="hover:bg-gray-50 rounded-full transition-all duration-150">
             <HiMenuAlt2 className="w-[25px] h-[25px]" />
           </Menu.Button>
         </div>

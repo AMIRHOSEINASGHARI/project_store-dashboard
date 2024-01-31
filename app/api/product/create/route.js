@@ -45,7 +45,6 @@ export async function POST(req) {
       brand: form.brand,
       description: form.description,
       discount: Number(form.discount),
-      colors: form.colors,
       keywords: form.keywords,
     });
     return NextResponse.json(

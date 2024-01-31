@@ -42,7 +42,9 @@ const ProductFormModal = ({
           Products
         </Link>
         <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-        <p className="font-[400] text-gray-400">Create</p>
+        <p className="font-[400] text-gray-400">
+          {type === "create" ? "Create" : "Edit"}
+        </p>
       </div>
 
       <section className="lg:flex cardShadow3 rounded-2xl py-[32px] px-[24px]">
