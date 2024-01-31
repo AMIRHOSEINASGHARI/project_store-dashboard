@@ -19,10 +19,12 @@ const CategoryFilter = ({ setForm, form }) => {
     <div className="text-left">
       <Listbox value={selected} onChange={changeHandler}>
         <div className="relative">
-          <Listbox.Button className="relative cursor-pointer w-full rounded-full bg-gray-100 p-4 text-left">
+          <Listbox.Button className="relative text-left input1 cursor-pointer py-[20px]">
             <div className="block truncate text-xs capitalize">
               {selected || (
-                <span className="text-red-600">Select a Category *</span>
+                <span className="text-gray-500 text-[15px]">
+                  Select a Category
+                </span>
               )}
             </div>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -35,7 +37,7 @@ const CategoryFilter = ({ setForm, form }) => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute z-50 mt-1 h-[300px] w-full overflow-auto bg-white shadow-2xl shadow-gray-300">
+            <Listbox.Options className="absolute z-50 mt-1 h-[250px] w-full overflow-auto bg-white shadow-2xl shadow-gray-300">
               <Listbox.Option value="" className="py-2 px-4 text-gray-400">
                 Select a Category
               </Listbox.Option>

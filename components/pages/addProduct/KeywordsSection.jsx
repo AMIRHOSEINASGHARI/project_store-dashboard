@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { MdAdd } from "react-icons/md";
 import { IoIosClose } from "react-icons/io";
 
 const KeywordsSection = ({ form, setForm, placeholder }) => {
@@ -42,35 +41,34 @@ const KeywordsSection = ({ form, setForm, placeholder }) => {
 
   return (
     <form className="flex flex-col gap-1" onSubmit={submitHandler}>
-      <label className="font-semibold">Keywords</label>
-      <div className="flex items-center gap-2 rounded-full overflow-hidden">
-        <button
-          type="submit"
-          className="bg-gray-200 border-gray-400 border-1 py-3 px-4 flex items-center gap-2 w-fit"
-        >
-          <MdAdd />
-          Add
-        </button>
+      <div className="flex flex-col gap-2">
         <input
           type="text"
           value={value}
           onChange={changeHandler}
           placeholder={placeholder}
-          className="placeholder:text-xs rounded-r-full bg-gray-100 focus:outline focus:outline-black outline-none py-3 px-4 w-full"
+          className="input1 cursor-pointer"
         />
+        <button
+          type="submit"
+          className="rounded-lg border py-[8px] px-[14px] text-sm w-fit flex items-center"
+        >
+          Add
+        </button>
       </div>
       {keywords.length !== 0 && (
         <div className="flex gap-2 flex-wrap mt-3">
           {keywords.map((keyword) => (
-            <div
+            <button
               key={keyword}
-              className="rounded-lg bg-gray-200 border-gray-400 border-1 py-1 px-4 flex items-center gap-2 w-fit"
+              onClick={() => removeKeyword(keyword)}
+              className="flex items-center gap-2 border bg-gray-50 rounded-xl text-[12px] font-light py-1 pl-3 pr-2"
             >
               <span>{keyword}</span>
-              <button type="button" onClick={() => removeKeyword(keyword)}>
-                <IoIosClose className="text-[40px]" />
-              </button>
-            </div>
+              <div>
+                <IoIosClose className="text-[20px]" />
+              </div>
+            </button>
           ))}
         </div>
       )}

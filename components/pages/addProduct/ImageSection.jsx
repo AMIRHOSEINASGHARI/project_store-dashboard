@@ -22,16 +22,32 @@ const ImageSection = ({ form, setForm, type }) => {
   };
 
   return (
-    <div className="w-full rounded-3xl overflow-hidden">
+    <div className="w-full rounded-3xl overflow-hidden hover:bg-gray-100 transition-all duration-200 ease-in-out">
       <div className="relative w-full flex items-center flex-col text-gray-500 text-sm">
-        <label className="w-full border-2 border-dashed rounded-3xl min-h-[200px] lg:min-h-[300px] flex flex-col items-center justify-center p-3 text-center">
+        <label className="w-full border-2 border-dashed rounded-3xl min-h-[200px] lg:min-h-[300px] flex flex-col md:flex-row items-center justify-center gap-5 p-3 text-center">
           {!form?.image && (
             <>
-              <AiOutlineFolderAdd className="text-4xl text-blue-500" />
+              {/* <AiOutlineFolderAdd className="text-4xl text-blue-500" />
               <span>Drag and Drop or tap here to upload a Photo</span>
               <span className="text-white rounded-full font-semibold bg-blue-500 py-2 px-5 mt-2">
                 Images less than 10MB
-              </span>
+              </span> */}
+              <div className="bg-gray-200 rounded-full w-[70px] h-[70px] flex items-center justify-center">
+                <Image
+                  src="/icons/upload.svg"
+                  width={50}
+                  height={50}
+                  alt="upload"
+                  priority
+                  className="w-[25px] h-[25px]"
+                />
+              </div>
+              <div>
+                <p className="md:flex font-semibold text-[20px]">
+                  Click to upload
+                </p>
+                <p>(JPG, PNG, maximum 2MB 400x400)</p>
+              </div>
             </>
           )}
         </label>

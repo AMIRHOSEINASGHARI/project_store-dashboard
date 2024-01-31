@@ -50,11 +50,11 @@ progress::-webkit-progress-value {
 }
 
 .distanceCollapse {
-  @apply pt-[105px] pl-[115px] lg:pl-[110px] min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
+  @apply pt-[105px] pl-[115px] lg:pl-[110px] min-h-screen transition-all duration-150 max-md:px-4 md:pr-4;
 }
 
 .distanceNotCollapse {
-  @apply pt-[105px] pl-[280px] lg:pl-[270px] min-h-screen transition-all duration-150 max-md:px-6 md:pr-6;
+  @apply pt-[105px] pl-[280px] lg:pl-[270px] min-h-screen transition-all duration-150 max-md:px-4 md:pr-4;
 }
 
 .heading {
@@ -67,4 +67,12 @@ progress::-webkit-progress-value {
 
 .cardShadow2 {
   @apply shadow-[0_5px_3px_#e2e8f0];
+}
+
+.cardShadow3 {
+  @apply shadow-[0_10px_50px_-12px_rgba(0,0,0,0.1)];
+}
+
+.input1 {
+  @apply rounded-lg w-full border outline outline-offset-0 outline-4 outline-transparent hover:bg-gray-100 focus:outline-violet-600 transition-all duration-200 ease-in-out py-[14px] px-[12px] placeholder:text-gray-500 font-medium placeholder:text-[15px];
 }
