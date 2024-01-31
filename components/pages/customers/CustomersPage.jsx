@@ -6,7 +6,7 @@ import { customersColumns } from "@/constants";
 import { useContextProvider } from "@/context/MainContextProvider";
 import { fetchCustomers } from "@/utils/api";
 import { shorterText } from "@/utils/functions";
-import { Image } from "antd";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
@@ -29,15 +29,30 @@ const CustomersPage = () => {
       setDataSource(
         customers.customers.map((customer) => ({
           key: customer._id,
-          avatar: <Image width={40} src={customer?.avatar || "/man.png"} />,
-          displayName: (
-            <Link href={`/customers/${customer._id}`} target="_blank">
-              {customer.displayName}
-            </Link>
-          ),
-          username: (
-            <Link href={`/customers/${customer._id}`} target="_blank">
-              {customer.username}
+          name: (
+            <Link
+              href={`/customers/${customer._id}`}
+              className="flex items-center gap-5 w-fit"
+            >
+              <Image
+                width={50}
+                height={50}
+                alt="user"
+                priority
+                className="rounded-full"
+                src={
+                  customer?.avatar ||
+                  `/avatars/avatar_${Math.floor(Math.random() * 20)}.jpg`
+                }
+              />
+              <div>
+                <p className="font-medium text-[18px] -mb-2">
+                  {customer.displayName}
+                </p>
+                <p className="font-light text-[14px] text-gray-400">
+                  {customer.username}
+                </p>
+              </div>
             </Link>
           ),
           phone: customer.phoneNumber,
@@ -80,11 +95,31 @@ const CustomersPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-20`}
     >
+      <div>
+        <div className="">
+          <h1 className="sm:text-[35px] text-[20px] font-[700]">Customers</h1>
+          <div className="flex items-center gap-2 text-[14px]">
+            <Link
+              href="/"
+              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
+            >
+              Dashboard
+            </Link>
+            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
+            <Link
+              href="/customers"
+              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
+            >
+              Customers
+            </Link>
+            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
+            <p className="font-[400] text-gray-400">List</p>
+          </div>
+        </div>
+      </div>
       <PageTable
         columns={customersColumns}
         dataSource={dataSource}
-        btnTitle={"Delete"}
-        selecttion={true}
         pagination={true}
       />
     </div>

@@ -369,19 +369,9 @@ export const productsColumns = [
 
 export const customersColumns = [
   {
-    title: "Avatar",
-    dataIndex: "avatar",
-    key: "avatar",
-  },
-  {
-    title: "Display Name",
-    dataIndex: "displayName",
-    key: "displayName",
-  },
-  {
-    title: "Username",
-    dataIndex: "username",
-    key: "username",
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
   },
   {
     title: "Phone",
@@ -397,16 +387,6 @@ export const customersColumns = [
     title: "Orders",
     dataIndex: "orders",
     key: "orders",
-  },
-  {
-    title: "Likes",
-    dataIndex: "likes",
-    key: "likes",
-  },
-  {
-    title: "Comments",
-    dataIndex: "comments",
-    key: "comments",
   },
   {
     title: "Joined At",
