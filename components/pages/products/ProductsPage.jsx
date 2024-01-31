@@ -50,21 +50,24 @@ const ProductsPage = () => {
           ),
           title: (
             <Tooltip title={product?.title}>
-              {shorterText(product?.title, 20)}
+              <div className="font-medium">
+                <p>{shorterText(product?.title, 20)}</p>
+                <div className="text-gray-400">
+                  in <span className="capitalize">{product?.category}</span>
+                </div>
+              </div>
             </Tooltip>
           ),
-          category: product?.category,
-          brand: product?.brand,
-          price: product?.price,
-          discount: product?.discount,
-          stock: product?.stock,
+          price: <p className="font-medium">{product?.price}</p>,
+          discount: <p className="font-medium">{product?.discount}</p>,
+          stock: <p className="font-medium">{product?.stock}</p>,
           status: (
             <p className="bg-green-100 text-green-500 font-medium w-fit rounded-lg py-1 px-3">
               Published
             </p>
           ), //TODO: make this dynamic
           actions: (
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-5">
               <ProductDetails {...product} />
               <Tooltip title="Edit product">
                 <Link href={`/products/edit/${product?._id}`} target="_blank">
