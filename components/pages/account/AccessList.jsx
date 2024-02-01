@@ -84,12 +84,17 @@ const AccessList = (props) => {
                   >
                     <div className="flex items-center gap-3">
                       <Image
-                        src={props?.avatar || "/man.png"}
+                        src={
+                          props?.avatar ||
+                          `/avatars/avatar_${Math.floor(
+                            Math.random() * 20
+                          )}.jpg`
+                        }
                         width={50}
                         height={50}
                         alt={props?.displayName}
                         priority
-                        className="rounded-fullw-[50px]"
+                        className="rounded-full w-[50px]"
                       />
                       <div>
                         <p className="font-bold uppercase text-sm md:text-[20px] w-full break-all">

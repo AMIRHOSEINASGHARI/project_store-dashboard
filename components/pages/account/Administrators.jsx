@@ -25,7 +25,7 @@ const Administrators = ({ session }) => {
             <Image
               src={
                 user.avatar ||
-                (user.roll === "ADMIN" ? "/person.jpg" : "/man.png")
+                `/avatars/avatar_${Math.floor(Math.random() * 20)}.jpg`
               }
               width={50}
               height={50}
@@ -62,12 +62,14 @@ const Administrators = ({ session }) => {
   }
 
   return (
-    <div>
-      <h1 className="heading mb-5">Administrators</h1>
-      <div>
+    <section className="lg:flex cardShadow3 rounded-2xl py-[32px] px-[24px]">
+      <div className="w-full lg:w-[500px] max-lg:mb-10">
+        <h1 className="w-full text-[17px] font-[700]">Administrators</h1>
+      </div>
+      <div className="w-full">
         <PageTable columns={administratorsColumns} dataSource={dataSource} />
       </div>
-    </div>
+    </section>
   );
 };
 
