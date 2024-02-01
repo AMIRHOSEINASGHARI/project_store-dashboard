@@ -76,3 +76,7 @@ progress::-webkit-progress-value {
 .input1 {
   @apply rounded-lg w-full border outline outline-offset-0 outline-4 outline-transparent hover:bg-gray-100 focus:outline-violet-600 transition-all duration-200 ease-in-out py-[14px] px-[12px] placeholder:text-gray-500 font-medium placeholder:text-[15px];
 }
+
+.input2 {
+  @apply rounded-lg w-full border outline outline-offset-0 outline-2 outline-transparent hover:outline-violet-400 focus:outline-violet-600 transition-all duration-200 ease-in-out py-[10px] px-[12px] font-light text-[13px];
+}

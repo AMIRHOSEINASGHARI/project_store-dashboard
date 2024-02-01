@@ -90,9 +90,9 @@ const EditProfile = (props) => {
           height={250}
           alt={props?.user?.name}
           priority
-          className="rounded-full w-[200px] h-[200px] object-cover"
+          className="rounded-full w-[120px] h-[120px] object-cover outline outline-offset-4 outline-2 outline-gray-100"
         />
-        <button className="absolute top-3 right-4 border bg-white text-gray-600 rounded-full p-3 text-2xl">
+        <button className="absolute -bottom-1 right-2 border-2 shadow-xl bg-white text-gray-600 rounded-full p-2 text-md">
           <BiEditAlt />
         </button>
       </div>
