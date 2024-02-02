@@ -2,7 +2,6 @@
 
 import Loader from "@/components/shared/Loader";
 import { deleteComment } from "@/utils/api";
-import { Tooltip } from "antd";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineDelete } from "react-icons/md";
@@ -21,15 +20,13 @@ const DeleteComment = ({ commentId, fetchData }) => {
     }
   };
   return (
-    <Tooltip title="Delete Comment">
-      <button onClick={() => clickHandler(commentId)}>
-        {loading ? (
-          <Loader w={20} h={20} />
-        ) : (
-          <MdOutlineDelete className="text-[25px] text-gray-500" />
-        )}
-      </button>
-    </Tooltip>
+    <button onClick={() => clickHandler(commentId)}>
+      {loading ? (
+        <Loader w={20} h={20} />
+      ) : (
+        <MdOutlineDelete className="text-[25px] text-gray-500" />
+      )}
+    </button>
   );
 };
 

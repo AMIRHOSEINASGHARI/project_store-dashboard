@@ -2,7 +2,7 @@
 
 import Loader from "@/components/shared/Loader";
 import { answerToComment } from "@/utils/api";
-import { Drawer, Image, Tooltip } from "antd";
+import { Drawer, Image } from "antd";
 import moment from "moment";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -48,11 +48,9 @@ const CommentDetail = ({
 
   return (
     <div>
-      <Tooltip title="Click to answer this comment">
-        <button onClick={() => showDrawer()}>
-          <PiEyeBold className="text-[25px] text-gray-500" />
-        </button>
-      </Tooltip>
+      <button onClick={() => showDrawer()}>
+        <PiEyeBold className="text-[25px] text-gray-500" />
+      </button>
       <Drawer
         title="Complete details of comment"
         placement={"right"}

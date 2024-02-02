@@ -1,6 +1,6 @@
 "use client";
 
-import { Drawer, Image, Tooltip } from "antd";
+import { Drawer, Image } from "antd";
 import React, { useState } from "react";
 import { BiDetail, BiLike, BiCategoryAlt } from "react-icons/bi";
 import { BsCurrencyDollar } from "react-icons/bs";
@@ -43,11 +43,9 @@ const ProductDetails = ({
   };
   return (
     <>
-      <Tooltip title="See Details">
-        <button onClick={() => showDrawer()} className="w-[20px] h-[20px]">
-          <img src="/icons/document.svg" className="w-full h-full" />
-        </button>
-      </Tooltip>
+      <button onClick={() => showDrawer()} className="w-[20px] h-[20px]">
+        <img src="/icons/document.svg" className="w-full h-full" />
+      </button>
       <Drawer
         title={title}
         placement="right"
