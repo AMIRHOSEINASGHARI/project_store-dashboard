@@ -44,8 +44,8 @@ const ProductDetails = ({
   return (
     <>
       <Tooltip title="See Details">
-        <button onClick={() => showDrawer()}>
-          <img src="/icons/document.svg" className="w-[20px]" />
+        <button onClick={() => showDrawer()} className="w-[20px] h-[20px]">
+          <img src="/icons/document.svg" className="w-full h-full" />
         </button>
       </Tooltip>
       <Drawer

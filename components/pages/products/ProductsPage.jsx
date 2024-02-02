@@ -70,8 +70,12 @@ const ProductsPage = () => {
             <div className="flex items-center gap-5">
               <ProductDetails {...product} />
               <Tooltip title="Edit product">
-                <Link href={`/products/edit/${product?._id}`} target="_blank">
-                  <img src="/icons/edit.svg" className="w-[20px]" />
+                <Link
+                  href={`/products/edit/${product?._id}`}
+                  target="_blank"
+                  className="w-[20px] h-[20px]"
+                >
+                  <img src="/icons/edit.svg" className="w-full h-full" />
                 </Link>
               </Tooltip>
               <DeleteProduct fetchData={fetchData} productId={product?._id} />
