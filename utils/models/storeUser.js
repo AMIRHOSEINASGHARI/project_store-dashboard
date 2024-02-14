@@ -12,6 +12,20 @@ const userSchema = new Schema({
   comments: [
     { type: Schema.Types.ObjectId, ref: "StoreShopComment", default: [] },
   ],
+  cart: {
+    selectedItems: { type: Array, default: [] },
+    totalProducts: { type: Number, default: 0 },
+    totalPrice: { type: Number, default: 0 },
+    totalDiscountPrice: { type: Number, default: 0 },
+    checkout: {
+      status: { type: Boolean, default: false },
+      date: {
+        type: Date,
+        default: "",
+        immutabale: false,
+      },
+    },
+  },
   createdAt: {
     type: Date,
     default: () => Date.now(),
