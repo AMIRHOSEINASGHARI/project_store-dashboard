@@ -5,6 +5,7 @@ import SessionContextProvider from "@/context/SessionContextProvider";
 import Navbar from "@/components/shared/Navbar";
 import Sidebar from "@/components/shared/Sidebar";
 import ProgressLoadPage from "@/components/shared/ProgressLoadPage";
+import ReactQueryClientProvider from "@/context/ReactQueryClientProvider";
 
 export const metadata = {
   title: "Store Panel",
@@ -13,23 +14,25 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <SessionContextProvider>
-        <MainContextProvider>
-          <body>
-            <div>
-              <Toaster position="top-center" />
-            </div>
-            <div>
-              <ProgressLoadPage />
-            </div>
-            <Navbar />
-            <div>
-              <Sidebar />
-              <main>{children}</main>
-            </div>
-          </body>
-        </MainContextProvider>
-      </SessionContextProvider>
+      <ReactQueryClientProvider>
+        <SessionContextProvider>
+          <MainContextProvider>
+            <body>
+              <div>
+                <Toaster position="top-center" />
+              </div>
+              <div>
+                <ProgressLoadPage />
+              </div>
+              <Navbar />
+              <div>
+                <Sidebar />
+                <main>{children}</main>
+              </div>
+            </body>
+          </MainContextProvider>
+        </SessionContextProvider>
+      </ReactQueryClientProvider>
     </html>
   );
 }
