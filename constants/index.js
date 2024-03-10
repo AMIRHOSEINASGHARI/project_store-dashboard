@@ -341,19 +341,16 @@ export const productsColumns = [
     title: "Price",
     dataIndex: "price",
     key: "price",
-    sorter: (a, b) => a.price - b.price,
   },
   {
     title: "Discount",
     dataIndex: "discount",
     key: "discount",
-    sorter: (a, b) => a.discount - b.discount,
   },
   {
     title: "Stock",
     dataIndex: "stock",
     key: "stock",
-    sorter: (a, b) => a.stock - b.stock,
   },
   {
     title: "Status",
