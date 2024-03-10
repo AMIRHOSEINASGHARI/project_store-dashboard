@@ -11,7 +11,6 @@ import { Table } from "antd";
 import Loader from "@/components/shared/Loader";
 import { productsColumns } from "@/constants";
 import DeleteProduct from "./DeleteProduct";
-import ProductDetails from "./ProductDetails";
 import MotionDiv from "@/components/shared/MotionDiv";
 
 const ProductsPage = () => {
@@ -67,9 +66,9 @@ const ProductsPage = () => {
         </div>
       </Link>
     ),
-    price: <p className="font-medium">{p?.price}</p>,
+    price: <p className="font-medium">{p?.price.toLocaleString()}</p>,
     discount: <p className="font-medium">{p?.discount}</p>,
-    stock: <p className="font-medium">{p?.stock}</p>,
+    stock: <p className="font-medium">{p?.stock.toLocaleString()}</p>,
     status: (
       <p className="bg-green-100 text-green-500 font-medium w-fit rounded-lg py-1 px-3">
         Published
@@ -77,7 +76,9 @@ const ProductsPage = () => {
     ), //TODO: make this dynamic
     actions: (
       <div className="flex items-center gap-5">
-        <ProductDetails {...p} />
+        <Link href={`/products/${p?._id}`} className="w-[20px] h-[20px]">
+          <img src="/icons/document.svg" className="w-full h-full" />
+        </Link>
         <Link href={`/products/edit/${p?._id}`} className="w-[20px] h-[20px]">
           <img src="/icons/edit.svg" className="w-full h-full" />
         </Link>
