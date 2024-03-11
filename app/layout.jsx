@@ -6,6 +6,7 @@ import Navbar from "@/components/shared/Navbar";
 import Sidebar from "@/components/shared/Sidebar";
 import ProgressLoadPage from "@/components/shared/ProgressLoadPage";
 import ReactQueryClientProvider from "@/context/ReactQueryClientProvider";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const metadata = {
   title: "Store Panel",
@@ -29,6 +30,7 @@ export default function RootLayout({ children }) {
                 <Sidebar />
                 <main>{children}</main>
               </div>
+              <ReactQueryDevtools />
             </body>
           </MainContextProvider>
         </SessionContextProvider>

@@ -15,11 +15,11 @@ import MotionDiv from "@/components/shared/MotionDiv";
 
 const ProductsPage = () => {
   const { collapseMenu } = useContextProvider();
-  const { data, isLoading, isError, isFetching } = useQuery({
+  const { data, isLoading, isError } = useQuery({
     queryKey: [QUERY_KEYS.products],
     queryFn: getProducts,
-    staleTime: 1 * 60 * 1000,
-    cacheTime: 10 * 1000,
+    staleTime: 1 * 10 * 1000,
+    cacheTime: 10 * 60 * 1000,
   });
 
   if (isLoading) {
