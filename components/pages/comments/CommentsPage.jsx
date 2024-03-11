@@ -20,7 +20,7 @@ const CommentsPage = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: [QUERY_KEYS.comments],
     queryFn: getComments,
-    staleTime: 30 * 60 * 1000,
+    staleTime: 1 * 60 * 1000,
     cacheTime: 60 * 60 * 1000,
   });
 
