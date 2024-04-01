@@ -28,7 +28,7 @@ const Sidebar = () => {
           </div>
         </Link>
       </div>
-      <nav className="pt-[74px]">
+      <nav className="pt-[74px] pb-5">
         <ul>
           {menuLinks.map((item) => (
             <Fragment key={item.title}>
@@ -41,15 +41,15 @@ const Sidebar = () => {
               >
                 <Link
                   href={item.link}
-                  className="flex items-center gap-[15px] p-[10px]"
+                  className="flex items-center gap-[20px] px-[10px] py-[12px]"
                 >
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={16}
-                    height={16}
+                    width={20}
+                    height={20}
                     priority
-                    className="w-[16px]"
+                    className="w-[20px]"
                   />
                   <span class="text-[13px]">{item.title}</span>
                 </Link>
@@ -62,20 +62,20 @@ const Sidebar = () => {
               )}
             </Fragment>
           ))}
-          <li className="rounded-[10px] ml-4 hover:bg-gray-100 transition duration-75 ease-in-out">
+          <li className="rounded-l-[10px] ml-4 hover:bg-gray-100 transition duration-75 ease-in-out">
             <button
               onClick={() => {
                 signOut();
               }}
-              className="flex items-center w-full gap-[15px] p-[10px]"
+              className="flex items-center w-full gap-[20px] p-[10px]"
             >
               <Image
                 src="/icons/power.svg"
-                width={16}
-                height={16}
+                width={20}
+                height={20}
                 alt="logout"
                 priority
-                className="w-[16px]"
+                className="w-[20px]"
               />
               <span class="text-[13px] font-semibold">Exit</span>
             </button>
