@@ -4,14 +4,12 @@ import React, { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContextProvider } from "@/context/MainContextProvider";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import Image from "next/image";
-import { shorterText } from "@/utils/functions";
 import { menuLinks } from "@/constants";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const session = useSession();
   const { collapseMenu, setCollapseMenu, setProgressValue } =
     useContextProvider();
 
@@ -60,41 +58,6 @@ const Sidebar = () => {
             <img src="/icons/angle-right.svg" className="w-[14px]" />
           </button>
         )}
-        <Link
-          href="/account"
-          onClick={() => setProgressValue(10)}
-          className="border rounded-full p-[10px] my-[10px] flex items-center justify-between hover:bg-gray-100 transition duration-150 ease-in-out"
-        >
-          <div className="flex items-center gap-[10px]">
-            <Image
-              src={
-                session?.data?.user?.image
-                  ? session?.data?.user?.image
-                  : session?.data?.user?.roll === "USER"
-                  ? "/man.png"
-                  : "/person.jpg"
-              }
-              width={60}
-              height={60}
-              priority
-              alt="user"
-              className="rounded-full w-[30px] h-[30px] object-cover"
-            />
-            {!collapseMenu && (
-              <div>
-                <p className="font-semibold text-[14px] -mb-1">
-                  {shorterText(session?.data?.user?.name, 10)}
-                </p>
-                <p className="font-semibold text-[10px] text-gray-400">
-                  {shorterText(session?.data?.user?.username, 10)}
-                </p>
-              </div>
-            )}
-          </div>
-          {!collapseMenu && (
-            <img src="/icons/menu-dots.svg" className="w-[12px]" />
-          )}
-        </Link>
         <div>
           <ul>
             {menuLinks.map((item) => (
