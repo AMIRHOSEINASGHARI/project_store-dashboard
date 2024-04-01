@@ -9,7 +9,7 @@ import NavbarSearchBox from "./search/NavbarSearchBox";
 
 const Navbar = () => {
   const session = useSession();
-  const { setProgressValue, collapseMenu } = useContextProvider();
+  const { collapseMenu } = useContextProvider();
 
   return (
     <header
@@ -30,7 +30,6 @@ const Navbar = () => {
           <button
             onClick={() => {
               signOut();
-              setProgressValue(10);
             }}
             className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
           >
@@ -67,11 +66,7 @@ const Navbar = () => {
             />
           </Link>
           {session?.data?.user?.image ? (
-            <Link
-              href="/account"
-              onClick={() => setProgressValue(10)}
-              className="relative ml-2"
-            >
+            <Link href="/account" className="relative ml-2">
               <Image
                 src={session?.data?.user?.image}
                 width={60}
@@ -83,11 +78,7 @@ const Navbar = () => {
               <div className="w-[13px] h-[13px] border-2 border-white rounded-full bg-green-400 absolute bottom-0 -right-1" />
             </Link>
           ) : (
-            <Link
-              href="/account"
-              onClick={() => setProgressValue(10)}
-              className="relative ml-2"
-            >
+            <Link href="/account" className="relative ml-2">
               <Image
                 src={
                   session?.data?.user?.roll === "USER"

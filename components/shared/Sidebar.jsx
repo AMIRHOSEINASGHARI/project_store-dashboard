@@ -10,8 +10,7 @@ import { menuLinks } from "@/constants";
 
 const Sidebar = () => {
   const pathname = usePathname();
-  const { collapseMenu, setCollapseMenu, setProgressValue } =
-    useContextProvider();
+  const { collapseMenu, setCollapseMenu } = useContextProvider();
 
   return (
     <aside
@@ -97,7 +96,6 @@ const Sidebar = () => {
               <button
                 onClick={() => {
                   signOut();
-                  setProgressValue(10);
                 }}
                 className={`flex items-center ${
                   collapseMenu && "justify-center"
