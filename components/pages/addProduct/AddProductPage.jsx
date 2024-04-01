@@ -1,21 +1,13 @@
 "use client";
 
-import { useContextProvider } from "@/context/MainContextProvider";
-import React, { useEffect, useState } from "react";
-import ImageSection from "./ImageSection";
-import ColorsSection from "./ColorsSection";
-import KeywordsSection from "./KeywordsSection";
-import { categories } from "@/constants";
-import CategoryFilter from "./CategoryFilter";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { uploadImage } from "@/utils/functions";
 import { createProduct } from "@/utils/api";
-import Loader from "@/components/shared/Loader";
 import { useRouter } from "next/navigation";
 import ProductFormModal from "@/components/shared/ProductFormModal";
 
 const AddProductPage = () => {
-  const { collapseMenu } = useContextProvider();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({

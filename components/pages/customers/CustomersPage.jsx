@@ -4,7 +4,6 @@ import Loader from "@/components/shared/Loader";
 import PageHeader from "@/components/shared/PageHeader";
 import PageTable from "@/components/shared/PageTable";
 import { customersColumns } from "@/constants";
-import { useContextProvider } from "@/context/MainContextProvider";
 import { fetchCustomers } from "@/utils/api";
 import { shorterText } from "@/utils/functions";
 import Image from "next/image";
@@ -12,7 +11,6 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const CustomersPage = () => {
-  const { collapseMenu } = useContextProvider();
   const [customers, setCustomers] = useState(null);
   const [dataSource, setDataSource] = useState([]);
 
@@ -69,33 +67,17 @@ const CustomersPage = () => {
 
   if (customers === null)
     return (
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20 w-full flex justify-center`}
-      >
+      <div className="w-full flex justify-center">
         <Loader />
       </div>
     );
 
   if (customers.success === false) {
-    return (
-      <h1
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20`}
-      >
-        {customers.msg}
-      </h1>
-    );
+    return <h1>{customers.msg}</h1>;
   }
 
   return (
-    <div
-      className={`${
-        collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-5 pb-20`}
-    >
+    <>
       <PageHeader
         title="Customers"
         links={[
@@ -109,7 +91,7 @@ const CustomersPage = () => {
         dataSource={dataSource}
         pagination={true}
       />
-    </div>
+    </>
   );
 };
 

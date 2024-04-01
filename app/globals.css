@@ -47,12 +47,12 @@ progress::-webkit-progress-value {
   box-shadow: 0 1px 5px #6ca2f7;
 }
 
-.distanceCollapse {
+/* .distanceCollapse {
   @apply pt-[105px] pl-[115px] lg:pl-[110px] min-h-screen transition-all duration-150 max-md:px-4 md:pr-4;
-}
+} */
 
-.distanceNotCollapse {
-  @apply pt-[105px] pl-[280px] lg:pl-[270px] min-h-screen transition-all duration-150 max-md:px-4 md:pr-4;
+.pagesSpaces {
+  @apply pt-[105px] pl-[280px] lg:pl-[270px] max-md:px-4 md:pr-4 max-lg:pb-[50px] lg:mb-[200px] min-h-screen transition-all duration-150;
 }
 
 .heading {

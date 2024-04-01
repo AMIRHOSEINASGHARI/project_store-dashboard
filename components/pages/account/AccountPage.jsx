@@ -13,11 +13,7 @@ const AccountPage = () => {
   const session = useSession();
 
   return (
-    <div
-      className={`${
-        collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-      } space-y-10 pb-20`}
-    >
+    <div>
       <PageHeader
         title="Account"
         links={[

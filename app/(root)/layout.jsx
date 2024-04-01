@@ -6,7 +6,7 @@ const PagesLayout = ({ children }) => {
     <main>
       <Navbar />
       <Sidebar />
-      <div>{children}</div>
+      <div className="pagesSpaces">{children}</div>
     </main>
   );
 };

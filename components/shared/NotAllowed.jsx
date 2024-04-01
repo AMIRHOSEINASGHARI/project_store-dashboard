@@ -9,7 +9,7 @@ const NotAllowed = () => {
   return (
     <div
       className={`${
-        collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
+        collapseMenu ? "distanceCollapse" : "pagesSpaces"
       } space-y-8 flex flex-col items-center justify-center`}
     >
       <Image

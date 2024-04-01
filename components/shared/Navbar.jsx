@@ -1,6 +1,5 @@
 "use client";
 
-import { useContextProvider } from "@/context/MainContextProvider";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,17 +8,10 @@ import NavbarSearchBox from "./search/NavbarSearchBox";
 
 const Navbar = () => {
   const session = useSession();
-  const { collapseMenu } = useContextProvider();
 
   return (
-    <header
-      className={`backdrop-blur max-md:border-b bg-white fixed z-20 left-0 top-0 right-0 px-4 pt-4 ${
-        collapseMenu
-          ? "pl-[115px] lg:pl-[110px] max-md:pl-4"
-          : "pl-[280px] lg:pl-[270px] max-md:pl-4"
-      }`}
-    >
-      <div className="py-2 flex items-center justify-between bg-white">
+    <header className="backdrop-blur-xl max-md:border-b border-b fixed z-20 left-0 top-0 right-0 p-4 pl-[280px] lg:pl-[270px] max-md:pl-4">
+      <div className=" flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="md:hidden">
             <SidebarMenu />

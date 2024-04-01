@@ -2,7 +2,6 @@
 
 import Loader from "@/components/shared/Loader";
 import ProductFormModal from "@/components/shared/ProductFormModal";
-import { useContextProvider } from "@/context/MainContextProvider";
 import { editProduct, fetchProduct } from "@/utils/api";
 import { uploadImage } from "@/utils/functions";
 import { useRouter } from "next/navigation";
@@ -10,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 const EditProductPage = ({ productId }) => {
-  const { collapseMenu } = useContextProvider();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
@@ -78,11 +76,7 @@ const EditProductPage = ({ productId }) => {
 
   if (!form.title) {
     return (
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20`}
-      >
+      <div className="w-full flex justify-center">
         <Loader />
       </div>
     );

@@ -12,7 +12,7 @@ const Sidebar = () => {
 
   return (
     <aside className="w-[250px] border-r border-gray-200 max-md:hidden fixed z-30 left-0 h-screen bg-white overflow-y-auto sidebarScroll">
-      <div className="flex items-center justify-between fixed bg-white p-4 top-0 w-[249px]">
+      <div className="flex items-center justify-between fixed bg-white p-4 top-0 w-[250px] border-r border-gray-200">
         <Link href="/" className="flex items-center gap-[10px]">
           <Image
             src="/logo1.svg"
@@ -28,7 +28,7 @@ const Sidebar = () => {
           </div>
         </Link>
       </div>
-      <nav className="pt-[65px]">
+      <nav className="pt-[74px]">
         <ul>
           {menuLinks.map((item) => (
             <Fragment key={item.title}>

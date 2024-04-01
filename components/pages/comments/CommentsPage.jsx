@@ -1,7 +1,6 @@
 "use client";
 
 import Loader from "@/components/shared/Loader";
-import { useContextProvider } from "@/context/MainContextProvider";
 import { shorterText } from "@/utils/functions";
 import Image from "next/image";
 import moment from "moment";
@@ -17,7 +16,6 @@ import { Table } from "antd";
 import PageHeader from "@/components/shared/PageHeader";
 
 const CommentsPage = () => {
-  const { collapseMenu } = useContextProvider();
   const { data, isLoading, isError } = useQuery({
     queryKey: [QUERY_KEYS.comments],
     queryFn: getComments,
@@ -27,21 +25,13 @@ const CommentsPage = () => {
 
   if (isLoading) {
     return (
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20 w-full flex justify-center`}
-      >
+      <div className="w-full flex justify-center">
         <Loader w={30} h={30} />
       </div>
     );
   } else if (isError) {
     return (
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20 w-full flex justify-center`}
-      >
+      <div className="w-full flex justify-center">
         <h1>Error</h1>
       </div>
     );
@@ -84,11 +74,7 @@ const CommentsPage = () => {
 
   return (
     <MotionDiv>
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20`}
-      >
+      <div>
         <PageHeader
           title="Comments"
           links={[

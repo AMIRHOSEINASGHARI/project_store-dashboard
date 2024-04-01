@@ -5,7 +5,6 @@ import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
 import QUERY_KEYS from "@/services/reactQuery/queryKeys";
 import { getProducts } from "@/services/reactQuery/queries";
-import { useContextProvider } from "@/context/MainContextProvider";
 import { shorterText } from "@/utils/functions";
 import { Table } from "antd";
 import Loader from "@/components/shared/Loader";
@@ -15,7 +14,6 @@ import MotionDiv from "@/components/shared/MotionDiv";
 import PageHeader from "@/components/shared/PageHeader";
 
 const ProductsPage = () => {
-  const { collapseMenu } = useContextProvider();
   const { data, isLoading, isError } = useQuery({
     queryKey: [QUERY_KEYS.products],
     queryFn: getProducts,
@@ -25,21 +23,13 @@ const ProductsPage = () => {
 
   if (isLoading) {
     return (
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20 w-full flex justify-center`}
-      >
+      <div className="w-full flex justify-center">
         <Loader w={30} h={30} />
       </div>
     );
   } else if (isError) {
     return (
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20 w-full flex justify-center`}
-      >
+      <div className="w-full flex justify-center">
         <h1>Error</h1>
       </div>
     );
@@ -90,28 +80,21 @@ const ProductsPage = () => {
 
   return (
     <MotionDiv>
-      <div
-        className={`${
-          collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
-        } space-y-5 pb-20`}
-      >
-        <PageHeader
-          title="Products"
-          links={[
-            { name: "Dashboard", route: "/" },
-            { name: "Products", route: "/products" },
-          ]}
-          subLink="List"
-        />
-
-        <Table
-          className="cardShadow3 rounded-xl"
-          scroll={{ x: true }}
-          pagination={{ pageSize: 10, position: ["bottomLeft"] }}
-          columns={productsColumns}
-          dataSource={dataSource}
-        />
-      </div>
+      <PageHeader
+        title="Products"
+        links={[
+          { name: "Dashboard", route: "/" },
+          { name: "Products", route: "/products" },
+        ]}
+        subLink="List"
+      />
+      <Table
+        className="cardShadow3 rounded-xl"
+        scroll={{ x: true }}
+        pagination={{ pageSize: 10, position: ["bottomLeft"] }}
+        columns={productsColumns}
+        dataSource={dataSource}
+      />
     </MotionDiv>
   );
 };
