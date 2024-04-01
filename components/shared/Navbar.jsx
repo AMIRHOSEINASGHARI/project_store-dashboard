@@ -1,20 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import SidebarMenu from "./SidebarMenu";
+import MobileNavMenu from "./MobileNavMenu";
 import NavbarSearchBox from "./search/NavbarSearchBox";
 
 const Navbar = () => {
   const session = useSession();
+  const [open, setOpen] = useState(false);
+
+  const onClose = () => {
+    setOpen(false);
+  };
 
   return (
-    <header className="backdrop-blur-xl max-md:border-b border-b fixed z-20 left-0 top-0 right-0 p-4 pl-[280px] lg:pl-[270px] max-md:pl-4">
-      <div className=" flex items-center justify-between">
+    <header className="lg:backdrop-blur-xl max-lg:bg-white max-md:border-b border-b fixed z-20 left-0 top-0 right-0 p-4 pl-[280px] lg:pl-[270px] max-md:pl-4">
+      <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="md:hidden">
-            <SidebarMenu />
+            <MobileNavMenu onClose={onClose} open={open} setOpen={setOpen} />
           </div>
           <NavbarSearchBox />
         </div>
