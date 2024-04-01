@@ -15,9 +15,6 @@ const Sidebar = () => {
   const { collapseMenu, setCollapseMenu, setProgressValue } =
     useContextProvider();
 
-  if (pathname.includes("/login") || pathname.includes("/register"))
-    return null;
-
   return (
     <aside
       className={`border-r border-gray-100 max-md:hidden fixed z-30 left-0 h-screen bg-white overflow-y-auto sidebarScroll ${

@@ -19,17 +19,9 @@ export default function RootLayout({ children }) {
         <SessionContextProvider>
           <MainContextProvider>
             <body>
-              <div>
-                <Toaster position="top-center" />
-              </div>
-              <div>
-                <ProgressLoadPage />
-              </div>
-              <Navbar />
-              <div>
-                <Sidebar />
-                <main>{children}</main>
-              </div>
+              <Toaster position="top-center" />
+              <ProgressLoadPage />
+              <main>{children}</main>
               <ReactQueryDevtools />
             </body>
           </MainContextProvider>
