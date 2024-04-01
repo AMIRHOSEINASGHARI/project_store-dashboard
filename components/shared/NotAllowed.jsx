@@ -1,17 +1,8 @@
-"use client";
-
-import { useContextProvider } from "@/context/MainContextProvider";
 import Image from "next/image";
-import React from "react";
 
 const NotAllowed = () => {
-  const { collapseMenu } = useContextProvider();
   return (
-    <div
-      className={`${
-        collapseMenu ? "distanceCollapse" : "pagesSpaces"
-      } space-y-8 flex flex-col items-center justify-center`}
-    >
+    <div className="flex flex-col items-center justify-center">
       <Image
         src="/not-allowed.png"
         width={250}
@@ -21,7 +12,7 @@ const NotAllowed = () => {
       />
       <div className="w-full">
         <h1 className="text-4xl font-black text-gray-600 text-center mb-5">
-          Access blocked!
+          Access blocked!asd
         </h1>
       </div>
     </div>
