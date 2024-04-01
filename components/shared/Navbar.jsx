@@ -4,17 +4,12 @@ import { useContextProvider } from "@/context/MainContextProvider";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import SidebarMenu from "./SidebarMenu";
 import NavbarSearchBox from "./search/NavbarSearchBox";
 
 const Navbar = () => {
   const session = useSession();
-  const pathname = usePathname();
   const { setProgressValue, collapseMenu } = useContextProvider();
-
-  if (pathname.includes("/login") || pathname.includes("/register"))
-    return null;
 
   return (
     <header
