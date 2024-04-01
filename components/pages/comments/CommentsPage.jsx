@@ -14,6 +14,7 @@ import QUERY_KEYS from "@/services/reactQuery/queryKeys";
 import { getComments } from "@/services/reactQuery/queries";
 import MotionDiv from "@/components/shared/MotionDiv";
 import { Table } from "antd";
+import PageHeader from "@/components/shared/PageHeader";
 
 const CommentsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -88,27 +89,14 @@ const CommentsPage = () => {
           collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
         } space-y-5 pb-20`}
       >
-        <div>
-          <h1 className="sm:text-[35px] text-[20px] font-[700]">Comments</h1>
-          <div className="flex items-center gap-2 text-[14px]">
-            <Link
-              href="/"
-              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-            >
-              Dashboard
-            </Link>
-            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-            <Link
-              href="/products"
-              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-            >
-              Products
-            </Link>
-            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-            <p className="font-[400] text-gray-400">Comments</p>
-          </div>
-        </div>
-
+        <PageHeader
+          title="Comments"
+          links={[
+            { name: "Dashboard", route: "/" },
+            { name: "Products", route: "/products" },
+          ]}
+          subLink="Comments"
+        />
         <Table
           className="cardShadow3 rounded-xl"
           scroll={{ x: true }}

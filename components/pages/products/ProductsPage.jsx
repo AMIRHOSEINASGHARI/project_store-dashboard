@@ -12,6 +12,7 @@ import Loader from "@/components/shared/Loader";
 import { productsColumns } from "@/constants";
 import DeleteProduct from "./DeleteProduct";
 import MotionDiv from "@/components/shared/MotionDiv";
+import PageHeader from "@/components/shared/PageHeader";
 
 const ProductsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -94,26 +95,14 @@ const ProductsPage = () => {
           collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
         } space-y-5 pb-20`}
       >
-        <div>
-          <h1 className="sm:text-[35px] text-[20px] font-[700]">Products</h1>
-          <div className="flex items-center gap-2 text-[14px]">
-            <Link
-              href="/"
-              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-            >
-              Dashboard
-            </Link>
-            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-            <Link
-              href="/products"
-              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-            >
-              Products
-            </Link>
-            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-            <p className="font-[400] text-gray-400">List</p>
-          </div>
-        </div>
+        <PageHeader
+          title="Products"
+          links={[
+            { name: "Dashboard", route: "/" },
+            { name: "Products", route: "/products" },
+          ]}
+          subLink="List"
+        />
 
         <Table
           className="cardShadow3 rounded-xl"

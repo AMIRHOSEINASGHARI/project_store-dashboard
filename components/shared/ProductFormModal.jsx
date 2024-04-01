@@ -3,10 +3,9 @@
 import { useContextProvider } from "@/context/MainContextProvider";
 import CategoryFilter from "../pages/addProduct/CategoryFilter";
 import ImageSection from "../pages/addProduct/ImageSection";
-import ColorsSection from "../pages/addProduct/ColorsSection";
 import KeywordsSection from "../pages/addProduct/KeywordsSection";
 import Loader from "./Loader";
-import Link from "next/link";
+import PageHeader from "./PageHeader";
 
 const ProductFormModal = ({
   type,
@@ -24,28 +23,14 @@ const ProductFormModal = ({
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-[200px]`}
     >
-      <h1 className="sm:text-[35px] text-[20px] font-[700] -mb-6">
-        {type === "create" ? "Create a new product" : "Edit your product"}
-      </h1>
-      <div className="flex items-center gap-2 text-[14px]">
-        <Link
-          href="/"
-          className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-        >
-          Dashboard
-        </Link>
-        <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-        <Link
-          href="/products"
-          className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-        >
-          Products
-        </Link>
-        <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-        <p className="font-[400] text-gray-400">
-          {type === "create" ? "Create" : "Edit"}
-        </p>
-      </div>
+      <PageHeader
+        title={type === "create" ? "Create a new product" : "Edit your product"}
+        links={[
+          { name: "Dashboard", route: "/" },
+          { name: "Products", route: "/products" },
+        ]}
+        subLink={type === "create" ? "Create" : "Edit"}
+      />
 
       <section className="lg:flex cardShadow3 rounded-2xl py-[32px] px-[24px]">
         <div className="w-full lg:w-[500px] max-lg:mb-10">

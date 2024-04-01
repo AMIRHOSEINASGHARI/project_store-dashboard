@@ -7,8 +7,8 @@ const Loader = ({ h, w, color }) => {
     <>
       <TailSpin
         visible={true}
-        height={h || 50}
-        width={w || 50}
+        height={h || 30}
+        width={w || 30}
         color={color || "#000"}
         ariaLabel="tail-spin-loading"
         radius="1"

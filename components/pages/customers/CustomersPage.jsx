@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/components/shared/Loader";
+import PageHeader from "@/components/shared/PageHeader";
 import PageTable from "@/components/shared/PageTable";
 import { customersColumns } from "@/constants";
 import { useContextProvider } from "@/context/MainContextProvider";
@@ -95,28 +96,14 @@ const CustomersPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-20`}
     >
-      <div>
-        <div className="">
-          <h1 className="sm:text-[35px] text-[20px] font-[700]">Customers</h1>
-          <div className="flex items-center gap-2 text-[14px]">
-            <Link
-              href="/"
-              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-            >
-              Dashboard
-            </Link>
-            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-            <Link
-              href="/customers"
-              className="font-[400] text-gray-600 border-b border-transparent hover:border-gray-400"
-            >
-              Customers
-            </Link>
-            <div className="w-[4px] h-[4px] bg-gray-600 rounded-full" />
-            <p className="font-[400] text-gray-400">List</p>
-          </div>
-        </div>
-      </div>
+      <PageHeader
+        title="Customers"
+        links={[
+          { name: "Dashboard", route: "/" },
+          { name: "Customers", route: "/customers" },
+        ]}
+        subLink="List"
+      />
       <PageTable
         columns={customersColumns}
         dataSource={dataSource}

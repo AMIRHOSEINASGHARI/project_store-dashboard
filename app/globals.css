@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "~@flaticon/flaticon-uicons/css/all/all";
-
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-family: "Poppins", sans-serif;

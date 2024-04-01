@@ -5,6 +5,7 @@ import { useContextProvider } from "@/context/MainContextProvider";
 import { fetchBlogs } from "@/utils/api";
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
+import PageHeader from "@/components/shared/PageHeader";
 
 const BlogsPage = () => {
   const { collapseMenu } = useContextProvider();
@@ -48,6 +49,14 @@ const BlogsPage = () => {
         collapseMenu ? "distanceCollapse" : "distanceNotCollapse"
       } space-y-5 pb-20`}
     >
+      <PageHeader
+        title="Blogs"
+        links={[
+          { name: "Dashboard", route: "/" },
+          { name: "Blogs", route: "/blogs" },
+        ]}
+        subLink="List"
+      />
       {blogs?.blogs?.length !== 0 && (
         <div
           className={`grid grid-cols-1 ${
