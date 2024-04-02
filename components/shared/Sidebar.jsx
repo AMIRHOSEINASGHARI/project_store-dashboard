@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { icons, menuLinks } from "@/constants";
+import { icons, images, menuLinks } from "@/constants";
 import { PiPowerThin } from "react-icons/pi";
 
 const Sidebar = () => {
@@ -16,7 +16,7 @@ const Sidebar = () => {
       <div className="flex items-center justify-between fixed bg-white p-4 top-0 w-[250px] border-r border-gray-200">
         <Link href="/" className="flex items-center gap-[10px]">
           <Image
-            src="/logo1.svg"
+            src={images.logo1}
             width={35}
             height={35}
             alt="logo"

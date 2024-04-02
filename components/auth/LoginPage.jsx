@@ -7,6 +7,7 @@ import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
 import Loader from "../shared/Loader";
 import Image from "next/image";
+import { images } from "@/constants";
 
 const LoginPage = () => {
   const [loader, setLoader] = useState(false);
@@ -52,7 +53,7 @@ const LoginPage = () => {
     >
       <div className="max-xl:hidden bg-gray-100 rounded-3xl h-screen w-1/2 flex items-center justify-center">
         <Image
-          src="/auth-login.png"
+          src={images.authLogin}
           width={450}
           height={450}
           alt="auth-login"
@@ -63,7 +64,7 @@ const LoginPage = () => {
         <div className="sm:w-[400px]">
           <div className="mb-[30px]">
             <Image
-              src="/logo1.svg"
+              src={images.logo1}
               width={40}
               height={40}
               alt="logo"
@@ -107,8 +108,8 @@ const LoginPage = () => {
               type="submit"
               disabled={loader && true}
               className={`${
-                loader ? "bg-gray-100" : "bg-violet-600"
-              } text-white rounded-lg w-full py-2 font-bold flex justify-center`}
+                loader ? "bg-gray-100" : "bg-black"
+              } text-white rounded-lg w-full py-3 font-bold flex justify-center`}
             >
               {loader ? <Loader h={25} w={25} /> : "Submit"}
             </button>

@@ -22,6 +22,16 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { CiDark, CiDeliveryTruck, CiSearch, CiSettings } from "react-icons/ci";
 import { TfiClose } from "react-icons/tfi";
 
+export const images = {
+  logo1: "/logo1.svg",
+  authLogin: "/auth-login.png",
+  authRegister: "/auth-register.png",
+  person_admin: "/person.jpg",
+  person_1: "/man.png",
+  notFound: "/404.svg",
+  notAllowed: "/not-allowed.png",
+};
+
 export const icons = {
   home: <GoHome />,
   deliveryTruck: <CiDeliveryTruck />,

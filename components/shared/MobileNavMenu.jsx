@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Drawer } from "antd";
-import { icons, menuLinks } from "@/constants";
+import { icons, images, menuLinks } from "@/constants";
 import { Fragment } from "react";
 import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
@@ -21,7 +21,13 @@ const MobileNav = ({ onClose, open, setOpen }) => {
     title: (
       <div className="flex items-center justify-between">
         <Link href="/" className="flex items-center gap-[10px]">
-          <Image src="/logo1.svg" width={35} height={35} alt="logo" priority />
+          <Image
+            src={images.logo1}
+            width={35}
+            height={35}
+            alt="logo"
+            priority
+          />
           <div className="flex items-center italic font-bold">
             <span className="text-violet-600">Online</span>
             <span>Shop</span>
