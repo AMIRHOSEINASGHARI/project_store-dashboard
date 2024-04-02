@@ -10,6 +10,13 @@ import {
   PiUsersThin,
   PiTelevisionSimpleBold,
   PiPowerThin,
+  PiTrashSimple,
+  PiNewspaperLight,
+  PiPencilSimpleLight,
+  PiUploadLight,
+  PiHeartLight,
+  PiClockLight,
+  PiLockSimpleOpenLight,
 } from "react-icons/pi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
 import { LuLaptop, LuHardDrive, LuSpeaker } from "react-icons/lu";
@@ -50,6 +57,13 @@ export const icons = {
   search: <CiSearch />,
   close: <TfiClose />,
   moon: <CiDark />,
+  trash: <PiTrashSimple />,
+  pen: <PiPencilSimpleLight />,
+  document: <PiNewspaperLight />,
+  upload: <PiUploadLight />,
+  heart: <PiHeartLight />,
+  clock: <PiClockLight />,
+  lock: <PiLockSimpleOpenLight />,
 };
 
 export const menuLinks = [

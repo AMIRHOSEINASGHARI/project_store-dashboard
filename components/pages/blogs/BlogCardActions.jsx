@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdOutlineDelete } from "react-icons/md";
 import Link from "next/link";
+import { icons } from "@/constants";
 
 const BlogCardActions = ({ _id }) => {
   const [loading, setLoading] = useState(false);
@@ -18,14 +19,14 @@ const BlogCardActions = ({ _id }) => {
         target="_blank"
         className="bg-gray-100 text-gray-600 hover:text-blue-500 transition-all duration-150 rounded-xl p-3 flex items-center justify-center flex-1 gap-2"
       >
-        <CiEdit className="text-[20px]" />
+        <div className="text-[22px]">{icons.pen}</div>
         <p className="text-xs">Edit</p>
       </Link>
       <button
         className="bg-gray-100 text-gray-600 hover:text-red-500 transition-all duration-150 rounded-xl p-3 flex items-center justify-center flex-1 gap-2"
         onClick={() => clickHandler(_id)}
       >
-        <MdOutlineDelete className="text-[20px]" />
+        <div className="text-[22px]">{icons.trash}</div>
         <p className="text-xs">Delete</p>
       </button>
     </div>

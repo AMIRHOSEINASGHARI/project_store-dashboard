@@ -10,6 +10,7 @@ import ImageSection from "../addProduct/ImageSection";
 import { uploadImage } from "@/utils/functions";
 import { updateUserInfo } from "@/utils/api";
 import { signOut } from "next-auth/react";
+import { icons, images } from "@/constants";
 
 const EditProfile = (props) => {
   let [isOpen, setIsOpen] = useState(false);
@@ -84,16 +85,18 @@ const EditProfile = (props) => {
         <Image
           src={
             props?.user?.image ||
-            (props?.user?.roll === "ADMIN" ? "/person.jpg" : "/man.png")
+            (props?.user?.roll === "ADMIN"
+              ? images.person_admin
+              : images.person_1)
           }
-          width={250}
-          height={250}
+          width={120}
+          height={120}
           alt={props?.user?.name}
           priority
           className="rounded-full w-[120px] h-[120px] object-cover outline outline-offset-4 outline-2 outline-gray-100"
         />
         <button className="absolute -bottom-1 right-2 border-2 shadow-xl bg-white text-gray-600 rounded-full p-2 text-md">
-          <BiEditAlt />
+          {icons.pen}
         </button>
       </div>
 

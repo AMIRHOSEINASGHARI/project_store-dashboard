@@ -8,6 +8,7 @@ import Loader from "@/components/shared/Loader";
 import toast from "react-hot-toast";
 import { giveAccessToUser } from "@/utils/api";
 import { useSession } from "next-auth/react";
+import { icons } from "@/constants";
 
 const AccessList = (props) => {
   const session = useSession();
@@ -39,14 +40,18 @@ const AccessList = (props) => {
     }
   };
 
+  if (session?.data?.user?.roll !== "ADMIN") {
+    return <p>!</p>;
+  }
+
   return (
     <>
       <button
-        className="bg-blue-100 rounded-xl py-1 px-3 font-bold text-blue-500 border border-blue-300"
+        className="bg-gray-100 rounded-full text-[18px] p-2 font-bold text-gray-500 border border-gray-300"
         disabled={session?.data?.user?.roll !== "ADMIN"}
         onClick={openModal}
       >
-        <GrUserAdmin />
+        {icons.lock}
       </button>
 
       <Transition appear show={isOpen} as={Fragment}>

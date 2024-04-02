@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/components/shared/Loader";
+import { icons } from "@/constants";
 import { answerToComment } from "@/utils/api";
 import { Drawer, Image } from "antd";
 import moment from "moment";
@@ -48,8 +49,11 @@ const CommentDetail = ({
 
   return (
     <div>
-      <button onClick={() => showDrawer()}>
-        <PiEyeBold className="text-[25px] text-gray-500" />
+      <button
+        className="text-[22px] hover:text-blue-500 transition duration-300 ease-in-out"
+        onClick={() => showDrawer()}
+      >
+        {icons.document}
       </button>
       <Drawer
         title="Complete details of comment"

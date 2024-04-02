@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/components/shared/Loader";
+import { icons } from "@/constants";
 import { deleteComment } from "@/utils/api";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -20,12 +21,11 @@ const DeleteComment = ({ commentId, fetchData }) => {
     }
   };
   return (
-    <button onClick={() => clickHandler(commentId)}>
-      {loading ? (
-        <Loader w={20} h={20} />
-      ) : (
-        <MdOutlineDelete className="text-[25px] text-gray-500" />
-      )}
+    <button
+      className="text-[22px] hover:text-red-500 transition duration-300 ease-in-out"
+      onClick={() => clickHandler(commentId)}
+    >
+      {loading ? <Loader w={20} h={20} /> : icons.trash}
     </button>
   );
 };

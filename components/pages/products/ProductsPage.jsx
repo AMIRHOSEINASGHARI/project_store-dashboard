@@ -8,7 +8,7 @@ import { getProducts } from "@/services/reactQuery/queries";
 import { shorterText } from "@/utils/functions";
 import { Table } from "antd";
 import Loader from "@/components/shared/Loader";
-import { productsColumns } from "@/constants";
+import { icons, productsColumns } from "@/constants";
 import DeleteProduct from "./DeleteProduct";
 import MotionDiv from "@/components/shared/MotionDiv";
 import PageHeader from "@/components/shared/PageHeader";
@@ -67,11 +67,11 @@ const ProductsPage = () => {
     ), //TODO: make this dynamic
     actions: (
       <div className="flex items-center gap-5">
-        <Link href={`/products/${p?._id}`} className="w-[20px] h-[20px]">
-          <img src="/icons/document.svg" className="w-full h-full" />
+        <Link href={`/products/${p?._id}`} className="text-[22px]">
+          {icons.document}
         </Link>
-        <Link href={`/products/edit/${p?._id}`} className="w-[20px] h-[20px]">
-          <img src="/icons/edit.svg" className="w-full h-full" />
+        <Link href={`/products/edit/${p?._id}`} className="text-[22px]">
+          {icons.pen}
         </Link>
         <DeleteProduct productId={p?._id} />
       </div>

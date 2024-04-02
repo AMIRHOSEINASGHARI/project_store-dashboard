@@ -6,6 +6,7 @@ import React from "react";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import BlogCardActions from "./BlogCardActions";
+import { icons } from "@/constants";
 
 const BlogCard = ({ title, image, createdAt, slug, _id, likes, fetchData }) => {
   return (
@@ -13,8 +14,8 @@ const BlogCard = ({ title, image, createdAt, slug, _id, likes, fetchData }) => {
       <Link href={`/blogs/${slug}`}>
         <Image
           src={image}
-          width={500}
-          height={500}
+          width={200}
+          height={200}
           alt={title}
           priority
           className="w-full h-[200px] object-cover"
@@ -30,12 +31,12 @@ const BlogCard = ({ title, image, createdAt, slug, _id, likes, fetchData }) => {
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <AiOutlineClockCircle className="text-[25px]" />
+              <div className="text-[22px]">{icons.clock}</div>
               <p className="text-[13px]">{moment(createdAt).fromNow()}</p>
             </div>
             <div className="flex items-center gap-2">
               <span>{likes.length}</span>
-              <MdOutlineFavoriteBorder className="text-[25px]" />
+              <div className="text-[22px]">{icons.heart}</div>
             </div>
           </div>
           <BlogCardActions _id={_id} />

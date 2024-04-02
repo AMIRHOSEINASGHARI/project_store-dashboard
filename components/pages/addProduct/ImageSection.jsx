@@ -1,8 +1,8 @@
+import { icons } from "@/constants";
 import { resizeFile } from "@/utils/functions";
 import Image from "next/image";
 import React from "react";
 import toast from "react-hot-toast";
-import { AiOutlineFolderAdd } from "react-icons/ai";
 
 const ImageSection = ({ form, setForm, type }) => {
   const handleChangeImage = async (e) => {
@@ -32,15 +32,8 @@ const ImageSection = ({ form, setForm, type }) => {
               <span className="text-white rounded-full font-semibold bg-blue-500 py-2 px-5 mt-2">
                 Images less than 10MB
               </span> */}
-              <div className="bg-gray-200 rounded-full w-[70px] h-[70px] flex items-center justify-center">
-                <Image
-                  src="/icons/upload.svg"
-                  width={50}
-                  height={50}
-                  alt="upload"
-                  priority
-                  className="w-[25px] h-[25px]"
-                />
+              <div className="bg-gray-200 rounded-full w-[70px] h-[70px] text-[30px] flex items-center justify-center">
+                {icons.upload}
               </div>
               <div>
                 <p className="md:flex font-semibold text-[20px]">

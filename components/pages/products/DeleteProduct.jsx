@@ -1,6 +1,7 @@
 "use client";
 
 import Loader from "@/components/shared/Loader";
+import { icons } from "@/constants";
 import { deleteProduct } from "@/utils/api";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
@@ -13,8 +14,8 @@ const DeleteProduct = ({ fetchData, productId }) => {
   };
 
   return (
-    <button className="w-[20px] h-[20px]">
-      <img src="/icons/trash.svg" className="w-full h-full" />
+    <button className="text-[22px] hover:text-red-500 transition duration-300 ease-in-out">
+      {icons.trash}
     </button>
   );
 };
