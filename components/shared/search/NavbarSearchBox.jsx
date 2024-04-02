@@ -1,21 +1,16 @@
 "use client";
 
-import Image from "next/image";
+import { CiSearch } from "react-icons/ci";
 
 const NavbarSearchBox = () => {
   return (
     <div>
-      <button>
-        <div className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150">
-          <Image
-            src="/icons/search.svg"
-            width={20}
-            height={20}
-            alt="search"
-            priority
-            className="w-[20px] h-[20px] text-gray-500"
-          />
-        </div>
+      <button className="md:hidden p-2 hover:bg-gray-100 rounded-full transition-all duration-150">
+        <CiSearch className="text-[22px]" />
+      </button>
+      <button className="max-md:hidden flex items-center gap-5 bg-gray-100 py-2 px-4 hover:bg-gray-200 rounded-xl transition-all duration-150">
+        <CiSearch className="text-[22px]" />
+        <span className="font-light text-[12px] text-gray-500">Search...</span>
       </button>
     </div>
   );

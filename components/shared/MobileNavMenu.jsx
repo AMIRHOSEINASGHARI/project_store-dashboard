@@ -3,13 +3,13 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Drawer } from "antd";
-import { HiMenuAlt2 } from "react-icons/hi";
 import { menuLinks } from "@/constants";
 import { Fragment } from "react";
 import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { AiOutlineClose } from "react-icons/ai";
 import { PiPowerThin } from "react-icons/pi";
+import { CiMenuBurger } from "react-icons/ci";
+import { TfiClose } from "react-icons/tfi";
 
 const MobileNav = ({ onClose, open, setOpen }) => {
   const pathname = usePathname();
@@ -29,7 +29,7 @@ const MobileNav = ({ onClose, open, setOpen }) => {
           </div>
         </Link>
         <button onClick={() => onClose()}>
-          <AiOutlineClose className="text-[25px] text-gray-700" />
+          <TfiClose className="text-[22px] text-gray-700" />
         </button>
       </div>
     ),
@@ -39,9 +39,9 @@ const MobileNav = ({ onClose, open, setOpen }) => {
     <div>
       <button
         onClick={() => setOpen(true)}
-        className="hover:bg-gray-50 rounded-full transition-all duration-150"
+        className="hover:bg-gray-50 p-2 rounded-full transition-all duration-150"
       >
-        <HiMenuAlt2 className="w-[25px] h-[25px]" />
+        <CiMenuBurger className="text-[22px]" />
       </button>
       <Drawer
         placement="left"

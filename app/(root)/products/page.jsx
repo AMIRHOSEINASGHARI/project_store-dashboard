@@ -1,6 +1,6 @@
 import ProductsPage from "@/components/pages/products/ProductsPage";
 
-const Products = async () => {
+const Products = () => {
   return <ProductsPage />;
 };
 

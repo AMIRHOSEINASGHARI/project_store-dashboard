@@ -6,6 +6,9 @@ import Image from "next/image";
 import Link from "next/link";
 import MobileNavMenu from "./MobileNavMenu";
 import NavbarSearchBox from "./search/NavbarSearchBox";
+import { PiPowerThin } from "react-icons/pi";
+import { CiDark } from "react-icons/ci";
+import { IoIosNotificationsOutline } from "react-icons/io";
 
 const Navbar = () => {
   const session = useSession();
@@ -31,37 +34,16 @@ const Navbar = () => {
             }}
             className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
           >
-            <Image
-              src="/icons/power.svg"
-              width={50}
-              height={50}
-              alt="power"
-              priority
-              className="w-[20px] h-[20px] text-gray-500"
-            />
+            <PiPowerThin className="text-[22px]" />
           </button>
           <button className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150">
-            <Image
-              src="/icons/dark.svg"
-              width={50}
-              height={50}
-              alt="dark-mode"
-              priority
-              className="w-[20px] h-[20px] text-gray-500"
-            />
+            <CiDark className="text-[22px]" />
           </button>
           <Link
             href="/notifications"
             className="p-2 hover:bg-gray-100 rounded-full transition-all duration-150"
           >
-            <Image
-              src="/icons/bell.svg"
-              width={50}
-              height={50}
-              alt="bell"
-              priority
-              className="w-[20px] h-[20px] text-gray-500"
-            />
+            <IoIosNotificationsOutline className="text-[22px]" />
           </Link>
           {session?.data?.user?.image ? (
             <Link href="/account" className="relative ml-2">

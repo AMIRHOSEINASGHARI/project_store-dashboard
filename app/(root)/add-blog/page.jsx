@@ -1,6 +1,6 @@
 import AddBlogPage from "@/components/pages/addBlog/AddBlogPage";
 
-const AddBlog = async () => {
+const AddBlog = () => {
   return <AddBlogPage />;
 };
 

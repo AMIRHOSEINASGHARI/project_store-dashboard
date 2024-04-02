@@ -1,6 +1,6 @@
 import CustomersPage from "@/components/pages/customers/CustomersPage";
 
-const Customers = async () => {
+const Customers = () => {
   return <CustomersPage />;
 };
 
