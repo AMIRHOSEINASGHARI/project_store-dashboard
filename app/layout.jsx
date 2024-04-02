@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
             <body>
               <Toaster position="top-center" />
               <main>{children}</main>
-              <ReactQueryDevtools />
+              {/* <ReactQueryDevtools /> */}
             </body>
           </MainContextProvider>
         </SessionContextProvider>

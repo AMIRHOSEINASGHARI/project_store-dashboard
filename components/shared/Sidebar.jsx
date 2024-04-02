@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { menuLinks } from "@/constants";
+import { PiPowerThin } from "react-icons/pi";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -35,22 +36,15 @@ const Sidebar = () => {
               <li
                 className={`rounded-l-[10px] ml-4 transition duration-75 ease-in-out mb-[2px] ${
                   pathname === item.link
-                    ? "bg-gray-100 hover:bg-gray-200 font-bold border-r-4 border-gray-500"
-                    : "bg-white hover:bg-gray-100 font-semibold"
+                    ? "bg-gray-100 hover:bg-gray-200 text-purple-600 font-bold border-r-4 border-purple-500"
+                    : "bg-white hover:bg-gray-100 font-light"
                 }`}
               >
                 <Link
                   href={item.link}
                   className="flex items-center gap-[20px] px-[10px] py-[12px]"
                 >
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={20}
-                    height={20}
-                    priority
-                    className="w-[20px]"
-                  />
+                  <div className="text-[22px]">{item.image}</div>
                   <span class="text-[13px]">{item.title}</span>
                 </Link>
               </li>
@@ -62,22 +56,17 @@ const Sidebar = () => {
               )}
             </Fragment>
           ))}
-          <li className="rounded-l-[10px] ml-4 hover:bg-gray-100 transition duration-75 ease-in-out">
+          <li className="rounded-l-[10px] ml-4 hover:bg-red-50 text-red-600 hover:text-red-700 transition duration-75 ease-in-out">
             <button
               onClick={() => {
                 signOut();
               }}
               className="flex items-center w-full gap-[20px] p-[10px]"
             >
-              <Image
-                src="/icons/power.svg"
-                width={20}
-                height={20}
-                alt="logout"
-                priority
-                className="w-[20px]"
-              />
-              <span class="text-[13px] font-semibold">Exit</span>
+              <div className="text-[22px]">
+                <PiPowerThin />
+              </div>
+              <span class="text-[13px] font-light">Exit</span>
             </button>
           </li>
         </ul>

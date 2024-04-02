@@ -1,150 +1,89 @@
-import { BsCurrencyDollar } from "react-icons/bs";
-import { GoNote } from "react-icons/go";
-import { HiOutlinePlus } from "react-icons/hi";
-import { PiUsersThree } from "react-icons/pi";
-import { MdOutlineManageAccounts, MdOutlineShoppingBag } from "react-icons/md";
-import { RxDashboard } from "react-icons/rx";
-import { MdOutlineModeComment } from "react-icons/md";
-import { FaHourglassEnd } from "react-icons/fa6";
+import { GoHome, GoTasklist } from "react-icons/go";
+import {
+  PiBasketThin,
+  PiCurrencyDollarSimpleThin,
+  PiLayoutLight,
+  PiPaperPlaneThin,
+  PiPlusSquareThin,
+  PiTextBLight,
+  PiTextboxLight,
+  PiUsersThin,
+  PiTelevisionSimpleBold,
+} from "react-icons/pi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
-import { LuLaptop } from "react-icons/lu";
-import { PiTelevisionSimpleBold } from "react-icons/pi";
-import { MdOutlineWatch } from "react-icons/md";
+import { LuLaptop, LuHardDrive, LuSpeaker } from "react-icons/lu";
+import { MdOutlineWatch, MdOutlinePhotoCamera } from "react-icons/md";
 import { TbDeviceGamepad2 } from "react-icons/tb";
 import { FiHeadphones, FiPrinter } from "react-icons/fi";
-import { MdOutlinePhotoCamera } from "react-icons/md";
 import { FaComputer } from "react-icons/fa6";
-import { LuHardDrive } from "react-icons/lu";
 import { SlScreenTablet } from "react-icons/sl";
-import { LuSpeaker } from "react-icons/lu";
-
-export const menuList = [
-  {
-    title: "Dashboard",
-    icon: <RxDashboard />,
-    link: "/",
-    id: "1",
-  },
-  {
-    title: "Orders",
-    icon: <FaHourglassEnd />,
-    link: "/orders",
-    id: "2",
-  },
-  {
-    title: "Earn",
-    icon: <BsCurrencyDollar />,
-    link: "/earn",
-    id: "8",
-  },
-  {
-    title: "Products",
-    icon: <MdOutlineShoppingBag />,
-    link: "/products",
-    id: "5",
-  },
-  {
-    title: "Add Product",
-    icon: <HiOutlinePlus />,
-    link: "/add-product",
-    id: "3",
-  },
-  {
-    title: "Comments",
-    icon: <MdOutlineModeComment />,
-    link: "/comments",
-    id: "9",
-  },
-  {
-    title: "Blogs",
-    icon: <GoNote />,
-    link: "/blogs",
-    id: "7",
-  },
-  {
-    title: "Create Blog",
-    icon: <HiOutlinePlus />,
-    link: "/add-blog",
-    id: "6",
-  },
-  {
-    title: "Customers",
-    icon: <PiUsersThree />,
-    link: "/customers",
-    id: "4",
-  },
-  {
-    title: "Account",
-    icon: <MdOutlineManageAccounts />,
-    link: "/account",
-    id: "10",
-  },
-];
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { CiDeliveryTruck, CiSettings } from "react-icons/ci";
 
 export const menuLinks = [
   {
     title: "Dashboard",
-    image: "/icons/home.svg",
+    image: <GoHome />,
     link: "/",
   },
   {
     title: "Orders",
-    image: "/icons/shopping-cart.svg",
+    image: <CiDeliveryTruck />,
     link: "/orders",
   },
   {
     title: "Revenue",
-    image: "/icons/dollar.svg",
+    image: <PiCurrencyDollarSimpleThin />,
     link: "/revenue",
   },
   {
     title: "Products",
-    image: "/icons/shopping-basket.svg",
+    image: <PiBasketThin />,
     link: "/products",
   },
   {
     title: "Add Product",
-    image: "/icons/layer-plus.svg",
+    image: <PiPlusSquareThin />,
     link: "/add-product",
   },
   {
     title: "Comments",
-    image: "/icons/comment.svg",
+    image: <PiPaperPlaneThin />,
     link: "/comments",
   },
   {
     title: "Customers",
-    image: "/icons/users.svg",
+    image: <PiUsersThin />,
     link: "/customers",
   },
   {
     title: "Site Layout",
-    image: "/icons/rectangles-mixed.svg",
+    image: <PiLayoutLight />,
     link: "/site-layout",
   },
   {
     title: "Blogs",
-    image: "/icons/blog-text.svg",
+    image: <PiTextBLight />,
     link: "/blogs",
   },
   {
     title: "Add Blog",
-    image: "/icons/add-folder.svg",
+    image: <PiTextboxLight />,
     link: "/add-blog",
   },
   {
     title: "Tasks",
-    image: "/icons/task.svg",
+    image: <GoTasklist />,
     link: "/tasks",
   },
   {
     title: "Notifications",
-    image: "/icons/bell.svg",
+    image: <IoIosNotificationsOutline />,
     link: "/notifications",
   },
   {
     title: "Account",
-    image: "/icons/user.svg",
+    image: <CiSettings />,
     link: "/account",
   },
 ];
