@@ -9,6 +9,7 @@ import {
   PiTextboxLight,
   PiUsersThin,
   PiTelevisionSimpleBold,
+  PiPowerThin,
 } from "react-icons/pi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
 import { LuLaptop, LuHardDrive, LuSpeaker } from "react-icons/lu";
@@ -18,72 +19,93 @@ import { FiHeadphones, FiPrinter } from "react-icons/fi";
 import { FaComputer } from "react-icons/fa6";
 import { SlScreenTablet } from "react-icons/sl";
 import { IoIosNotificationsOutline } from "react-icons/io";
-import { CiDeliveryTruck, CiSettings } from "react-icons/ci";
+import { CiDark, CiDeliveryTruck, CiSearch, CiSettings } from "react-icons/ci";
+import { TfiClose } from "react-icons/tfi";
+
+export const icons = {
+  home: <GoHome />,
+  deliveryTruck: <CiDeliveryTruck />,
+  dollar: <PiCurrencyDollarSimpleThin />,
+  basket: <PiBasketThin />,
+  plus: <PiPlusSquareThin />,
+  paper: <PiPaperPlaneThin />,
+  users: <PiUsersThin />,
+  layout: <PiLayoutLight />,
+  textB: <PiTextBLight />,
+  textBox: <PiTextboxLight />,
+  tasks: <GoTasklist />,
+  notification: <IoIosNotificationsOutline />,
+  settings: <CiSettings />,
+  power: <PiPowerThin />,
+  search: <CiSearch />,
+  close: <TfiClose />,
+  moon: <CiDark />,
+};
 
 export const menuLinks = [
   {
     title: "Dashboard",
-    image: <GoHome />,
+    image: icons.home,
     link: "/",
   },
   {
     title: "Orders",
-    image: <CiDeliveryTruck />,
+    image: icons.deliveryTruck,
     link: "/orders",
   },
   {
     title: "Revenue",
-    image: <PiCurrencyDollarSimpleThin />,
+    image: icons.dollar,
     link: "/revenue",
   },
   {
     title: "Products",
-    image: <PiBasketThin />,
+    image: icons.basket,
     link: "/products",
   },
   {
     title: "Add Product",
-    image: <PiPlusSquareThin />,
+    image: icons.plus,
     link: "/add-product",
   },
   {
     title: "Comments",
-    image: <PiPaperPlaneThin />,
+    image: icons.paper,
     link: "/comments",
   },
   {
     title: "Customers",
-    image: <PiUsersThin />,
+    image: icons.users,
     link: "/customers",
   },
   {
     title: "Site Layout",
-    image: <PiLayoutLight />,
+    image: icons.layout,
     link: "/site-layout",
   },
   {
     title: "Blogs",
-    image: <PiTextBLight />,
+    image: icons.textB,
     link: "/blogs",
   },
   {
     title: "Add Blog",
-    image: <PiTextboxLight />,
+    image: icons.textBox,
     link: "/add-blog",
   },
   {
     title: "Tasks",
-    image: <GoTasklist />,
+    image: icons.tasks,
     link: "/tasks",
   },
   {
     title: "Notifications",
-    image: <IoIosNotificationsOutline />,
+    image: icons.notification,
     link: "/notifications",
   },
   {
     title: "Account",
-    image: <CiSettings />,
+    image: icons.settings,
     link: "/account",
   },
 ];

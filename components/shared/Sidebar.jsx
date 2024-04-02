@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { menuLinks } from "@/constants";
+import { icons, menuLinks } from "@/constants";
 import { PiPowerThin } from "react-icons/pi";
 
 const Sidebar = () => {
@@ -63,9 +63,7 @@ const Sidebar = () => {
               }}
               className="flex items-center w-full gap-[20px] p-[10px]"
             >
-              <div className="text-[22px]">
-                <PiPowerThin />
-              </div>
+              <div className="text-[22px]">{icons.power}</div>
               <span class="text-[13px] font-light">Exit</span>
             </button>
           </li>

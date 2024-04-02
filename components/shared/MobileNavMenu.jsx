@@ -3,13 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Drawer } from "antd";
-import { menuLinks } from "@/constants";
+import { icons, menuLinks } from "@/constants";
 import { Fragment } from "react";
 import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { PiPowerThin } from "react-icons/pi";
 import { CiMenuBurger } from "react-icons/ci";
-import { TfiClose } from "react-icons/tfi";
 
 const MobileNav = ({ onClose, open, setOpen }) => {
   const pathname = usePathname();
@@ -28,8 +27,8 @@ const MobileNav = ({ onClose, open, setOpen }) => {
             <span>Shop</span>
           </div>
         </Link>
-        <button onClick={() => onClose()}>
-          <TfiClose className="text-[22px] text-gray-700" />
+        <button onClick={() => onClose()} className="text-[22px] text-gray-700">
+          {icons.close}
         </button>
       </div>
     ),
