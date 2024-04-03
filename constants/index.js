@@ -17,6 +17,8 @@ import {
   PiHeartLight,
   PiClockLight,
   PiLockSimpleOpenLight,
+  PiArrowBendRightUpLight,
+  PiArrowBendRightDownLight,
 } from "react-icons/pi";
 import { HiOutlineDeviceMobile } from "react-icons/hi";
 import { LuLaptop, LuHardDrive, LuSpeaker } from "react-icons/lu";
@@ -64,6 +66,8 @@ export const icons = {
   heart: <PiHeartLight />,
   clock: <PiClockLight />,
   lock: <PiLockSimpleOpenLight />,
+  growArrow: <PiArrowBendRightUpLight />,
+  fallingArrow: <PiArrowBendRightDownLight />,
 };
 
 export const menuLinks = [

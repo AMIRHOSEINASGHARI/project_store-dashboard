@@ -55,6 +55,7 @@ const MobileNav = ({ onClose, open, setOpen }) => {
         closeIcon={false}
         styles={_drawer.styles}
         title={_drawer.title}
+        width={250}
       >
         <nav>
           <ul>
